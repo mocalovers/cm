@@ -331,6 +331,106 @@ main{padding-top:22px}
 /* barras refinadas */
 svg rect.b{filter:none}
 svg text.vb{font-weight:700;font-size:12.5px;fill:var(--navy)}
+
+/* ===== v13 · celular e tablet ===== */
+@media (max-width:860px){
+ .wrap{padding:0 18px}
+ header{padding:10px 0 8px}
+ .head-in{gap:10px}
+ h1{font-size:18px}
+ .brand-l{gap:10px;align-items:baseline}
+ .brand-l .sub1{font-size:11.5px;flex-basis:100%;padding-bottom:0}
+ /* abas roláveis, sem quebrar */
+ .head-right{width:100%;gap:8px;flex-wrap:nowrap}
+ .nav-row{flex:1;min-width:0}
+ .tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1}
+ .tabs::-webkit-scrollbar{display:none}
+ .tab{padding:8px 13px;font-size:12px;flex:0 0 auto;white-space:nowrap}
+ .present-btn{padding:8px 10px}
+ .present-btn .lbl{display:none}
+ main{padding-top:18px}
+ .stack{gap:26px}
+ section+section{margin-top:30px}
+ /* abertura */
+ .manchete{font-size:25px;line-height:1.16}
+ .manchete-sub{font-size:13.5px}
+ .abertura{gap:22px;padding-bottom:20px}
+ .abre-figs{grid-template-columns:repeat(3,1fr);gap:14px}
+ .abre-figs b{font-size:22px}
+ .abre-figs span{font-size:8.5px;letter-spacing:.1em;white-space:normal}
+ .abre-figs em{display:none}
+ .marco{gap:11px;margin-top:18px}
+ .marco .bolha{width:44px;height:44px;font-size:18px}
+ .marco span{font-size:11.5px}
+ /* capítulos */
+ .cap{gap:11px;margin-bottom:14px;flex-wrap:wrap}
+ .cap h3{font-size:19px}
+ .cap .nt{margin-left:0;flex-basis:100%;text-align:left;font-size:9.5px;letter-spacing:.1em}
+ /* selos */
+ .selos{grid-template-columns:repeat(2,1fr);gap:22px 12px}
+ .selo{gap:10px}
+ .selo .anel{--dia:112px}
+ .selo.g .anel{--dia:126px}
+ .selo .num{font-size:24px}.selo.g .num{font-size:26px}
+ .selo .num.m{font-size:20px}.selo .num.p{font-size:17px}
+ .selo .rot{font-size:12px}
+ .selo .sub{font-size:10.5px;max-width:22ch}
+ /* gráficos: texto maior dentro do viewBox */
+ svg text{font-size:15px}
+ .bolhas text.val{font-size:16px}
+ .bolhas text.lab,.bolhas text.serie{font-size:13px}
+ svg text.vb{font-size:16px}
+ svg#wa-dias,svg#barras,svg#comp{min-height:230px}
+ .chart-legend{gap:14px;font-size:11px}
+ /* colunas viram uma */
+ .grid.g2,.grid.g3,.grid.g4,.grid.g5,.cols,.ed-cols{grid-template-columns:1fr!important;gap:26px!important}
+ /* listas e tabelas */
+ .topic{gap:10px;padding:7px 6px;margin-left:-6px;margin-right:-6px}
+ .topic .det{display:none}
+ .topic .qtd{width:62px}
+ .tabela-rolavel{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ table{min-width:520px}
+ /* aba de vídeos */
+ .cine{grid-template-columns:1fr;gap:26px}
+ .cine .tela,.cine .tela-pe,.cine .tela-dados,.cine .tela-link{max-width:340px;margin-left:auto;margin-right:auto}
+ .cine-head h2{font-size:25px}
+ .cine-figs{gap:20px;flex-wrap:wrap}
+ .cine-figs b{font-size:21px}
+ .mural{grid-template-columns:repeat(4,1fr);gap:6px}
+ .mural-h{flex-wrap:wrap;gap:6px}
+ .mural-h span{margin-left:0;flex-basis:100%}
+ .tela-dados{gap:20px;flex-wrap:wrap}
+ .insight p{font-size:14.5px}
+ .lista .tipo{display:none}
+}
+@media (max-width:860px) and (min-width:600px){
+ .selos{grid-template-columns:repeat(3,1fr)}
+ .abre-figs{grid-template-columns:repeat(3,auto);justify-content:start;gap:34px}
+ .abre-figs b{font-size:26px}
+ .abre-figs em{display:block}
+ .mural{grid-template-columns:repeat(6,1fr)}
+ .cine .tela,.cine .tela-pe,.cine .tela-dados,.cine .tela-link{max-width:400px}
+}
+.eyebrow{white-space:normal;overflow-wrap:anywhere}
+@media (max-width:420px){
+ .selos{grid-template-columns:repeat(2,1fr)}
+ .selo .anel{--dia:104px}
+ .manchete{font-size:22px}
+ .mural{grid-template-columns:repeat(3,1fr)}
+ .abre-figs{grid-template-columns:1fr;gap:16px}
+ .abre-figs b{font-size:26px}
+ .abre-figs span{font-size:9.5px}
+ svg text{font-size:17px}
+ .bolhas text.val{font-size:18px}
+}
+/* telas de toque: o mural mostra os dados sem hover */
+@media (hover:none){
+ .mv .cap{opacity:1;background:linear-gradient(to top,rgba(0,32,80,.92) 14%,rgba(0,32,80,.3) 52%,transparent)}
+ .mv .cap b{font-size:15px}
+ .mv .cap b i{display:none}
+ .mv .cap span{font-size:8.5px;margin-top:3px}
+ .selo:hover .anel{transform:none}
+}
 /* ===== Vídeos da comunidade · sala de exibição ===== */
 .cine-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
 .cine-head h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--navy);font-size:clamp(26px,2.9vw,38px);line-height:1.08;letter-spacing:-.02em}
@@ -469,6 +569,15 @@ html.presenting main{padding-top:24px}
 
     <div class="bloco">
       <div class="cap"><span class="n">03</span><h3 id="cap3"></h3></div>
+      <div class="panel" style="padding:0;margin-bottom:26px">
+        <div class="sub-h" id="cmp-tit"></div>
+        <div class="sub-s" id="cmp-sub"></div>
+        <div class="tabela-rolavel"><table id="tab-cmp">
+          <thead><tr><th>Indicador</th><th id="cmp-c1"></th><th id="cmp-c2"></th><th>Variação</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+        <p class="sub-s" id="cmp-nota" style="margin-top:12px;max-width:92ch"></p>
+      </div>
       <div class="insight">
         <span class="chip"></span>
         <div><h3>Leitura da semana</h3><p id="leitura"></p></div>
@@ -520,6 +629,9 @@ html.presenting main{padding-top:24px}
           <div class="sub-s" id="comp-sub"></div>
           <svg id="comp" viewBox="0 0 1150 250" width="100%" style="height:250px"></svg>
           <div id="comp-saldo" style="margin-top:6px"></div>
+          <div class="sub-h" id="comp2-tit" style="margin-top:30px"></div>
+          <div class="sub-s" id="comp2-sub"></div>
+          <svg id="comp2" viewBox="0 0 1150 290" width="100%" style="height:290px"></svg>
         </div>
         <div class="grid g2" style="margin-top:24px">
           <div class="mini" style="padding:24px">
@@ -541,10 +653,10 @@ html.presenting main{padding-top:24px}
     <section>
       <div class="cap"><span class="n">03</span><h3>Como os quatro desafios se comparam</h3><span class="nt">enviados, válidos e reprovados</span></div>
       <div class="panel" style="padding:8px 28px 24px">
-        <table id="tab-desafios">
+        <div class="tabela-rolavel"><table id="tab-desafios">
           <thead><tr><th>Desafio</th><th>Status</th><th>Total</th><th>Válidas</th><th>Penalizadas</th></tr></thead>
           <tbody></tbody>
-        </table>
+        </table></div>
       </div>
       <div class="panel" style="padding:28px;margin-top:20px">
         <div class="card-h">Volume comparado</div>
@@ -627,680 +739,7 @@ html.presenting main{padding-top:24px}
 
 <!-- DADOS DA EDIÇÃO: a tarefa semanal troca SOMENTE este bloco JSON -->
 <script type="application/json" id="dados">
-{
- "subtitulo": "Comunidade e plataforma Jornada Doce, semana de 01 a 07 de outubro",
- "rodape_sac": "Aba do SAC: caixa sac.mocalovers@publination.com.br e WhatsApp Oficial 5511971503088, janela de quinta 01/10 às 00h a quarta 07/10 (dia ainda em andamento).",
- "rodape_jd": "Aba Jornada Doce: painel da plataforma jornadadoce.com.br e dash completo da comunidade, leitura de 08/10/2026. Aba Feed: monitoramento de #BebidasComMoça no Instagram.",
- "sac": {
-  "total": 205,
-  "remetentes": 126,
-  "janela_texto": "quinta 01/10 às 00h a quarta 07/10, dia em andamento",
-  "por_pessoa_texto": "1,6 mensagem por pessoa em média",
-  "media_texto": "29,3",
-  "pico_pct": 46,
-  "pico_texto": "do volume em 01 e 05/10",
-  "categorias": [
-   {
-    "nome": "Kits de boas-vindas",
-    "det": "Código de rastreio, status de envio e mudança de endereço",
-    "n": 149
-   },
-   {
-    "nome": "Premiação, ranking e colheradas",
-    "det": "Vale-compras e prêmios dos desafios",
-    "n": 24
-   },
-   {
-    "nome": "Plataforma, regras e cadastro",
-    "det": "Acesso, convites pendentes e dúvidas de execução",
-    "n": 16
-   },
-   {
-    "nome": "Redes sociais",
-    "det": "Vincular, alterar e incluir o @ do TikTok e do Instagram",
-    "n": 10
-   },
-   {
-    "nome": "Curadoria",
-    "det": "Contestações de conteúdo reprovado",
-    "n": 5
-   },
-   {
-    "nome": "Saída voluntária",
-    "det": "Pedidos de saída da comunidade",
-    "n": 1
-   }
-  ],
-  "janela_grafico": "quinta 01/10 às 00h até quarta 07/10, parcial",
-  "dias": [
-   {
-    "rotulo": "Qui 01",
-    "n": 48
-   },
-   {
-    "rotulo": "Sex 02",
-    "n": 40
-   },
-   {
-    "rotulo": "Sáb 03",
-    "n": 9
-   },
-   {
-    "rotulo": "Dom 04",
-    "n": 2
-   },
-   {
-    "rotulo": "Seg 05",
-    "n": 46
-   },
-   {
-    "rotulo": "Ter 06",
-    "n": 40
-   },
-   {
-    "rotulo": "Qua 07",
-    "n": 20
-   }
-  ],
-  "leitura": "Com o WhatsApp no ar, o atendimento recebeu 1.778 mensagens na semana, e quase nove em cada dez chegaram pelo celular. O canal novo é também o mais exigente: 249 chamados encerrados, mas a primeira resposta leva 4h em média, e segunda e terça sozinhas trouxeram 844 das 1.573 mensagens. No e-mail ficou a demanda formal: 149 das 205 mensagens falam de rastreio, kit que consta como entregue e avarias. O desafio novo quase não gera dúvida ainda, são 3 e-mails, todos sobre premiação e regra de participação. Metade das pessoas escreveu mais de uma vez, sinal de demanda represada esperando retorno."
- },
- "wa": {
-  "janela_texto": "WhatsApp Oficial 5511971503088 · quinta 01/10 às 00h a quarta 07/10",
-  "recebidas": 1573,
-  "enviadas": 773,
-  "recebidas_sub": "773 mensagens enviadas pelo time no mesmo período",
-  "chamados_fechados": 249,
-  "abertos": 12,
-  "chamados_sub": "95,4% dos chamados da semana foram encerrados",
-  "contatos": 237,
-  "contatos_sub": "221 contatos únicos na leitura completa da plataforma",
-  "primeira_resposta": "4h00",
-  "primeira_sub": "média ponderada pelos chamados do dia",
-  "dias": [
-   {
-    "rotulo": "Qui 01",
-    "rec": 309,
-    "env": 163,
-    "cham": 53
-   },
-   {
-    "rotulo": "Sex 02",
-    "rec": 120,
-    "env": 54,
-    "cham": 27
-   },
-   {
-    "rotulo": "Sáb 03",
-    "rec": 44,
-    "env": 3,
-    "cham": 17
-   },
-   {
-    "rotulo": "Dom 04",
-    "rec": 12,
-    "env": 4,
-    "cham": 4
-   },
-   {
-    "rotulo": "Seg 05",
-    "rec": 305,
-    "env": 147,
-    "cham": 36
-   },
-   {
-    "rotulo": "Ter 06",
-    "rec": 539,
-    "env": 280,
-    "cham": 80
-   },
-   {
-    "rotulo": "Qua 07",
-    "rec": 244,
-    "env": 122,
-    "cham": 32
-   }
-  ],
-  "dias_sub": "Recebidas e enviadas, 01 a 07 de outubro",
-  "chamados_grafico": "Atendimentos encerrados por dia",
-  "tempo_sub": "Da primeira mensagem da Lover até o encerramento do chamado",
-  "tempos": [
-   {
-    "k": "1ª resposta",
-    "v": "4h00",
-    "w": 100,
-    "c": "#D4AF37"
-   },
-   {
-    "k": "Espera entre mensagens",
-    "v": "27 s",
-    "w": 12,
-    "c": "#25936B"
-   },
-   {
-    "k": "Chamados encerrados",
-    "v": "249",
-    "w": 95,
-    "c": "#002D72"
-   },
-   {
-    "k": "Ainda em aberto",
-    "v": "12",
-    "w": 5,
-    "c": "#C0392B"
-   }
-  ]
- },
- "jd": {
-  "creators_cadastrados": 60045,
-  "creators_aprovados": 30709,
-  "pendentes": 15353,
-  "status": [
-   {
-    "k": "Aprovados",
-    "v": 30709
-   },
-   {
-    "k": "Pendentes",
-    "v": 15353
-   },
-   {
-    "k": "Incompletos",
-    "v": 8253
-   },
-   {
-    "k": "Usuários participativos",
-    "v": 6363
-   },
-   {
-    "k": "Sob revisão",
-    "v": 5669
-   },
-   {
-    "k": "Aguardando aprovação",
-    "v": 60
-   },
-   {
-    "k": "Rejeitados",
-    "v": 1
-   }
-  ],
-  "colheradas_acumuladas": 5983745,
-  "colheradas_mes_texto": "342.730 só em outubro, com 7 dias de desafio",
-  "colheradas_por_mes": [
-   {
-    "mes": "Mai",
-    "v": 0
-   },
-   {
-    "mes": "Jun",
-    "v": 202925
-   },
-   {
-    "mes": "Jul",
-    "v": 3075770
-   },
-   {
-    "mes": "Ago",
-    "v": 1241060
-   },
-   {
-    "mes": "Set",
-    "v": 1121260
-   },
-   {
-    "mes": "Out",
-    "v": 342730
-   }
-  ],
-  "alcance_real": "~76,8 mi",
-  "alcance_sub": "seguidores das lovers ativas, Instagram e TikTok",
-  "midia_equivalente": "R$ 6,02 mi",
-  "desafio_ativo": {
-   "nome": "Bebidas com Moça",
-   "nota": "desafio de outubro, dia 7 de 31",
-   "periodo": "01/10 a 31/10",
-   "total": 583,
-   "validas": 582,
-   "penalizadas": 1,
-   "colheradas_mes": 342730,
-   "colheradas_rotulo": "Colheradas em outubro",
-   "curadoria_sub": "583 submissões na plataforma, 582 aprovadas e 1 reprovada",
-   "como_compara": "Com sete dias corridos, Bebidas com Moça soma 217 lovers e 583 conteúdos enviados, o equivalente a R$ 152 mil em mídia. A taxa de aprovação de 99,8% é a melhor do programa: o Brigadeiro fechou em 93,9%, o Meu Jeito Único em 95,8% e a Mesa Posta em 78%.",
-   "criadoras": 217,
-   "conteudos_enviados": 583
-  },
-  "desafios": [
-   {
-    "nome": "Meu jeito único com Moça",
-    "curto": "Meu jeito",
-    "status": "Encerrado",
-    "total": 13164,
-    "validas": 12613,
-    "penalizadas": 551
-   },
-   {
-    "nome": "Mesa Posta com Moça",
-    "curto": "Mesa Posta",
-    "status": "Encerrado",
-    "total": 6048,
-    "validas": 4720,
-    "penalizadas": 1328
-   },
-   {
-    "nome": "Mês do Brigadeiro",
-    "curto": "Brigadeiro",
-    "status": "Encerrado",
-    "total": 5820,
-    "validas": 5467,
-    "penalizadas": 353
-   },
-   {
-    "nome": "Bebidas com Moça",
-    "curto": "Bebidas",
-    "status": "Ativo",
-    "total": 583,
-    "validas": 582,
-    "penalizadas": 1
-   }
-  ],
-  "barras_sub": "Conteúdos enviados, aprovados e reprovados por desafio, segundo o painel da comunidade",
-  "genero": [
-   {
-    "k": "Feminino",
-    "v": 35156
-   },
-   {
-    "k": "Masculino",
-    "v": 1180
-   },
-   {
-    "k": "Prefiro não informar",
-    "v": 32
-   },
-   {
-    "k": "Não-binário",
-    "v": 17
-   },
-   {
-    "k": "Outro",
-    "v": 12
-   }
-  ],
-  "empreendedor": {
-   "nao": 28792,
-   "sim": 7605
-  },
-  "estados": [
-   {
-    "k": "SP",
-    "v": 11874
-   },
-   {
-    "k": "RJ",
-    "v": 4236
-   },
-   {
-    "k": "MG",
-    "v": 3151
-   },
-   {
-    "k": "BA",
-    "v": 2592
-   }
-  ],
-  "idades_sub": "concentração forte entre 25 e 44 anos",
-  "faixas": [
-   {
-    "k": "25-34",
-    "v": 16787
-   },
-   {
-    "k": "35-44",
-    "v": 8870
-   },
-   {
-    "k": "18-24",
-    "v": 6289
-   },
-   {
-    "k": "45-54",
-    "v": 3406
-   },
-   {
-    "k": "55+",
-    "v": 1045
-   }
-  ],
-  "colheradas_curto": "5,98 mi",
-  "midia_desafio": "R$ 152 mil",
-  "marco": {
-   "titulo": "6x",
-   "texto": "A meta do ano era reunir 10 mil Lovers até dezembro. A comunidade passou de 60 mil em 117 dias, seis vezes o combinado."
-  }
- },
- "feed": {
-  "hashtag": "#BebidasComMoça",
-  "subtitulo": "Vídeos do desafio · plataforma Jornada Doce",
-  "selo": "Desafio de outubro",
-  "descricao": "Os números do desafio vêm da plataforma Jornada Doce e do painel da comunidade. Os vídeos ao lado são a seleção de monitoramento: os que mais puxaram conversa até agora. Clique em qualquer um para assistir aqui mesmo.",
-  "reels": [
-   {
-    "id": "DeACx5NxtXQ",
-    "url": "https://www.instagram.com/p/DeACx5NxtXQ/",
-    "perfil": "@torressamaradasilva",
-    "com": 193,
-    "eng": 613,
-    "vis": 4496
-   },
-   {
-    "id": "DeHPF1dx7Kz",
-    "url": "https://www.instagram.com/p/DeHPF1dx7Kz/",
-    "perfil": "@lily_scruz",
-    "com": 103,
-    "eng": 292,
-    "vis": 2885
-   },
-   {
-    "id": "Dd_w0HdsaAl",
-    "url": "https://www.instagram.com/p/Dd_w0HdsaAl/",
-    "perfil": "@lidiareceitas",
-    "com": 97,
-    "eng": 271,
-    "vis": 590
-   },
-   {
-    "id": "Dd8x5PzOkfJ",
-    "url": "https://www.instagram.com/p/Dd8x5PzOkfJ/",
-    "perfil": "@graziellasalgado",
-    "com": 87,
-    "eng": 170,
-    "vis": 818
-   },
-   {
-    "id": "Dd8JzN1xHyt",
-    "url": "https://www.instagram.com/p/Dd8JzN1xHyt/",
-    "perfil": "@brenaduarte.oficial",
-    "com": 84,
-    "eng": 427,
-    "vis": 8876
-   },
-   {
-    "id": "DeAUbVuOLgS",
-    "url": "https://www.instagram.com/p/DeAUbVuOLgS/",
-    "perfil": "@alemohallem",
-    "com": 83,
-    "eng": 266,
-    "vis": 4127
-   },
-   {
-    "id": "DeHCPFjRSps",
-    "url": "https://www.instagram.com/p/DeHCPFjRSps/",
-    "perfil": "@casa.da.lary",
-    "com": 82,
-    "eng": 146,
-    "vis": 611
-   },
-   {
-    "id": "DeAkh-HukLZ",
-    "url": "https://www.instagram.com/p/DeAkh-HukLZ/",
-    "perfil": "@dherlen_silvax",
-    "com": 80,
-    "eng": 179,
-    "vis": 1084
-   },
-   {
-    "id": "DeCDedOMM9I",
-    "url": "https://www.instagram.com/p/DeCDedOMM9I/",
-    "perfil": "@casinha.da.gabby",
-    "com": 77,
-    "eng": 301,
-    "vis": 5044
-   },
-   {
-    "id": "DeC-EY3o4ce",
-    "url": "https://www.instagram.com/p/DeC-EY3o4ce/",
-    "perfil": "@naraah_cruz98",
-    "com": 74,
-    "eng": 170,
-    "vis": 2104
-   },
-   {
-    "id": "Dd-C_n5udZn",
-    "url": "https://www.instagram.com/p/Dd-C_n5udZn/",
-    "perfil": "@nosso_ap2007",
-    "com": 74,
-    "eng": 77,
-    "vis": 867
-   },
-   {
-    "id": "Dd90VN7SM0u",
-    "url": "https://www.instagram.com/p/Dd90VN7SM0u/",
-    "perfil": "@marirezende",
-    "com": 73,
-    "eng": 465,
-    "vis": 13975
-   },
-   {
-    "id": "DeHOOnORERk",
-    "url": "https://www.instagram.com/p/DeHOOnORERk/",
-    "perfil": "@anaoliveira0125",
-    "com": 72,
-    "eng": 435,
-    "vis": 1082
-   },
-   {
-    "id": "DeJ114-qYsr",
-    "url": "https://www.instagram.com/p/DeJ114-qYsr/",
-    "perfil": "@____construindonossolar",
-    "com": 68,
-    "eng": 147,
-    "vis": 661
-   },
-   {
-    "id": "DeDTB1rBDxt",
-    "url": "https://www.instagram.com/p/DeDTB1rBDxt/",
-    "perfil": "@rayyane.souzas",
-    "com": 68,
-    "eng": 71,
-    "vis": 3138
-   },
-   {
-    "id": "DeFcHc5vt_p",
-    "url": "https://www.instagram.com/p/DeFcHc5vt_p/",
-    "perfil": "@eliane_menezes58",
-    "com": 62,
-    "eng": 118,
-    "vis": 616
-   },
-   {
-    "id": "DeASs1mTKug",
-    "url": "https://www.instagram.com/p/DeASs1mTKug/",
-    "perfil": "@tacii_freitass",
-    "com": 60,
-    "eng": 136,
-    "vis": 1579
-   },
-   {
-    "id": "DeCfcqPIIv1",
-    "url": "https://www.instagram.com/p/DeCfcqPIIv1/",
-    "perfil": "@dayseannehome",
-    "com": 57,
-    "eng": 236,
-    "vis": 3877
-   },
-   {
-    "id": "DeFUEHZvy94",
-    "url": "https://www.instagram.com/p/DeFUEHZvy94/",
-    "perfil": "@cunhahelen25",
-    "com": 57,
-    "eng": 183,
-    "vis": 1977
-   },
-   {
-    "id": "DeAMCfaTqCc",
-    "url": "https://www.instagram.com/p/DeAMCfaTqCc/",
-    "perfil": "@branka_mariano",
-    "com": 54,
-    "eng": 136,
-    "vis": 504
-   },
-   {
-    "id": "DeAjyuaOh2P",
-    "url": "https://www.instagram.com/p/DeAjyuaOh2P/",
-    "perfil": "@casinha.jedecor",
-    "com": 49,
-    "eng": 86,
-    "vis": 1170
-   },
-   {
-    "id": "Dd9EbVzR7bI",
-    "url": "https://www.instagram.com/p/Dd9EbVzR7bI/",
-    "perfil": "@neuma_luz",
-    "com": 44,
-    "eng": 217,
-    "vis": 4346
-   },
-   {
-    "id": "DeEXuiqNfz0",
-    "url": "https://www.instagram.com/p/DeEXuiqNfz0/",
-    "perfil": "@nectarmorangos",
-    "com": 43,
-    "eng": 101,
-    "vis": 265
-   },
-   {
-    "id": "DeINbTsB_N0",
-    "url": "https://www.instagram.com/p/DeINbTsB_N0/",
-    "perfil": "@nossaalma_decasa",
-    "com": 41,
-    "eng": 105,
-    "vis": 928
-   }
-  ],
-  "titulo": "O que a comunidade<br><em>está publicando</em>",
-  "figuras": [
-   {
-    "v": "583",
-    "k": "conteúdos enviados"
-   },
-   {
-    "v": "582",
-    "k": "aprovados"
-   },
-   {
-    "v": "217",
-    "k": "lovers no desafio"
-   },
-   {
-    "v": "R$ 152 mil",
-    "k": "mídia equivalente"
-   }
-  ],
-  "nota": "Números do desafio: plataforma Jornada Doce e painel da comunidade, leitura de 07/10/2026. A seleção de vídeos vem do monitoramento de #BebidasComMoça no Instagram, usado para identificar o que mais engajou, e não substitui os números oficiais da plataforma.",
-  "mural_titulo": "Os vídeos que mais puxaram conversa",
-  "mural_sub": "24 vídeos · passe o mouse · clique para assistir"
- },
- "abertura": {
-  "olho": "Atendimento · semana de 01 a 07 de outubro",
-  "manchete": "O WhatsApp entrou<br>e levou <em>quase nove em cada dez</em> mensagens",
-  "sub": "Primeira semana com os dois canais no ar. O volume quase triplicou em relação a uma semana só de e-mail, e a demanda mudou de natureza: o que chega pelo celular é dúvida rápida, o que chega por e-mail é kit e premiação.",
-  "figuras": [
-   {
-    "v": "1.778",
-    "k": "mensagens recebidas",
-    "em": "nos dois canais"
-   },
-   {
-    "v": "88,5%",
-    "k": "vieram do WhatsApp",
-    "em": "1.573 mensagens"
-   },
-   {
-    "v": "4h00",
-    "k": "até a 1ª resposta",
-    "em": "o ponto a corrigir"
-   }
-  ],
-  "cap1": "Como foi a estreia do WhatsApp",
-  "cap2": "O que continua chegando por e-mail",
-  "cap3": "O que a semana diz"
- },
- "abertura_jd": {
-  "olho": "Jornada Doce · acumulado do programa",
-  "manchete": "Quase 60 mil Lovers cadastradas,<br><em>seis vezes</em> a meta do ano",
-  "sub": "A meta era reunir 10 mil pessoas até dezembro. A comunidade cruzou a marca de 60 mil cadastros, metade já aprovada na curadoria de perfil, e o conteúdo que elas publicaram equivale a R$ 6,02 milhões em mídia que a marca não precisou comprar.",
-  "figuras": [
-   {
-    "v": "60.045",
-    "k": "lovers cadastradas",
-    "em": "6x a meta de 10 mil"
-   },
-   {
-    "v": "51,1%",
-    "k": "aprovadas na curadoria",
-    "em": "30.709 pessoas"
-   },
-   {
-    "v": "R$ 6,02 mi",
-    "k": "em mídia conquistada",
-    "em": "desde o início do programa"
-   }
-  ],
-  "manchete60": "Passamos de <em>60 mil</em> Lovers,<br>seis vezes a meta do ano"
- },
- "comparativo": {
-  "titulo": "Mesma semana, desafio anterior",
-  "sub": "Conteúdos enviados por dia nos sete primeiros dias de cada desafio",
-  "labels": [
-   "Dia 1",
-   "Dia 2",
-   "Dia 3",
-   "Dia 4",
-   "Dia 5",
-   "Dia 6",
-   "Dia 7"
-  ],
-  "a": {
-   "k": "Bebidas com Moça · outubro",
-   "v": [
-    104,
-    96,
-    78,
-    70,
-    117,
-    106,
-    12
-   ]
-  },
-  "b": {
-   "k": "Mês do Brigadeiro · setembro",
-   "v": [
-    43,
-    74,
-    59,
-    52,
-    80,
-    78,
-    91
-   ]
-  },
-  "saldo": [
-   {
-    "k": "conteúdos enviados nos 6 primeiros dias",
-    "d": 47.9
-   },
-   {
-    "k": "aprovados na curadoria nos 6 primeiros dias",
-    "d": 74.3
-   },
-   {
-    "k": "lovers novas nos 6 primeiros dias",
-    "d": 34.6
-   }
-  ],
-  "nota": "Nos seis primeiros dias, Bebidas com Moça recebeu 571 conteúdos contra 386 do Brigadeiro no mesmo intervalo, e trouxe 214 lovers novas contra 159. O dia 7 aparece baixo porque a leitura foi feita às 09h49, com o dia ainda em andamento; no Brigadeiro o sétimo dia foi domingo, o melhor da semana."
- }
-}
+{"subtitulo": "Semana de 08 a 14 de outubro de 2026 · Community Management · Publination para Nestlé", "rodape_sac": "Atendimento: caixa sac.mocalovers@publination.com.br e relatório de estatística do WhatsApp Oficial 5511971503088. Janela de quinta 08/10 às 00h00 a quarta 14/10 às 23h59, horário de Brasília.", "rodape_jd": "Jornada Doce: plataforma jornadadoce.com.br e painel da comunidade, leitura de 15/10/2026 às 10h56. A seleção de vídeos da aba 3 vem do monitoramento de #BebidasComMoça no Instagram, atualizado em 14/10/2026, e não substitui os números oficiais da plataforma.", "abertura": {"olho": "Atendimento · 08 a 14 de outubro", "manchete": "Nove de cada dez conversas chegaram pelo <em>WhatsApp</em>", "sub": "Foram 1.253 mensagens nos dois canais do SAC, 30% menos que na semana anterior. O volume se concentrou na quinta e na sexta, e a fila que atravessou o fim de semana empurrou a primeira resposta do WhatsApp para quase 19 horas.", "figuras": [{"v": "1.253", "k": "mensagens na semana", "em": "nos dois canais"}, {"v": "1.114", "k": "pelo WhatsApp", "em": "88,9% do total"}, {"v": "139", "k": "por e-mail", "em": "de 90 Lovers diferentes"}], "cap1": "O WhatsApp, onde a semana aconteceu", "cap2": "A caixa de e-mail, assunto por assunto", "cap3": "O que a semana diz"}, "wa": {"janela_texto": "Relatório de estatística do WhatsApp Oficial 5511971503088, de quinta 08 a quarta 14 de outubro", "recebidas": 1114, "recebidas_sub": "88,9% de todo o atendimento da semana", "enviadas": 434, "chamados_fechados": 145, "chamados_sub": "87,3% dos 166 chamados do período", "contatos": 151, "contatos_sub": "contatos únicos na exportação de 07 a 14/10", "primeira_resposta": "18h39", "primeira_sub": "média ponderada pelos chamados encerrados; o fim de semana puxa o número para cima", "abertos": 21, "dias": [{"rotulo": "Qui 08", "rec": 348, "env": 157, "cham": 33}, {"rotulo": "Sex 09", "rec": 306, "env": 113, "cham": 36}, {"rotulo": "Sáb 10", "rec": 61, "env": 31, "cham": 10}, {"rotulo": "Dom 11", "rec": 20, "env": 8, "cham": 3}, {"rotulo": "Seg 12", "rec": 47, "env": 19, "cham": 7}, {"rotulo": "Ter 13", "rec": 218, "env": 78, "cham": 33}, {"rotulo": "Qua 14", "rec": 114, "env": 28, "cham": 23}], "dias_sub": "Mensagens recebidas e enviadas por dia, segundo o relatório de estatística"}, "sac": {"total": 139, "remetentes": 90, "janela_texto": "de quinta 08 a quarta 14 de outubro, 11,1% do atendimento", "por_pessoa_texto": "1,5 mensagem por Lover, em média", "media_texto": "19,9", "pico_pct": 48.2, "pico_texto": "terça 13 e quarta 14 somam 67 das 139 mensagens", "categorias": [{"nome": "Kits de boas-vindas", "det": "Código de rastreio, status de envio e mudança de endereço", "n": 83}, {"nome": "Premiação, ranking e colheradas", "det": "Vale-compras e prêmios dos desafios", "n": 33}, {"nome": "Plataforma, regras e cadastro", "det": "Acesso, convites pendentes e dúvidas de execução", "n": 10}, {"nome": "Redes sociais", "det": "Vincular, alterar e incluir o @ do TikTok e do Instagram", "n": 10}, {"nome": "Curadoria", "det": "Contestações de conteúdo reprovado", "n": 3}], "janela_grafico": "Mensagens de e-mail por dia, de quinta a quarta", "dias": [{"rotulo": "Qui 08", "n": 22}, {"rotulo": "Sex 09", "n": 25}, {"rotulo": "Sáb 10", "n": 11}, {"rotulo": "Dom 11", "n": 8}, {"rotulo": "Seg 12", "n": 6}, {"rotulo": "Ter 13", "n": 38}, {"rotulo": "Qua 14", "n": 29}], "leitura": "A caixa segue dominada por logística: 83 das 139 mensagens são sobre o kit de boas-vindas, quase sempre com a mesma frase, o app diz entregue e nada chegou. A segunda fila é premiação, com 33 mensagens puxadas por cupom de vale-compras recusado no site do parceiro. Juntas, as duas respondem por 83% do e-mail da semana. Nenhum pedido de saída da comunidade entrou no período."}, "comparativo_sac": {"titulo": "Semana contra semana", "sub": "Todos os números da aba, comparados com a semana de 01 a 07 de outubro", "col_atual": "08 a 14/10", "col_anterior": "01 a 07/10", "nota": "As contagens variam em percentual; as participações, em pontos percentuais (p.p.). A primeira resposta do WhatsApp subiu porque os chamados abertos de sexta a domingo só foram respondidos na segunda.", "linhas": [{"k": "Mensagens recebidas", "sub": "dois canais", "a": "1.253", "b": "1.799", "d": -30.4, "un": "%", "bom": false}, {"k": "WhatsApp, recebidas", "a": "1.114", "b": "1.573", "d": -29.2, "un": "%", "bom": false}, {"k": "E-mail, recebidas", "a": "139", "b": "226", "d": -38.5, "un": "%", "bom": false}, {"k": "WhatsApp, enviadas pelo time", "a": "434", "b": "773", "d": -43.9, "un": "%", "bom": false}, {"k": "Chamados encerrados", "a": "145", "b": "249", "d": -41.8, "un": "%", "bom": "n"}, {"k": "Contatos atendidos no WhatsApp", "a": "151", "b": "237", "d": -36.3, "un": "%", "bom": "n"}, {"k": "Remetentes únicos no e-mail", "a": "90", "b": "137", "d": -34.3, "un": "%", "bom": false}, {"k": "Média diária de e-mails", "a": "19,9", "b": "32,3", "d": -38.4, "un": "%", "bom": false}, {"k": "1ª resposta no WhatsApp", "sub": "média ponderada", "a": "18h39", "b": "4h00", "d": 366.4, "un": "%", "bom": false}, {"k": "Participação do WhatsApp", "a": "88,9%", "b": "87,4%", "d": 1.5, "un": "p.p.", "bom": "n"}, {"k": "Participação do e-mail", "a": "11,1%", "b": "12,6%", "d": -1.5, "un": "p.p.", "bom": "n"}, {"k": "Concentração nos dois picos", "a": "55,9%", "b": "52,1%", "d": 3.9, "un": "p.p.", "bom": "n"}, {"k": "Kits de boas-vindas", "sub": "do e-mail", "a": "59,7%", "b": "69,0%", "d": -9.3, "un": "p.p.", "bom": false}, {"k": "Premiação, ranking e colheradas", "sub": "do e-mail", "a": "23,7%", "b": "17,3%", "d": 6.5, "un": "p.p.", "bom": false}, {"k": "Plataforma, regras e cadastro", "sub": "do e-mail", "a": "7,2%", "b": "6,6%", "d": 0.6, "un": "p.p.", "bom": "n"}, {"k": "Redes sociais", "sub": "do e-mail", "a": "7,2%", "b": "4,4%", "d": 2.8, "un": "p.p.", "bom": "n"}, {"k": "Curadoria", "sub": "do e-mail", "a": "2,2%", "b": "2,2%", "d": -0.1, "un": "p.p.", "bom": "n"}, {"k": "Saída voluntária", "sub": "do e-mail", "a": "0%", "b": "0,4%", "d": -0.4, "un": "p.p.", "bom": "n"}]}, "abertura_jd": {"olho": "Jornada Doce · leitura de 15 de outubro", "manchete": "A comunidade chegou a <em>61 mil</em> Lovers", "manchete60": "A comunidade passou de <em>61 mil</em> Lovers cadastradas", "sub": "São 61.210 cadastros na plataforma e 31.301 Lovers já aprovadas na curadoria. A meta do ano era reunir 10 mil até dezembro.", "figuras": [{"v": "61.210", "k": "lovers cadastradas", "em": "6,1x a meta do ano"}, {"v": "31.301", "k": "aprovadas na curadoria", "em": "51,1% da base"}, {"v": "R$ 6,01 mi", "k": "mídia conquistada", "em": "sem custo de mídia"}]}, "jd": {"creators_cadastrados": 61210, "creators_aprovados": 31301, "pendentes": 15682, "status": [{"k": "Aprovados", "v": 31301}, {"k": "Pendentes", "v": 15682}, {"k": "Incompletos", "v": 8416}, {"k": "Usuários participativos", "v": 6450}, {"k": "Sob revisão", "v": 5808}, {"k": "Aguardando aprovação", "v": 2}, {"k": "Rejeitados", "v": 1}], "colheradas_acumuladas": 6332885, "colheradas_curto": "6,33 mi", "colheradas_mes_texto": "334.630 só em outubro, com 15 dias de desafio", "colheradas_por_mes": [{"mes": "Mai", "v": 0}, {"mes": "Jun", "v": 203525}, {"mes": "Jul", "v": 3077375}, {"mes": "Ago", "v": 1367685}, {"mes": "Set", "v": 1349670}, {"mes": "Out", "v": 334630}], "alcance_real": "~76,8 mi", "alcance_sub": "seguidores das lovers ativas, Instagram e TikTok", "midia_equivalente": "R$ 6,01 mi", "midia_desafio": "R$ 367 mil", "marco": {"titulo": "6,1x", "texto": "A meta do ano era reunir 10 mil Lovers até dezembro. A comunidade passou de 61 mil em 124 dias, mais de seis vezes o combinado."}, "desafio_ativo": {"nome": "Bebidas com Moça", "nota": "desafio de outubro, dia 15 de 31", "periodo": "01/10 a 31/10", "total": 1402, "validas": 1401, "penalizadas": 1, "colheradas_mes": 334630, "colheradas_rotulo": "Colheradas em outubro", "curadoria_sub": "1.402 submissões na plataforma, 1.401 aprovadas e 1 reprovada", "como_compara": "Na segunda semana, Bebidas com Moça soma 520 lovers e 1.402 conteúdos enviados, o equivalente a R$ 367 mil em mídia. A taxa de aprovação de 99,9% segue sendo a melhor do programa: o Meu Jeito Único fechou em 95,8%, o Brigadeiro em 79,2% e a Mesa Posta em 78,1%.", "criadoras": 520, "conteudos_enviados": 1402}, "desafios": [{"nome": "Meu jeito único com Moça", "curto": "Meu jeito", "status": "Encerrado", "total": 13157, "validas": 12606, "penalizadas": 551}, {"nome": "Mesa Posta com Moça", "curto": "Mesa Posta", "status": "Encerrado", "total": 6037, "validas": 4717, "penalizadas": 1320}, {"nome": "Mês do Brigadeiro", "curto": "Brigadeiro", "status": "Encerrado", "total": 5815, "validas": 4604, "penalizadas": 1211}, {"nome": "Bebidas com Moça", "curto": "Bebidas", "status": "Ativo", "total": 1402, "validas": 1401, "penalizadas": 1}], "barras_sub": "Conteúdos enviados, aprovados e reprovados por desafio, segundo o painel da comunidade", "genero": [{"k": "Feminino", "v": 35826}, {"k": "Masculino", "v": 1223}, {"k": "Prefiro não informar", "v": 32}, {"k": "Não-binário", "v": 17}, {"k": "Outro", "v": 12}], "empreendedor": {"nao": 29357, "sim": 7753}, "estados": [{"k": "SP", "v": 12104}, {"k": "RJ", "v": 4310}, {"k": "MG", "v": 3200}, {"k": "BA", "v": 2633}], "faixas": [{"k": "25-34", "v": 17137}, {"k": "35-44", "v": 9037}, {"k": "18-24", "v": 6410}, {"k": "45-54", "v": 3446}, {"k": "55+", "v": 1080}], "idades_sub": "concentração forte entre 25 e 44 anos, 70,5% da base"}, "comparativo": {"titulo": "Semana 2 do desafio, contra a semana 2 do desafio anterior", "sub": "Conteúdos enviados por dia, do dia 8 ao dia 14 de cada desafio", "labels": ["Dia 8", "Dia 9", "Dia 10", "Dia 11", "Dia 12", "Dia 13", "Dia 14"], "a": {"k": "Bebidas com Moça", "v": [138, 75, 75, 140, 128, 126, 57]}, "b": {"k": "Mês do Brigadeiro", "v": [90, 74, 157, 97, 89, 104, 98]}, "saldo": [{"k": "conteúdos enviados", "d": 4.2}, {"k": "aprovados", "d": 26.8}, {"k": "lovers novas", "d": 3.8}], "semana": {"titulo": "A semana inteira, lado a lado", "sub": "Totais dos sete dias: Bebidas com Moça na semana 2 contra Mês do Brigadeiro na semana 2", "grupos": [{"label": "Conteúdos enviados", "a": 739, "b": 709}, {"label": "Aprovados na curadoria", "a": 739, "b": 583}, {"label": "Lovers novas", "a": 272, "b": 262}]}, "nota": "Os sete dias estão fechados nos dois desafios, sem leitura parcial. Bebidas com Moça soma 739 conteúdos enviados contra 709 do Brigadeiro, e os 739 foram aprovados contra 583 do desafio anterior. Lovers novas na semana: 272 contra 262."}, "feed": {"hashtag": "#BebidasComMoça", "subtitulo": "Vídeos do desafio · plataforma Jornada Doce", "selo": "Desafio de outubro", "descricao": "Os números do desafio vêm da plataforma Jornada Doce e do painel da comunidade. Os vídeos ao lado são a seleção de monitoramento: os que mais puxaram conversa até agora. Clique em qualquer um para assistir aqui mesmo.", "titulo": "O que a comunidade<br><em>está publicando</em>", "figuras": [{"v": "1.402", "k": "conteúdos enviados"}, {"v": "1.401", "k": "aprovados"}, {"v": "520", "k": "lovers no desafio"}, {"v": "R$ 367 mil", "k": "mídia equivalente"}], "mural_titulo": "Os vídeos que mais puxaram conversa", "mural_sub": "24 vídeos · passe o mouse · clique para assistir", "nota": "Números do desafio: plataforma Jornada Doce e painel da comunidade, leitura de 15/10/2026. A seleção vem do monitoramento de #BebidasComMoça no Instagram: 69 reels passaram de 40 comentários e o mural traz os 24 primeiros, do mais comentado para o menos. O monitoramento serve para identificar o que mais engajou e não substitui os números oficiais da plataforma.", "reels": [{"id": "DePl0ROCoxU", "url": "https://www.instagram.com/p/DePl0ROCoxU/", "perfil": "@daniiefamilia", "com": 608, "eng": 3031, "vis": 84824}, {"id": "DeACx5NxtXQ", "url": "https://www.instagram.com/p/DeACx5NxtXQ/", "perfil": "@torressamaradasilva", "com": 206, "eng": 660, "vis": 10493}, {"id": "DePYTWfyMr7", "url": "https://www.instagram.com/p/DePYTWfyMr7/", "perfil": "@netypink", "com": 186, "eng": 361, "vis": 16090}, {"id": "DeW7n10RmHF", "url": "https://www.instagram.com/p/DeW7n10RmHF/", "perfil": "@willyane.soares.71", "com": 158, "eng": 255, "vis": 1124}, {"id": "DeHPF1dx7Kz", "url": "https://www.instagram.com/p/DeHPF1dx7Kz/", "perfil": "@lily_scruz", "com": 157, "eng": 395, "vis": 3123}, {"id": "DeAkh-HukLZ", "url": "https://www.instagram.com/p/DeAkh-HukLZ/", "perfil": "@dherlen_silvax", "com": 151, "eng": 258, "vis": 1218}, {"id": "DeSTPyYJ_jG", "url": "https://www.instagram.com/p/DeSTPyYJ_jG/", "perfil": "@beatriz_cavalcanti.a", "com": 148, "eng": 332, "vis": 2988}, {"id": "DeN421RsbOA", "url": "https://www.instagram.com/p/DeN421RsbOA/", "perfil": "@manuelaeleno", "com": 144, "eng": 147, "vis": 96350}, {"id": "DebtkfURnJi", "url": "https://www.instagram.com/p/DebtkfURnJi/", "perfil": "@minhapequena_casinha_rosa", "com": 125, "eng": 204, "vis": 723}, {"id": "DeaIfqauFyd", "url": "https://www.instagram.com/p/DeaIfqauFyd/", "perfil": "@janaine_graca", "com": 124, "eng": 358, "vis": 4984}, {"id": "DeQEtVmxTiW", "url": "https://www.instagram.com/p/DeQEtVmxTiW/", "perfil": "@casa_da_dora", "com": 118, "eng": 250, "vis": 2446}, {"id": "DeOghMKN-0O", "url": "https://www.instagram.com/p/DeOghMKN-0O/", "perfil": "@leticia.dicas.e.memes", "com": 115, "eng": 386, "vis": 1834}, {"id": "DeC-EY3o4ce", "url": "https://www.instagram.com/p/DeC-EY3o4ce/", "perfil": "@naraah_cruz98", "com": 111, "eng": 221, "vis": 2240}, {"id": "DeSWNHXPM3t", "url": "https://www.instagram.com/p/DeSWNHXPM3t/", "perfil": "@aromadeviver", "com": 108, "eng": 1782, "vis": 57997}, {"id": "DePuNSnp-gU", "url": "https://www.instagram.com/p/DePuNSnp-gU/", "perfil": "@amanditafalcaodicas", "com": 106, "eng": 297, "vis": 1728}, {"id": "DeXWZ_QhhjL", "url": "https://www.instagram.com/p/DeXWZ_QhhjL/", "perfil": "@tatatelles91", "com": 103, "eng": 310, "vis": 975}, {"id": "Dd_w0HdsaAl", "url": "https://www.instagram.com/p/Dd_w0HdsaAl/", "perfil": "@lidiareceitas", "com": 97, "eng": 273, "vis": 606}, {"id": "DealApEtXq9", "url": "https://www.instagram.com/p/DealApEtXq9/", "perfil": "@araaujo_nay", "com": 96, "eng": 99, "vis": 3656}, {"id": "DeHCPFjRSps", "url": "https://www.instagram.com/p/DeHCPFjRSps/", "perfil": "@casa.da.lary", "com": 91, "eng": 158, "vis": 668}, {"id": "DeAUbVuOLgS", "url": "https://www.instagram.com/p/DeAUbVuOLgS/", "perfil": "@alemohallem", "com": 87, "eng": 292, "vis": 10061}, {"id": "Dd8x5PzOkfJ", "url": "https://www.instagram.com/p/Dd8x5PzOkfJ/", "perfil": "@graziellasalgado", "com": 87, "eng": 170, "vis": 832}, {"id": "DeFUEHZvy94", "url": "https://www.instagram.com/p/DeFUEHZvy94/", "perfil": "@cunhahelen25", "com": 86, "eng": 224, "vis": 2103}, {"id": "Dd8JzN1xHyt", "url": "https://www.instagram.com/p/Dd8JzN1xHyt/", "perfil": "@brenaduarte.oficial", "com": 85, "eng": 442, "vis": 9120}, {"id": "Dd90VN7SM0u", "url": "https://www.instagram.com/p/Dd90VN7SM0u/", "perfil": "@marirezende", "com": 82, "eng": 523, "vis": 15922}]}}
 </script>
 
 <script>
@@ -1414,8 +853,7 @@ if(W){
   {v:n(W.enviadas),k:'Mensagens enviadas',sub:'respostas do time no período'},
   {v:n(W.chamados_fechados),k:'Chamados encerrados',sub:W.chamados_sub,pct:95.4,cor:'#2E8B57'},
   {v:n(W.contatos),k:'Contatos atendidos',sub:W.contatos_sub},
-  {v:W.primeira_resposta,k:'1ª resposta, em média',sub:W.primeira_sub},
-  {v:n(W.abertos),k:'Chamados em aberto',sub:'ainda sem encerramento'}]);
+  {v:W.primeira_resposta,k:'1ª resposta, em média',sub:W.primeira_sub}]);
  $('wa-dias-sub').textContent=W.dias_sub;
  bars($('wa-dias'),{base:196,top:34,x0:70,x1:1130,labelY:226,bw:50,gap:9,groups:W.dias.map(function(d){return {label:d.rotulo,vals:[
   {v:d.rec,color:'#25936B',title:d.rotulo+' · recebidas: '+n(d.rec)},
@@ -1428,6 +866,19 @@ $('topics-note').textContent=cats.length+' assuntos cobrem toda a caixa';
 $('topics').innerHTML=cats.map(function(c,i){var col=TC[i][0],ic=ICON_BY_CAT[c.nome]||TC[i][1];return '<div class="topic"><span class="rank">'+(i+1)+'</span><span class="ico" style="background:'+col+'14;color:'+col+'">'+svgI(ic,16,2.2)+'</span><div class="body"><div class="names"><span class="nome">'+esc(c.nome)+'</span><span class="det">'+esc(c.det)+'</span></div><div class="bar"><i style="width:'+(c.n/cmax*100)+'%;background:'+col+'"></i></div></div><div class="qtd"><b>'+c.n+'</b><span>'+p1(c.n/S.total*100)+'</span></div></div>'}).join('');
 $('dias-sub').textContent=S.janela_grafico;
 bars($('dias'),{base:196,top:34,x0:54,x1:548,labelY:226,bw:40,groups:S.dias.map(function(d){return {label:d.rotulo,vals:[{v:d.n,color:'#002D72',title:d.rotulo+' · '+d.n+' mensagens'}]}})});
+var CS=D.comparativo_sac;
+if(CS){
+ $('cmp-tit').textContent=CS.titulo;$('cmp-sub').textContent=CS.sub;
+ $('cmp-c1').textContent=CS.col_atual;$('cmp-c2').textContent=CS.col_anterior;
+ $('cmp-nota').textContent=CS.nota||'';
+ $('tab-cmp').querySelector('tbody').innerHTML=CS.linhas.map(function(l){
+  var d=l.d,pos=d>=0,neutro=(d===0),bom=(l.bom===false)?!pos:pos;
+  var cor=(neutro||l.bom==='n')?'var(--dimmer)':(bom?'#2E8B57':'#C0392B');
+  var txt=neutro?'0,0':((pos?'+':'')+String(d).replace('.',','));
+  return '<tr><td class="nome">'+esc(l.k)+(l.sub?' <span style="color:var(--dimmer);font-size:12px;font-weight:400">'+esc(l.sub)+'</span>':'')+
+   '</td><td>'+esc(l.a)+'</td><td style="color:var(--dimmer)">'+esc(l.b)+
+   '</td><td style="color:'+cor+';font-weight:600">'+txt+' '+esc(l.un)+'</td></tr>'}).join('');
+}
 $('leitura').textContent=S.leitura;
 
 /* ---------- Aba 2 · Dashboard Jornada Doce ---------- */
@@ -1457,7 +908,7 @@ selos($('desafio-minis'),[
  {v:n(A.conteudos_enviados),k:'Conteúdos enviados',sub:'submetidos na plataforma'},
  {v:n(A.validas),k:'Aprovados na curadoria',sub:'passaram na checagem',pct:A.total?A.validas/A.total*100:100,cor:'#2E8B57'},
  {v:n(A.penalizadas),k:'Reprovados',sub:'barrados na curadoria'},
- {v:D.jd.midia_desafio||'R$ 152 mil',k:'Mídia equivalente',sub:'gerada na primeira semana'},
+ {v:D.jd.midia_desafio||'R$ 152 mil',k:'Mídia equivalente',sub:'acumulada no desafio'},
  {v:n(A.colheradas_mes),k:A.colheradas_rotulo,sub:'acumuladas no mês'}]);
 var CP=D.comparativo;
 if(CP){
@@ -1471,6 +922,14 @@ if(CP){
    '<b style="font-weight:700;font-size:21px;color:'+(pos?'#2E8B57':'#C0392B')+'">'+(pos?'+':'')+String(x.d).replace('.',',')+'%</b>'+
    '<span style="font-size:12px;color:var(--dimmer)">'+esc(x.k)+'</span></span>'}).join('')+
   '<p style="font-size:12.5px;color:var(--dim);line-height:1.6;margin-top:12px;max-width:92ch">'+esc(CP.nota)+'</p>';
+ if(CP.semana){
+  $('comp2-tit').textContent=CP.semana.titulo;
+  $('comp2-sub').textContent=CP.semana.sub;
+  bars($('comp2'),{base:236,top:40,x0:96,x1:1118,labelY:268,bw:84,gap:16,groups:CP.semana.grupos.map(function(g){return {label:g.label,vals:[
+   {v:g.a,color:'#002D72',title:CP.a.k+' \u00b7 '+g.label+': '+n(g.a)},
+   {v:g.b,color:'#B8912A',title:CP.b.k+' \u00b7 '+g.label+': '+n(g.b)}]}})});
+  $('comp2').insertAdjacentHTML('afterend','<div class="chart-legend" style="margin-top:10px"><span><i style="background:#002D72"></i>'+esc(CP.a.k)+'</span><span><i style="background:#B8912A"></i>'+esc(CP.b.k)+'</span></div>');
+ }
 }
 $('curadoria-sub').textContent=A.curadoria_sub;
 var vp=A.total?A.validas/A.total:1,Cc=2*Math.PI*70;
@@ -1589,10 +1048,11 @@ return {size:size,go:function(d){troca(cur+d)},open:alternaFoco,
 /* ---------- Abas ---------- */
 var tabs=[$('tab-sac'),$('tab-jd'),$('tab-feed')];
 tabs.forEach(function(t){t.addEventListener('click',function(){
+ try{t.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'})}catch(e){}
  tabs.forEach(function(o){var on=o===t;o.setAttribute('aria-selected',on?'true':'false');$(o.getAttribute('aria-controls')).hidden=!on});
  window.scrollTo(0,0);if(FEED)FEED.size();
  if(MOV){MOV.escondeTT();MOV.reanima($(t.getAttribute('aria-controls')))}
- if(t.id==='tab-jd'&&FESTA&&!t.dataset.festa){t.dataset.festa='1';setTimeout(FESTA.comemora,420)}
+ /* aba 2 sem confete: o selo do marco fica fixo na abertura */
 })});
 
 /* ---------- Comemoração do marco ---------- */
