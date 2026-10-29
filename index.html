@@ -503,244 +503,566 @@ html.presenting main{padding-top:24px}
 @media (max-width:720px){.nav-row{width:100%}.nav-row .tabs{flex:1}.present-btn .lbl{display:none}.cine-head h2{font-size:26px}}
 @media (prefers-reduced-motion:reduce){.reel,.dots button,.screen iframe{transition:none}}
 
+/* ===== Prévia fórum · componentes novos ===== */
+:root{--amber:#C9861A;--amber-s:#F4E3C1;--cinza:#C9CED8;--azul-s:#C9D3E6}
 
+#sac-abre{grid-template-columns:1fr;gap:22px;margin-top:10px;padding-top:26px;border-top:2px solid var(--gold)}
+.grid.g2:has(.mini #como-compara){grid-template-columns:minmax(0,560px)}
+.topic .acao{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);background:rgba(0,45,114,.07);border-radius:999px;padding:3px 9px}
+/* waffle */
+.waffle{display:flex;gap:28px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.waffle svg{width:220px;height:220px;flex:0 0 auto;max-width:100%}
+.waffle .leg{display:flex;flex-direction:column;gap:18px;min-width:0}
+.waffle .leg b{font-family:var(--sans);font-weight:700;font-size:44px;color:var(--navy);line-height:1;display:block;letter-spacing:-.02em}
+.waffle .leg span{font-size:12.5px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;margin-top:8px}
+.waffle .leg i{width:11px;height:11px;border-radius:3px;flex:0 0 auto;display:inline-block}
+.waffle .leg em{font-style:normal;font-size:11.5px;color:var(--dimmer);display:block;margin-top:4px}
+.waffle .leg .m b{font-size:26px}
+/* pilhas (barras divididas) */
+.pilha{display:flex;height:14px;border-radius:999px;overflow:hidden;background:var(--line2);margin:14px 0 14px}
+.pilha i{display:block;height:100%;transform-origin:0 50%;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.pilha i+i{border-left:2px solid #fff}
+.pleg{display:flex;flex-direction:column;gap:8px}
+.pleg span{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--dim)}
+.pleg span i{width:9px;height:9px;border-radius:3px;flex:0 0 auto}
+.pleg span b{margin-left:auto;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.pleg span em{font-style:normal;color:var(--dimmer);width:46px;text-align:right;font-variant-numeric:tabular-nums}
+.caso .tot{font-family:var(--sans);font-weight:700;font-size:36px;color:var(--navy);line-height:1;margin-top:10px;display:block}
+.caso .tot small{font-size:12px;font-weight:600;color:var(--dimmer);margin-left:8px;letter-spacing:.02em}
+/* funil */
+svg rect.bh{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+svg.cresceu rect.bh{transform:scaleX(1)}
+svg text.fl{font-size:13px;font-weight:600;fill:var(--text)}
+svg text.fv{font-size:15px;font-weight:700;fill:#fff}
+svg text.fp{font-size:13px;font-weight:700;fill:var(--navy)}
+.funil-nota{font-size:12px;color:var(--dimmer);margin-top:6px}
+.funil-nota b{color:var(--navy)}
+/* bullet de prazo */
+.prazos{display:flex;flex-direction:column;gap:22px;margin-top:6px}
+.prazo{display:grid;grid-template-columns:170px minmax(0,1fr) 230px;gap:20px;align-items:center}
+.prazo .mes b{font-weight:700;font-size:17px;color:var(--navy);display:block}
+.prazo .mes span{font-size:11.5px;color:var(--dimmer)}
+.prazo .trilho{position:relative;height:22px;background:var(--line2);border-radius:6px;overflow:hidden}
+.prazo .trilho i{position:absolute;left:0;top:0;bottom:0;background:var(--gold);border-radius:6px;transform-origin:0 50%;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.prazo .trilho i.parcial{background:repeating-linear-gradient(135deg,var(--gold) 0 8px,#E6C866 8px 14px)}
+.prazo .res b{font-weight:700;font-size:20px;color:var(--navy)}
+.prazo .res span{display:block;font-size:11.5px;color:var(--dimmer);margin-top:2px}
+.selo-st{display:inline-block;margin-top:6px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);border:1px solid rgba(212,175,55,.6);border-radius:999px;padding:3px 9px}
+.eixo-d{display:grid;grid-template-columns:170px minmax(0,1fr) 230px;gap:20px;margin-top:4px}
+.eixo-d div{position:relative;height:16px}
+.eixo-d div span{position:absolute;transform:translateX(-50%);font-size:10.5px;color:var(--dimmer);white-space:nowrap}
+.eixo-d div span:first-child{transform:none}
+.eixo-d div span:last-child{transform:translateX(-100%)}
+/* linha do tempo dos vouchers */
+.vou{display:grid;grid-template-columns:220px minmax(0,1fr);gap:44px;align-items:center}
+.tl{position:relative;padding-top:44px}
+.tl .tr{height:10px;background:var(--line2);border-radius:999px;position:relative;overflow:visible}
+.tl .tr i{position:absolute;left:0;top:0;bottom:0;background:var(--amber);border-radius:999px;transform-origin:0 50%;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.tl .mk{position:absolute;top:0;transform:translateX(-50%);text-align:center;white-space:nowrap}
+.tl .mk:first-child{transform:none;text-align:left}
+.tl .mk.fim{transform:translateX(-100%);text-align:right}
+.tl .mk b{display:block;font-size:12.5px;font-weight:700;color:var(--navy)}
+.tl .mk span{display:block;font-size:10.5px;color:var(--dimmer);letter-spacing:.04em}
+.tl .dias{margin-top:16px;display:flex;align-items:baseline;gap:10px}
+.tl .dias b{font-weight:700;font-size:34px;color:var(--amber);line-height:1}
+.tl .dias span{font-size:12px;font-weight:600;color:var(--dim)}
+/* vozes */
+.vozes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+.voz{border-top:1px solid rgba(212,175,55,.55);padding-top:16px}
+.voz .aspas{font-family:var(--script);font-size:64px;line-height:.6;color:var(--gold-ink);display:block;height:30px}
+.voz p{font-size:15px;line-height:1.7;color:var(--text);max-width:62ch}
+.voz span{display:block;margin-top:12px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dimmer)}
+.recebidos{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.rec{position:relative;aspect-ratio:4/5;background:#0B1F45;color:#fff;text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;overflow:hidden}
+.rec b{font-family:var(--script);font-weight:400;font-size:30px;color:var(--gold);position:absolute;top:10px;left:12px}
+.rec span{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.rec:hover{box-shadow:inset 0 0 0 2px var(--gold)}
+.rec:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (max-width:860px){
+ .prazo,.eixo-d{grid-template-columns:1fr;gap:8px}
+ .eixo-d>div:first-child,.eixo-d>div:last-child{display:none}
+ .vou{grid-template-columns:1fr;gap:26px}
+ .vozes{grid-template-columns:1fr}
+ .waffle .leg b{font-size:34px}
+ svg text.fl{font-size:17px}svg text.fv,svg text.fp{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){svg rect.bh{transform:scaleX(1);transition:none}.pilha i,.prazo .trilho i,.tl .tr i{transition:none}}
+
+
+/* ===== v12 · fórum, curadoria e deck de apresentação ===== */
+.decisao{margin-top:34px;padding:22px 0 20px;border-top:1px solid rgba(212,175,55,.55);border-bottom:1px solid rgba(212,175,55,.55);text-align:center}
+.decisao .eyebrow{margin-bottom:6px}
+.decisao p{font-size:21px;font-weight:600;line-height:1.45;color:var(--navy);max-width:62ch;margin:0 auto}
+.passo{margin-top:24px;font-size:14px;line-height:1.6;color:var(--dim);max-width:86ch}
+.passo b{color:var(--navy);font-weight:700}
+.topic .qtd span em{font-style:normal;font-weight:700;margin-left:6px}
+.dest-h{display:flex;align-items:baseline;gap:12px;margin:6px 0 4px}
+.dest-h b{font-family:Georgia,serif;font-weight:400;font-size:18px;color:var(--navy)}
+.dest-h span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dimmer);margin-left:auto}
+#dest .selo{cursor:pointer;transition:transform .2s}
+#dest .selo:hover{transform:translateY(-3px)}
+#dest .selo .sub{color:var(--navy);font-weight:600}
+.lentes{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 14px;align-items:center}
+.lentes button{font:inherit;font-size:12px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--dim);border-radius:999px;padding:7px 13px;cursor:pointer}
+.lentes button:hover{color:var(--navy);border-color:var(--gold)}
+.lentes button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.lentes .copiar{margin-left:auto;border:0;background:none;color:var(--gold-ink);letter-spacing:.12em;text-transform:uppercase;font-size:11px;font-weight:700}
+.lentes .copiar:hover{color:var(--navy)}
+.mv .star{position:absolute;right:6px;top:5px;z-index:4;color:var(--gold);font-size:14px;display:none}
+.mv.sel .star{display:block}
+.nota-cur{margin-top:16px;padding-top:14px;border-top:1px solid rgba(14,26,51,.1)}
+.nota-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.nota-h span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+.nota-h button{font:inherit;font-size:11.5px;font-weight:700;border:1px solid var(--line);background:#fff;color:var(--dim);border-radius:999px;padding:5px 11px;cursor:pointer}
+.nota-h button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+#cur-nota{width:100%;min-height:68px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:13px;line-height:1.5;color:var(--text);background:#fff}
+#cur-nota:focus{outline:none;border-color:var(--gold)}
+.cine-nota{font-size:11.5px!important;line-height:1.6!important;color:var(--dimmer)!important;margin-top:14px;max-width:110ch}
+.cur-vazio{grid-column:1/-1;font-size:13px;color:var(--dimmer);padding:30px 0}
+.toast{position:fixed;left:50%;bottom:76px;transform:translate(-50%,10px);background:var(--navy);color:#fff;border-radius:999px;padding:9px 16px;font-size:13px;font-weight:600;opacity:0;transition:all .25s;z-index:600;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+/* deck: cada bloco vira um slide 16:9, sem precisar de tela cheia */
+.deckbar{display:none}
+html.deck body{overflow:hidden}
+html.deck header,html.deck footer,html.deck .hint{display:none!important}
+html.deck main{padding:0}
+html.deck [role=tabpanel][hidden]{display:block!important}
+html.deck .sl{display:none!important}
+html.deck .sl.cur,html.deck .sl.out{display:block!important;position:fixed;left:50%;top:50vh;width:1240px;max-width:none;margin:0!important;transform-origin:center center;z-index:5;border-bottom:0}
+html.deck #cine{--tw:360px!important}
+html.deck .nota-cur,html.deck .lentes .copiar{display:none}
+html.deck .deckbar{display:flex;position:fixed;left:0;right:0;bottom:0;height:58px;z-index:20;transform:translateY(106%);transition:transform .28s ease;background:#002D72;color:#fff;align-items:center;gap:20px;padding:0 26px;font-size:13.5px}
+.deckbar::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,#D4AF37,#F0D77A 50%,#D4AF37)}
+.deckbar .eb{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D4AF37;white-space:nowrap}
+.deckbar .tt3{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:38vw}
+.deckbar .bar3{flex:1;height:3px;background:rgba(255,255,255,.15);border-radius:9px;overflow:hidden;min-width:60px}
+.deckbar .bar3 i{display:block;height:100%;width:0;background:#D4AF37;transition:width .35s}
+.deckbar .tm3{font-variant-numeric:tabular-nums;font-weight:700;color:#F0D77A;white-space:nowrap}
+.deckbar .tm3.over{color:#FF9C8F}
+.deckbar .ct{font-variant-numeric:tabular-nums;color:rgba(255,255,255,.7);white-space:nowrap}
+.deckbar button{font:inherit;font-size:12.5px;font-weight:600;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 13px;cursor:pointer;white-space:nowrap}
+.deckbar button:hover{border-color:#D4AF37;color:#F0D77A}
+.deckbar img{height:13px;filter:brightness(0) invert(1);opacity:.9}
+.blk{position:fixed;inset:0;background:#000;z-index:250;display:none}
+.blk.on{display:block}
+.semcursor,.semcursor *{cursor:none!important}
+
+/* v7 · coesão entre a prévia da dupla e o deck */
+.vou-dec{margin-top:40px}
+.vou-dec p{font-size:20px}
+html.deck .sl.cur .waffle svg{width:250px;height:250px}
+html.deck #sac-abre{border-top:0;padding-top:0}
+html.deck #sac-abre::before{content:"Atendimento da semana";display:block;font-family:var(--sans);font-weight:700;font-size:44px;color:var(--navy);margin-bottom:14px}
+html.deck #sac-abre .eyebrow{font-size:13px}
+html.deck #sac-abre .abre-figs{gap:90px;margin-top:40px}
+html.deck #sac-abre .abre-figs b{font-size:76px}
+html.deck #sac-abre .abre-figs span{font-size:13px;margin-top:14px}
+html.deck #sac-abre .abre-figs em{font-size:16px;margin-top:8px}
+
+/* v8 · roteiro único do fórum */
+.abertura.ab8{display:block;border-bottom:0}
+.ab8 .manchete{max-width:24ch}
+.ab8 .abre-figs{margin-top:34px;gap:64px}
+.pauta{margin-top:34px;border-top:1px solid rgba(212,175,55,.55);padding-top:18px}
+.pauta ol{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-top:12px}
+.pauta li{display:flex;flex-direction:column;gap:4px}
+.pauta li b{font-family:var(--script);font-weight:400;font-size:30px;color:var(--gold-ink);line-height:1}
+.pauta li span{font-size:14px;font-weight:600;color:var(--navy);line-height:1.3}
+.pauta li em{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dimmer)}
+.ab8 .decisao{margin-top:30px}
+.kit-figs{margin:4px 0 26px}
+.sub-h8{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);margin:34px 0 14px}
+.rec-linha{margin-top:26px;font-size:13px;color:var(--dim);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.rec-linha a{color:var(--navy);font-weight:700;text-decoration:none;border-bottom:1px solid var(--gold)}
+.rec-linha a:hover{color:var(--gold-ink)}
+.at-top{display:grid;grid-template-columns:auto minmax(0,1fr);gap:60px;align-items:center}
+.at-top .waffle{margin-top:0}
+.at-figs{grid-template-columns:1fr!important;gap:26px!important}
+.at-figs b{font-size:44px!important}
+:root{--bg:#FAF7F0}
+header{background:rgba(250,247,240,.94)!important}
+/* capa */
+.abertura.ab8{position:relative;background:#002D72;color:#fff;padding:48px 52px 40px;margin-bottom:40px}
+.ab8 .eyebrow{color:#E9CF7A}
+.ab8 .manchete{color:#fff!important}
+.ab8 .manchete em{color:#E9CF7A}
+.ab8 .abre-figs b{color:#fff!important}
+.ab8 .abre-figs span{color:rgba(255,255,255,.62)}
+.ab8 .abre-figs em{color:rgba(255,255,255,.8)}
+.ab8 .pauta{border-top-color:rgba(233,207,122,.45)}
+.ab8 .pauta li b{color:#E9CF7A}
+.ab8 .pauta li span{color:#fff}
+.ab8 .pauta li em{color:rgba(255,255,255,.55)}
+.ab8 .decisao{border-color:rgba(233,207,122,.45)}
+.ab8 .decisao p{color:#fff}
+.capa-logo{position:absolute;right:52px;top:44px;height:62px;opacity:.95}
+html.deck.capa body{background:#002D72}
+html.deck .ab8.cur{padding:30px 10px}
+@media (max-width:860px){.abertura.ab8{padding:30px 22px}.capa-logo{position:static;height:40px;margin-bottom:18px}}
+/* pódio */
+.podio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;align-items:end;margin-top:6px}
+.pod{text-align:center;display:flex;flex-direction:column;align-items:center}
+.pod .pos{font-family:var(--script);font-size:54px;color:var(--gold-ink);line-height:1}
+.pod .av{width:116px;height:116px;border-radius:50%;margin:10px 0 14px;display:grid;place-items:center;background:#fff;box-shadow:inset 0 0 0 3px var(--gold),0 10px 24px rgba(0,45,114,.08);font-weight:700;font-size:42px;color:var(--navy)}
+.pod.p1 .av{width:156px;height:156px;font-size:58px;background:var(--navy);color:#fff;box-shadow:0 0 0 5px #fff,0 0 0 8px var(--gold),0 14px 30px rgba(0,45,114,.18)}
+.pod.p1 .pos{font-size:72px}
+.pod .who{font-weight:700;color:var(--navy);font-size:17px}
+.pod .big{font-weight:700;font-size:34px;color:var(--navy);margin-top:12px;line-height:1}
+.pod.p1 .big{font-size:44px}
+.pod .big small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dimmer);font-weight:700;margin-top:8px}
+.pod .mt{font-size:12.5px;color:var(--dim);margin-top:10px;line-height:1.6}
+.pod a{margin-top:12px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);text-decoration:none}
+.pod a:hover{color:var(--navy)}
+.pod.p2{order:1}.pod.p1{order:2}.pod.p3{order:3}
+@media (max-width:860px){.podio{grid-template-columns:1fr;gap:40px}.pod.p1{order:1}.pod.p2{order:2}}
+@media (max-width:860px){.at-top{grid-template-columns:1fr;gap:30px}}
+@media (max-width:860px){.pauta ol{grid-template-columns:1fr 1fr}.ab8 .abre-figs,.kit-figs{gap:18px!important}}
+
+/* ===== v11 · barra do deck, transições e última aba ===== */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:12;overflow:hidden}
+html.deck .sl.out{z-index:4;pointer-events:none}
+html.deck body{transition:background-color .6s ease}
+html.fs .deckbar{display:none!important}
+html.deck .deckbar.on{transform:none}
+/* top 3 */
+.rank3{list-style:none;margin:4px 0 0;padding:0}
+.r3{display:grid;grid-template-columns:170px minmax(0,1fr) 270px;align-items:center;gap:30px;padding:24px 0;border-bottom:1px solid rgba(212,175,55,.45)}
+.r3:last-child{border-bottom:0}
+.r3 .num{font-family:var(--script);font-size:150px;line-height:.82;text-align:center;color:transparent;background:linear-gradient(180deg,#F0D77A,#B8922A);-webkit-background-clip:text;background-clip:text;padding:6px 0}
+.r3.r1 .num{font-size:200px}
+.r3 .id b{display:block;font-size:36px;font-weight:700;color:var(--navy);letter-spacing:-.02em;line-height:1.1;overflow-wrap:anywhere}
+.r3.r1 .id b{font-size:48px}
+.r3 .mt{display:block;margin-top:10px;font-size:14.5px;color:var(--dim);line-height:1.5}
+.r3 .fio{display:block;height:6px;border-radius:9px;background:rgba(0,45,114,.08);margin-top:18px;overflow:hidden}
+.r3 .fio u{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,#B8922A,#F0D77A);transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(.2,.8,.2,1) .35s}
+.rank3.in .fio u,.rank3:not(.rev) .fio u{transform:none}
+.r3 .eng{text-align:right}
+.r3 .eng b{display:block;font-size:58px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-.03em}
+.r3.r1 .eng b{font-size:78px}
+.r3 .eng small{display:block;margin-top:9px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--dimmer)}
+.r3 .eng a{display:inline-block;margin-top:12px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);text-decoration:none}
+.r3 .eng a:hover{color:var(--navy)}
+/* conteúdos */
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;margin-top:6px}
+.fone{display:flex;flex-direction:column;align-items:center}
+.fone .rot{font-family:var(--script);font-size:36px;color:var(--gold-ink);line-height:1;margin-bottom:12px}
+.aparelho{position:relative;width:min(100%,270px);padding:9px;border-radius:30px;background:#0B1F45;box-shadow:0 24px 40px -20px rgba(0,45,114,.5),0 0 0 2px rgba(212,175,55,.6)}
+.aparelho::before{content:"";position:absolute;top:14px;left:50%;width:46px;height:5px;margin-left:-23px;border-radius:9px;background:rgba(255,255,255,.22);z-index:3}
+.tela3{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:22px;background:#0B1F45}
+.tela3 iframe{position:absolute;left:50%;border:0;opacity:0;transition:opacity .5s}
+.tela3 iframe.ready{opacity:1}
+.fone .leg{width:min(100%,270px);margin-top:16px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 12px}
+.fone .leg>div{flex:1 1 100%}
+.fone .leg b{display:block;font-size:18px;color:var(--navy);overflow-wrap:anywhere}
+.fone .ac{display:flex;gap:8px;margin-top:9px}
+.fone .ac button,.tira-h .copiar,.lstar{font:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-ink);background:transparent;border:1px solid rgba(212,175,55,.7);border-radius:999px;padding:5px 12px;cursor:pointer}
+.fone .ac button:hover,.tira-h .copiar:hover,.lstar:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.fone .ac button[aria-pressed=true],.lstar[aria-pressed=true]{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.fone .leg .v{white-space:nowrap;font-size:36px;font-weight:700;color:var(--navy);line-height:1;text-align:right;letter-spacing:-.02em}
+.fone .leg .v i{display:block;font-style:normal;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dimmer);margin-top:7px;font-weight:700}
+.tira-h{display:flex;align-items:baseline;gap:14px;margin:30px 0 12px;padding-top:16px;border-top:1px solid rgba(212,175,55,.45)}
+.tira-h b{font-size:15px;color:var(--navy)}
+.tira-h span{font-size:12px;color:var(--dimmer)}
+.tira-h .copiar{margin-left:auto}
+.tira{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
+.mini3{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:12px;background:#0B1F45;border:0;padding:0;cursor:pointer}
+.mini3 iframe{position:absolute;left:50%;border:0;opacity:0;transition:opacity .6s;pointer-events:none}
+.mini3 iframe.ready{opacity:1}
+.mini3 .cp{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:8px;background:linear-gradient(to top,rgba(0,32,80,.94) 8%,transparent 52%);z-index:3;text-align:left}
+.mini3 .cp b{color:var(--gold);font-size:18px;line-height:1;font-weight:700}
+.mini3 .cp span{color:#fff;font-size:9px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.mini3:hover,.mini3:focus-visible{box-shadow:0 0 0 2px var(--gold);outline:0}
+.mini3.sel::after{content:"★";position:absolute;top:6px;right:8px;color:var(--gold);z-index:4;font-size:14px}
+html.deck .tira-h .copiar,html.deck .fone .ac button[data-a=star]{display:none}
+.lupa{position:fixed;inset:0;z-index:300;background:rgba(0,24,64,.99);display:none;align-items:center;justify-content:center;gap:44px;padding:30px}
+.lupa.on{display:flex}
+html.deck .lupa{position:absolute;inset:-18px;z-index:30;border-radius:8px}
+.lupa .aparelho{width:min(100%,440px);flex:0 0 auto}
+html.deck .lupa .aparelho{width:410px}
+.lupa .info{color:#fff;max-width:330px}
+.lupa .quem{display:block;font-size:30px;font-weight:700;letter-spacing:-.01em;overflow-wrap:anywhere}
+.lupa .num{display:block;margin-top:12px;font-family:var(--script);font-size:64px;line-height:1;color:var(--gold)}
+.lupa .num i{font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-left:10px}
+.lupa .dados{display:flex;gap:30px;margin:22px 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.2)}
+.lupa .dados b{display:block;font-size:22px}
+.lupa .dados span{display:block;margin-top:6px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.lupa .lstar{color:var(--gold);border-color:var(--gold);padding:8px 16px}
+.lupa .lstar:hover{background:var(--gold);color:var(--navy)}
+.lupa .info a{display:block;margin-top:18px;color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold);width:max-content}
+.lupa .dica{display:block;margin-top:22px;font-size:11px;color:rgba(255,255,255,.5)}
+.lupa-x{position:absolute;top:18px;right:22px;font:inherit;font-size:20px;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);border-radius:50%;width:42px;height:42px;cursor:pointer}
+.lupa-n{font:inherit;font-size:22px;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.35);border-radius:50%;width:50px;height:50px;cursor:pointer;flex:0 0 auto}
+.lupa-x:hover,.lupa-n:hover{border-color:var(--gold);color:var(--gold)}
+/* comentários */
+.mvoz{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:46px;align-items:center;margin-top:12px}
+.balao{position:relative;margin:0;border-radius:30px}
+.balao p{margin:0}
+.balao .quem{display:flex;align-items:center;gap:12px;margin-top:20px;font-size:13px;font-weight:700}
+.balao .av3{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:700;background:var(--gold);color:var(--navy);flex:0 0 auto}
+.balao .chip{margin-left:auto;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.7;white-space:nowrap}
+.balao.g{background:var(--navy);color:#fff;border-bottom-left-radius:6px;padding:52px 50px 34px}
+.balao.g::before{content:"“";font-family:var(--script);position:absolute;top:8px;left:30px;font-size:120px;line-height:1;color:var(--gold)}
+.balao.g::after{content:"";position:absolute;left:0;bottom:-20px;border-style:solid;border-width:20px 0 0 30px;border-color:var(--navy) transparent transparent transparent}
+.balao.g p{font-size:30px;line-height:1.38;font-weight:600;letter-spacing:-.01em}
+.balao.g .quem{color:#fff}
+.pilha-b{display:flex;flex-direction:column;gap:24px}
+.balao.s{background:#fff;box-shadow:0 0 0 1.5px rgba(212,175,55,.65);padding:24px 28px;border-bottom-right-radius:6px}
+.balao.s:nth-child(2){margin-left:38px;background:#FBF3D4;box-shadow:none;border-bottom-right-radius:30px;border-bottom-left-radius:6px}
+.balao.s p{font-size:17px;line-height:1.55;color:var(--text)}
+.balao.s .quem{margin-top:14px;color:var(--navy)}
+@keyframes balaoPop{from{opacity:0;transform:translateY(26px) scale(.94)}to{opacity:1;transform:none}}
+.mvoz.in .balao{animation:balaoPop .8s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(var(--i)*.28s + .15s)}
+.mvoz.rev:not(.in) .balao{opacity:0}
+@media (max-width:860px){
+ .r3{grid-template-columns:62px minmax(0,1fr);gap:14px;padding:18px 0}
+ .r3 .num,.r3.r1 .num{font-size:78px}
+ .r3 .id b,.r3.r1 .id b{font-size:21px}
+ .r3 .eng{grid-column:2;text-align:left}
+ .r3 .eng b,.r3.r1 .eng b{font-size:38px}
+ .trio{grid-template-columns:1fr;gap:38px}
+ .tira{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .tira-h{flex-wrap:wrap}.tira-h .copiar{margin-left:0}
+ .lupa{flex-direction:column;gap:18px;overflow:auto;justify-content:flex-start;padding:60px 18px 24px}
+ .lupa .aparelho{width:min(100%,320px)}
+ .lupa .info{max-width:none;text-align:center}.lupa .dados{justify-content:center}.lupa .info a{margin-left:auto;margin-right:auto}
+ .mvoz{grid-template-columns:1fr;gap:34px}
+ .balao.g{padding:46px 26px 26px}.balao.g p{font-size:21px}
+ .balao.s:nth-child(2){margin-left:0}
+}
+@media print{#fx{display:none}}
+
+/* ===== v12 · capa, obrigada e slides enxutos ===== */
+.abertura.ab8.capa-s,.abertura.ab8.fim-s{min-height:640px}
+.ab8 .capa-in{display:flex;flex-direction:column;justify-content:center;min-height:580px;gap:48px}
+.ab8 .ct{display:flex;flex-direction:column;align-items:flex-start}
+.ab8 .ct-h{font-size:92px;font-weight:700;letter-spacing:-.03em;line-height:1;color:#fff;margin:18px 0 0}
+.ab8 .ct-m{font-family:var(--script);font-size:150px;line-height:1;color:#E9CF7A;margin-top:2px}
+.ab8 .ct-per{margin-top:20px;font-size:15px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.75)}
+.ab8 .ct-ob{font-family:var(--script);font-size:200px;line-height:1;color:#E9CF7A;margin-top:12px}
+.ab8 .ct-sub2{font-size:32px;font-weight:600;color:#fff;margin-top:14px;max-width:24ch;line-height:1.25}
+.ab8 .ct-ass{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.ab8.capa-s .pauta{margin-top:0}
+.prem-sub{margin-top:34px;padding-top:22px;border-top:1px solid rgba(212,175,55,.45)}
+.busca-sub{margin-top:34px;padding-top:22px;border-top:1px solid rgba(212,175,55,.45)}
+.canais .selos{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 8px}
+.canais #wa-minis .selo:nth-child(4){display:none}
+.canais .selo .sub{display:none}
+@media (max-width:860px){.ab8 .ct-h{font-size:42px}.ab8 .ct-m{font-size:64px}.ab8 .ct-ob{font-size:64px;word-break:break-word}.ab8 .ct-sub2{font-size:22px}.ab8 .capa-in{min-height:0}.canais .selos{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== v13 · top 3, conteúdos e comentários em um slide só ===== */
+.sintese{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.45fr);gap:44px;align-items:start;margin-top:6px}
+.sintese .sub-h{margin-bottom:6px}
+.sintese .rank3{margin:0}
+.sintese .r3{grid-template-columns:62px minmax(0,1fr) auto;gap:14px;padding:12px 0}
+.sintese .r3 .num,.sintese .r3.r1 .num{font-size:72px;padding:2px 0}
+.sintese .r3 .id b,.sintese .r3.r1 .id b{font-size:21px}
+.sintese .r3 .mt{font-size:11.5px;margin-top:5px;line-height:1.4}
+.sintese .r3 .fio{margin-top:9px;height:5px}
+.sintese .r3 .eng b,.sintese .r3.r1 .eng b{font-size:30px}
+.sintese .r3 .eng small{margin-top:5px;font-size:9px}
+.sintese .r3 .eng a{display:none}
+.sintese .passo{font-size:11px;margin-top:12px;line-height:1.5}
+.sintese .trio{gap:18px;margin-top:2px}
+.sintese .aparelho{width:min(100%,196px);padding:7px;border-radius:24px}
+.sintese .aparelho::before{top:10px;width:34px;margin-left:-17px;height:4px}
+.sintese .tela3{border-radius:18px}
+.sintese .fone .rot{font-size:26px;margin-bottom:8px}
+.sintese .fone .leg{width:min(100%,196px);margin-top:10px;gap:6px 8px}
+.sintese .fone .leg b{font-size:13px}
+.sintese .fone .ac{margin-top:6px}
+.sintese .fone .ac button{font-size:9.5px;padding:3px 9px}
+.sintese .fone .leg .v{font-size:26px}
+.sintese .fone .leg .v i{font-size:8px;margin-top:4px}
+.sintese .tira-h{margin:12px 0 0;padding:0;border:0}
+.vz-h{margin-top:26px;padding-top:16px;border-top:1px solid rgba(212,175,55,.45)}
+.mvoz{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch;margin-top:6px}
+.mvoz .pilha-b{display:contents}
+.mvoz .balao{display:flex;flex-direction:column;justify-content:space-between}
+.mvoz .balao.g{padding:38px 28px 20px}
+.mvoz .balao.g p{font-size:16px;line-height:1.45;font-weight:600}
+.mvoz .balao.g::before{font-size:84px;top:2px;left:20px}
+.mvoz .balao.g::after{bottom:-14px;border-width:14px 0 0 22px}
+.mvoz .balao.s,.mvoz .balao.s:nth-child(2){margin:0;padding:20px 24px 16px;border-radius:26px;border-bottom-left-radius:6px}
+.mvoz .balao.s p{font-size:15px}
+.mvoz .balao .quem{margin-top:14px;font-size:12px}
+.mvoz .balao .av3{width:28px;height:28px;font-size:12px}
+.sintese .fone .leg .v{text-align:left;flex:1 1 100%}
+html.deck .sintese .passo,html.deck .cine-nota{display:none}
+@media (max-width:860px){
+ .sintese{grid-template-columns:1fr;gap:34px}
+ .sintese .trio{grid-template-columns:1fr}
+ .sintese .aparelho,.sintese .fone .leg{width:min(100%,280px)}
+ .mvoz{grid-template-columns:1fr}
+ .sintese .r3 .eng{grid-column:auto;text-align:right}
+}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap head-in">
     <div class="brand-l">
-      <div><span class="eyebrow">Community Management · Nestlé</span>
+      <div><span class="eyebrow">Community Management</span>
       <h1>Moça Lovers</h1></div>
       <p class="sub1" id="subtitulo"></p>
     </div>
     <div class="head-right">
       <img class="pub" alt="Publination" src="data:image/png;base64,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">
       <div class="nav-row"><div class="tabs" role="tablist">
-        <button class="tab" id="tab-sac" role="tab" aria-controls="p-sac" aria-selected="true">Overview Semanal (SAC)</button>
-        <button class="tab" id="tab-jd" role="tab" aria-controls="p-jd" aria-selected="false">Dashboard Jornada Doce</button>
-        <button class="tab" id="tab-feed" role="tab" aria-controls="p-feed" aria-selected="false">Feed da Comunidade</button>
+        <button class="tab" id="tab-jd" role="tab" aria-controls="p-jd" aria-selected="true">A semana</button>
+        <button class="tab" id="tab-kits" role="tab" aria-controls="p-kits" aria-selected="false">Atendimento</button>
+        <button class="tab" id="tab-feed" role="tab" aria-controls="p-feed" aria-selected="false">Conteúdos das Lovers</button>
       </div>
-      <button class="present-btn" id="btn-present" title="Modo apresentação (F)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg><span class="lbl"><span class="on">Apresentar</span><span class="off">Sair da tela cheia</span></span></button>
+      <button class="present-btn" id="btn-present" title="Apresentar em slides (A)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg><span class="lbl"><span class="on">Apresentar</span><span class="off">Apresentando</span></span></button>
       </div>
     </div>
   </div>
 </header>
 
 <main><div class="wrap">
-  <div class="stack" id="p-sac" role="tabpanel" aria-labelledby="tab-sac">
-
-    <div class="abertura">
-      <div>
-        <span class="eyebrow" id="abre-olho"></span>
-        <h2 class="manchete" id="manchete"></h2>
-        <p class="manchete-sub" id="manchete-sub"></p>
+  <div id="p-jd" role="tabpanel" aria-labelledby="tab-jd">
+    <div class="abertura ab8 capa-s" data-titulo="Capa">
+      <img class="capa-logo" alt="Moça" src="data:image/png;base64,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">
+      <div class="capa-in">
+        <div class="ct"><span class="eyebrow">Community Management</span><p class="ct-h">Report Semanal</p><span class="ct-m">Moça Lovers</span><span class="ct-per" id="abre-olho"></span></div>
+        <div class="pauta"><span class="eyebrow">Roteiro de hoje</span><ol id="pauta"></ol></div>
       </div>
-      <div class="abre-figs" id="abre-figs"></div>
+      <div hidden><h2 id="manchete"></h2><div id="abre-figs"></div><p id="abre-dec"></p></div>
     </div>
 
     <div class="bloco">
-      <div class="cap"><span class="n">01</span><h3 id="cap1"></h3><span class="nt" id="wa-note"></span></div>
-      <div class="grid g3" id="wa-minis"></div>
-      <div style="margin-top:26px">
-        <div class="sub-h">Mensagens por dia</div>
-        <div class="sub-s" id="wa-dias-sub"></div>
-        <svg id="wa-dias" viewBox="0 0 1150 240" width="100%" style="height:240px"></svg>
-        <div class="chart-legend" style="margin-top:10px"><span><i style="background:#25936B"></i>Recebidas</span><span><i style="background:#9ED8BC"></i>Enviadas pelo time</span></div>
-      </div>
+      <div class="cap"><span class="n">01</span><h3>A comunidade e os prêmios</h3><span class="nt" id="com-nt"></span></div>
+      <div id="com-selos"></div>
+      <p class="passo" id="com-n"></p>
+      <div class="prem-sub"><div class="sub-h">Prêmios físicos no prazo<span class="sub-s" id="prem-nt" style="display:inline;margin-left:12px"></span></div><div class="prazos" id="prazos"></div><div class="eixo-d" id="eixo-d"></div></div>
     </div>
 
     <div class="bloco">
-      <div class="cap"><span class="n">02</span><h3 id="cap2"></h3><span class="nt" id="mail-note"></span></div>
-      <div class="grid g4" id="kpis-sac"></div>
-      <div class="grid g2" style="margin-top:28px;gap:48px">
+      <div class="cap"><span class="n">02</span><h3>Kits: endereços em checagem</h3><span class="nt" id="kit-nt"></span></div>
+      <div class="abre-figs kit-figs" id="kit-figs"></div>
+      <div class="grid g3" id="kit-casos"></div>
+      <p class="funil-nota" id="kit-nota" style="margin-top:22px"></p>
+      <p class="passo" id="kit-n"></p>
+    </div>
+
+
+
+    <div class="bloco">
+      <div class="cap"><span class="n">03</span><h3 id="vou-tit"></h3><span class="nt" id="vou-nt"></span></div>
+      <div class="vou">
+        <div id="vou-selo"></div>
         <div>
-          <div class="sub-h">O que as Lovers escreveram</div>
-          <div class="sub-s" id="topics-note"></div>
-          <div id="topics" style="margin-top:14px"></div>
+          <div class="sub-h">Dias desde a data prevista</div>
+          <div class="tl" id="vou-tl"></div>
+          <div class="sub-h" style="margin-top:30px">Na apuração do time</div>
+          <div class="pilha" id="vou-pilha"></div>
+          <div class="pleg" id="vou-leg"></div>
+          <div class="sub-h" style="margin-top:26px" id="vou2-t"></div>
+          <div class="pilha" id="vou2-pilha"></div>
+          <div class="pleg" id="vou2-leg"></div>
         </div>
-        <div>
-          <div class="sub-h">Volume por dia</div>
-          <div class="sub-s" id="dias-sub"></div>
-          <svg id="dias" viewBox="0 0 560 240" width="100%" style="height:240px"></svg>
-        </div>
       </div>
-    </div>
-
-    <div class="bloco">
-      <div class="cap"><span class="n">03</span><h3 id="cap3"></h3></div>
-      <div class="panel" style="padding:0;margin-bottom:26px">
-        <div class="sub-h" id="cmp-tit"></div>
-        <div class="sub-s" id="cmp-sub"></div>
-        <div class="tabela-rolavel"><table id="tab-cmp">
-          <thead><tr><th>Indicador</th><th id="cmp-c1"></th><th id="cmp-c2"></th><th>Variação</th></tr></thead>
-          <tbody></tbody>
-        </table></div>
-        <p class="sub-s" id="cmp-nota" style="margin-top:12px;max-width:92ch"></p>
-      </div>
-      <div class="insight">
-        <span class="chip"></span>
-        <div><h3>Leitura da semana</h3><p id="leitura"></p></div>
-      </div>
+      <div class="decisao vou-dec"><span class="eyebrow">Pedido de direcionamento à BU</span><p id="vou-ask"></p></div>
+      <p class="passo" id="vou-act"></p>
     </div>
   </div>
 
-  <div id="p-jd" role="tabpanel" aria-labelledby="tab-jd" hidden>
-    <div class="abertura" style="margin-bottom:34px">
-      <div>
-        <span class="eyebrow" id="jd-olho"></span>
-        <h2 class="manchete" id="jd-manchete"></h2>
-        <p class="manchete-sub" id="jd-manchete-sub"></p>
-        <div class="marco" id="marco"><span class="bolha" id="marco-b"></span><span id="marco-t"></span></div>
+  <div class="stack" id="p-kits" role="tabpanel" aria-labelledby="tab-kits" hidden>
+    <div class="bloco" data-titulo="Atendimento e busca ativa">
+      <div class="cap"><span class="n">04</span><h3>Atendimento e busca ativa</h3><span class="nt" id="at-nt"></span><span id="ativos-nt" hidden></span></div>
+      <div class="at-top">
+        <div class="waffle" id="waffle"></div>
+        <div class="abre-figs at-figs" id="at-figs"></div>
       </div>
-      <div class="abre-figs" id="jd-abre-figs"></div>
+      <div class="busca-sub">
+      <div class="grid g2" style="gap:48px">
+        <div>
+          <div class="sub-h">E-mails enviados pela caixa do SAC</div>
+          <div class="sub-s" id="ativos-sub"></div>
+          <div class="pilha" id="ativos-pilha" style="height:18px"></div>
+          <div class="pleg" id="ativos-leg"></div>
+        </div>
+        <div>
+          <div class="sub-h">Contatos ativos por frente</div>
+          <div class="sub-s">conversas iniciadas pelo time</div>
+          <div id="ativos-frentes" style="margin-top:14px"></div>
+        </div>
+      </div>
+      <p class="passo" id="ativos-n"></p>
+      </div>
     </div>
-    <section>
-      <div class="cap"><span class="n">01</span><h3>A base que o programa construiu</h3><span class="nt">painel da plataforma</span></div>
-      <div class="grid g5" id="kpis-jd"></div>
-      <div class="grid g2" style="margin-top:20px">
-        <div class="panel" style="padding:28px">
-          <div class="card-h">Status dos creators</div>
-          <div class="card-s" id="creators-sub"></div>
-          <div class="donut-wrap">
-            <svg id="d-creators" viewBox="0 0 200 200" width="100%" height="100%"></svg>
-            <div class="donut-center"><b style="color:var(--mint)" id="creators-pct"></b><span>aprovados</span></div>
-          </div>
-          <div class="legend-grid" id="l-creators"></div>
-        </div>
-        <div class="panel" style="padding:28px">
-          <div class="card-h">Colheradas no tempo</div>
-          <div class="card-s" id="colheradas-sub" style="margin-bottom:12px"></div>
-          <svg id="colheradas" viewBox="0 0 560 240" width="100%" style="height:240px"></svg>
-        </div>
-      </div>
-    </section>
 
-    <section>
-      <div class="cap"><span class="n">02</span><h3 id="desafio-nome"></h3><span class="nt" id="desafio-note"></span></div>
-      <div class="panel" style="padding:28px">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-          <span class="pill"><span class="dot"></span>Ativo</span>
-          <span style="font-size:14px;color:var(--dim)" id="desafio-periodo"></span>
-        </div>
-        <div class="grid g3" style="margin-top:24px" id="desafio-minis"></div>
-        <div style="margin-top:34px">
-          <div class="sub-h" id="comp-tit"></div>
-          <div class="sub-s" id="comp-sub"></div>
-          <svg id="comp" viewBox="0 0 1150 250" width="100%" style="height:250px"></svg>
-          <div id="comp-saldo" style="margin-top:6px"></div>
-          <div class="sub-h" id="comp2-tit" style="margin-top:30px"></div>
-          <div class="sub-s" id="comp2-sub"></div>
-          <svg id="comp2" viewBox="0 0 1150 290" width="100%" style="height:290px"></svg>
-        </div>
-        <div class="grid g2" style="margin-top:24px">
-          <div class="mini" style="padding:24px">
-            <div class="card-h">Curadoria do desafio</div>
-            <div class="card-s" id="curadoria-sub"></div>
-            <div class="donut-wrap">
-              <svg id="d-curadoria" viewBox="0 0 200 200" width="100%" height="100%"></svg>
-              <div class="donut-center"><b style="color:var(--mint)" id="curadoria-pct"></b><span>válidas</span></div>
-            </div>
-          </div>
-          <div class="mini" style="padding:24px;display:flex;flex-direction:column;justify-content:center">
-            <div class="card-h">Como se compara</div>
-            <p style="font-size:13px;line-height:1.7;color:var(--dim);margin-top:12px;max-width:60ch" id="como-compara"></p>
-          </div>
-        </div>
+    <div class="bloco" data-titulo="WhatsApp e e-mail">
+      <div class="cap"><span class="n">05</span><h3>WhatsApp e e-mail</h3><span class="nt" id="wa-note"></span><span id="mail-note" hidden></span></div>
+      <div class="grid g2 canais" style="gap:40px">
+        <div><div class="sub-h">WhatsApp</div><div id="wa-minis"></div></div>
+        <div><div class="sub-h">E-mail</div><div id="kpis-mail"></div></div>
       </div>
-    </section>
-
-    <section>
-      <div class="cap"><span class="n">03</span><h3>Como os quatro desafios se comparam</h3><span class="nt">enviados, válidos e reprovados</span></div>
-      <div class="panel" style="padding:8px 28px 24px">
-        <div class="tabela-rolavel"><table id="tab-desafios">
-          <thead><tr><th>Desafio</th><th>Status</th><th>Total</th><th>Válidas</th><th>Penalizadas</th></tr></thead>
-          <tbody></tbody>
-        </table></div>
+      <div style="margin-top:26px">
+        <div class="sub-h">Contatos por dia</div>
+        <div class="sub-s" id="cn-sub"></div>
+        <svg id="cn-dias" viewBox="0 0 1150 240" width="100%" style="height:240px"></svg>
+        <div class="chart-legend" style="margin-top:10px"><span><i style="background:#25936B"></i>Mensagens recebidas no WhatsApp</span><span><i style="background:#002D72"></i>E-mails espontâneos</span></div>
       </div>
-      <div class="panel" style="padding:28px;margin-top:20px">
-        <div class="card-h">Volume comparado</div>
-        <div class="card-s" style="margin-bottom:20px" id="barras-sub"></div>
-        <svg id="barras" viewBox="0 0 1150 275" width="100%" style="height:275px"></svg>
-      </div>
-    </section>
-
-    <section>
-      <div class="cap"><span class="n">04</span><h3>Quem são as Lovers</h3><span class="nt">base de creators cadastrados</span></div>
-      <div class="grid g2">
-        <div class="panel" style="padding:28px">
-          <div class="card-h">Gênero</div>
-          <div class="card-s" id="genero-sub"></div>
-          <div class="donut-wrap">
-            <svg id="d-genero" viewBox="0 0 200 200" width="100%" height="100%"></svg>
-            <div class="donut-center"><b style="color:var(--gold)" id="genero-pct"></b><span>feminino</span></div>
-          </div>
-          <div class="legend-grid legend-1" id="l-genero"></div>
-        </div>
-        <div class="panel" style="padding:28px">
-          <div class="card-h">Perfil empreendedor</div>
-          <div class="card-s" id="emp-sub"></div>
-          <div class="donut-wrap">
-            <svg id="d-emp" viewBox="0 0 200 200" width="100%" height="100%"></svg>
-            <div class="donut-center"><b style="color:var(--blue)" id="emp-pct"></b><span>empreendem</span></div>
-          </div>
-          <div class="legend-grid legend-1" id="l-emp"></div>
-        </div>
-      </div>
-      <div class="grid g2" style="margin-top:20px">
-        <div class="panel" style="padding:28px">
-          <div class="card-h">Estados com mais creators</div>
-          <div class="card-s" style="margin-bottom:20px" id="ufs-sub">quatro primeiros da lista</div>
-          <div id="ufs"></div>
-        </div>
-        <div class="panel" style="padding:28px">
-          <div class="card-h">Faixa etária</div>
-          <div class="card-s" style="margin-bottom:20px" id="idades-sub"></div>
-          <div id="idades"></div>
-        </div>
-      </div>
-    </section>
+      <div hidden><svg id="wa-dias"></svg><svg id="dias"></svg><span id="wa-dias-sub"></span><span id="dias-sub"></span></div>
+    </div>
+    <div class="bloco">
+      <div class="cap"><span class="n">06</span><h3>Temas recorrentes</h3><span class="nt">30 s · passada rápida</span></div>
+      <div id="topics"></div>
+      <p class="passo" id="temas-n"></p>
+    </div>
   </div>
 
   <div id="p-feed" role="tabpanel" aria-labelledby="tab-feed" hidden>
-    <section>
-      <div class="cine-head">
-        <div>
-          <span class="eyebrow" id="feed-sub"></span>
-          <h2 id="feed-tag"></h2>
-          <p id="feed-desc"></p>
+    <section class="bloco" data-titulo="Conteúdos das Lovers">
+      <div class="cap"><span class="n">07</span><h3>Conteúdos das Lovers</h3><span class="nt">3 min · top 3, destaques e comentários</span><span id="top-nt" hidden></span></div>
+      <div class="sintese">
+        <div class="s-top">
+          <div class="sub-h">Top 3 mais engajadas</div>
+          <ol class="rank3" id="podio"></ol>
+          <p class="passo" id="top-n"></p>
         </div>
-        <div class="cine-figs" id="feed-figs"></div>
+        <div class="s-cont">
+          <div class="sub-h">Destaques da semana<span class="sub-s" style="display:inline;margin-left:12px">clique em ampliar para assistir</span></div>
+          <div class="trio" id="trio"></div>
+          <div class="tira-h"><button type="button" class="copiar" id="cur-copy">Copiar ★ marcados</button></div>
+          <div id="tira" hidden></div>
+        </div>
       </div>
-      <div class="cine-rule"></div>
-      <div class="cine" id="cine">
-        <div>
-          <div class="tela" id="tela"><div class="espera" id="tela-espera">01</div></div>
-          <div class="tela-pe"><span class="quem" id="tela-quem"></span><span class="num" id="tela-num"></span></div>
-          <div class="tela-dados" id="tela-dados"></div>
-          <div class="foco-dica">← → trocam de vídeo · Enter ou Esc voltam para a lista</div>
-          <a class="tela-link" id="tela-link" target="_blank" rel="noopener">abrir no instagram<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-        </div>
-        <div class="cine-lado">
-          <div class="mural-h"><b id="mural-tit"></b><span id="mural-sub"></span></div>
-          <div class="mural" id="mural"></div>
-          <p class="cine-nota" id="cine-nota"></p>
-        </div>
+      <div class="vz-h sub-h">O que as Lovers disseram</div>
+      <div class="mvoz" id="vozes"></div>
+      <div class="rec-linha" id="recebidos"></div>
+      <p class="cine-nota" id="cine-nota"></p>
+      <div class="lupa" id="lupa" role="dialog" aria-label="Conteúdo ampliado">
+        <button type="button" class="lupa-x" id="lupa-x" aria-label="Fechar">✕</button>
+        <button type="button" class="lupa-n" id="lupa-p" aria-label="Anterior">←</button>
+        <div class="aparelho"><div class="tela3" id="lupa-tela"></div></div>
+        <div class="info"><span class="quem" id="lupa-quem"></span><span class="num" id="lupa-num"></span><div class="dados" id="lupa-dados"></div>
+          <button type="button" class="lstar" id="lupa-star">★ Levar ao fórum</button>
+          <a id="lupa-link" target="_blank" rel="noopener">abrir no instagram ↗</a><span class="dica">← → trocam de vídeo · Esc volta</span></div>
+        <button type="button" class="lupa-n" id="lupa-n" aria-label="Próximo">→</button>
       </div>
     </section>
+    <div class="abertura ab8 fim-s" data-titulo="Obrigada">
+      <img class="capa-logo" id="fim-logo" alt="Moça">
+      <div class="capa-in">
+        <div class="ct"><span class="eyebrow">Community Management · Moça Lovers</span><span class="ct-ob">Obrigada!</span><span class="ct-sub2">Vamos conversar sobre o que a comunidade precisa.</span></div>
+        <div class="decisao"><span class="eyebrow">Decisão pedida ao fórum</span><p id="fim-dec"></p></div>
+        <p class="ct-ass">Publination · Report semanal</p>
+      </div>
+    </div>
   </div>
 </div></main>
 
 
-<div class="hint" id="hint">Modo apresentação: <b>1 2 3</b> trocam de aba · <b>← →</b> navegam no feed · <b>Enter</b> amplia · <b>F</b> ou <b>Esc</b> saem</div>
+<div class="deckbar" id="deck"><span class="eb" id="d-e"></span><span class="tt3" id="d-t"></span><span class="bar3"><i id="d-b"></i></span><span class="tm3" id="d-tm">0:00</span><span class="ct" id="d-c"></span><button id="d-p" aria-label="Anterior">←</button><button id="d-n" aria-label="Próximo">→</button><button id="d-f">Tela cheia</button><button id="d-x">Sair</button></div>
+<div class="blk" id="blk"></div><div class="toast" id="toast"></div>
+<div class="hint" id="hint"><b>→ ←</b> passam os slides · <b>1 2 3</b> pulam de aba · <b>B</b> tela preta · <b>T</b> tempo · <b>F</b> tela cheia · <b>Esc</b> sai</div>
 
 <canvas id="confete" aria-hidden="true"></canvas>
 <footer><div class="wrap" id="rodape"></div></footer>
 
 <!-- DADOS DA EDIÇÃO: a tarefa semanal troca SOMENTE este bloco JSON -->
-<script type="application/json" id="dados">
-{"subtitulo": "Report semanal · 15 a 21/10/2026 (quinta a quarta)", "rodape_sac": "Atendimento: caixa sac.mocalovers@publination.com.br (152 e-mails espontâneos de participantes; 403 respostas a disparos do SAC ficaram fora) e relatório de estatística do WhatsApp Oficial 5511971503088 (887 mensagens recebidas), janela de 15/10 00h00 a 21/10 23h59, horário de Brasília.", "rodape_jd": "Jornada Doce: plataforma jornadadoce.com.br lida em 22/10/2026; painel da comunidade com atualização de 21/10/2026 às 10h24.", "abertura": {"olho": "Atendimento · 15 a 21/10/2026", "manchete": "Primeira fase de envios <em>concluída<\/em>: agora é reentrega", "sub": "Com os kits da primeira fase enviados, o que chega ao SAC são ajustes: novas tentativas de entrega, atualização de endereço e reposições, todos em tratativa.", "figuras": [{"v": "1.039", "k": "contatos de lovers", "em": "85% WhatsApp · 15% e-mail"}, {"v": "89", "k": "e-mails sobre kits", "em": "reentregas, endereço e reposições"}, {"v": "224", "k": "chamados encerrados", "em": "no WhatsApp, dentro da semana"}], "cap1": "O canal que entrou: WhatsApp", "cap2": "O canal de origem: e-mail", "cap3": "Semana contra semana"}, "abertura_jd": {"olho": "Jornada Doce · leitura de 22/10/2026", "manchete": "A comunidade passou de <em>62 mil<\/em> Lovers", "manchete60": "62 mil Lovers e <em>seis vezes<\/em> a meta do ano", "sub": "Bebidas com Moça chega à terceira semana com 2.034 conteúdos enviados e R$ 477 mil em mídia, e o programa soma R$ 6,12 mi conquistados sem compra de mídia.", "figuras": [{"v": "62.156", "k": "lovers cadastradas", "em": "6,2x a meta de 10 mil"}, {"v": "R$ 6,12 mi", "k": "mídia conquistada", "em": "R$ 477 mil só em outubro"}, {"v": "~77,7 mi", "k": "alcance potencial", "em": "Instagram e TikTok"}]}, "sac": {"total": 152, "remetentes": 88, "janela_texto": "contatos espontâneos de participantes, 15/10 00h00 a 21/10 23h59", "por_pessoa_texto": "1,7 mensagem por pessoa; 45 escreveram uma única vez", "media_texto": "21,7", "pico_pct": 51, "pico_texto": "16/10 (52) e 19/10 (26)", "categorias": [{"nome": "Kits e prêmios", "det": "Código de rastreio, status de envio e mudança de endereço", "n": 89}, {"nome": "Premiação, ranking e colheradas", "det": "Vale-compras e prêmios dos desafios", "n": 20}, {"nome": "Plataforma, regras e cadastro", "det": "Acesso, convites pendentes e dúvidas de execução", "n": 18}, {"nome": "Redes sociais", "det": "Vincular, alterar e incluir o @ do TikTok e do Instagram", "n": 17}, {"nome": "Curadoria", "det": "Contestações de conteúdo reprovado", "n": 8}, {"nome": "Saída voluntária", "det": "Pedidos de saída da comunidade", "n": 0}], "janela_grafico": "e-mails espontâneos por dia, de quinta 15/10 a quarta 21/10 (sem respostas a disparos do SAC)", "dias": [{"rotulo": "Qui 15", "n": 22}, {"rotulo": "Sex 16", "n": 52}, {"rotulo": "Sáb 17", "n": 8}, {"rotulo": "Dom 18", "n": 7}, {"rotulo": "Seg 19", "n": 26}, {"rotulo": "Ter 20", "n": 21}, {"rotulo": "Qua 21", "n": 16}], "leitura": "Com a primeira fase de envios dos kits concluída, o atendimento da semana mostra a operação na etapa de ajustes finos: os 89 contatos espontâneos sobre kits tratam de reentregas, atualização de endereço, status de entrega e reposição de itens avariados, casos já em tratativa com a logística. Plataforma e redes sociais somam 35 mensagens, quase todas pedidos pontuais de acesso, recadastro e troca de @, e premiação ficou em 20. No WhatsApp, o canal estreou no report com 887 mensagens recebidas e 224 chamados encerrados. Para o retrato ficar só com quem procurou o SAC, as 403 respostas aos disparos enviados pelo próprio time na semana ficaram fora da contagem."}, "wa": {"janela_texto": "WhatsApp Oficial 5511971503088 · 15/10 a 21/10 (quinta a quarta)", "recebidas": 887, "recebidas_sub": "média de 126,7 por dia", "enviadas": 300, "chamados_fechados": 224, "chamados_sub": "encerrados dentro da semana", "contatos": 136, "contatos_sub": "contatos únicos no consolidado do relatório (inclui o início de 22/10)", "primeira_resposta": "3h47", "primeira_sub": "média ponderada pelos chamados encerrados; o sábado puxou a média para cima", "dias": [{"rotulo": "Qui 15", "rec": 215, "env": 68, "cham": 48}, {"rotulo": "Sex 16", "rec": 239, "env": 66, "cham": 79}, {"rotulo": "Sáb 17", "rec": 17, "env": 5, "cham": 6}, {"rotulo": "Dom 18", "rec": 8, "env": 2, "cham": 4}, {"rotulo": "Seg 19", "rec": 134, "env": 47, "cham": 32}, {"rotulo": "Ter 20", "rec": 151, "env": 60, "cham": 32}, {"rotulo": "Qua 21", "rec": 123, "env": 52, "cham": 23}], "dias_sub": "mensagens recebidas e enviadas por dia; quinta e sexta concentram 51% do volume"}, "comparativo_sac": {"titulo": "Semana contra semana", "sub": "E-mail espontâneo: 15 a 21/10 contra 08 a 14/10", "col_atual": "15 a 21/10", "col_anterior": "08 a 14/10", "nota": "A partir desta edição o e-mail conta só os contatos espontâneos (pessoas que escreveram ao SAC); as respostas a disparos do próprio time ficam de fora. A semana anterior foi apurada pelo critério antigo, então a comparação é indicativa. O WhatsApp não entra porque a semana anterior ficou sem relatório do canal.", "linhas": [{"k": "E-mails recebidos", "sub": "de participantes", "a": "152", "b": "139", "d": 9.4, "un": "%", "bom": "n"}, {"k": "Remetentes únicos", "sub": "Lovers diferentes", "a": "88", "b": "90", "d": -2.2, "un": "%", "bom": "n"}, {"k": "Média diária", "sub": "e-mails por dia", "a": "21,7", "b": "19,9", "d": 9.0, "un": "%", "bom": "n"}, {"k": "Kits de boas-vindas", "sub": "participação no total", "a": "58,6%", "b": "62,6%", "d": -4.0, "un": "p.p.", "bom": false}, {"k": "Premiação, ranking e colheradas", "sub": "participação no total", "a": "13,2%", "b": "16,5%", "d": -3.4, "un": "p.p.", "bom": false}, {"k": "Plataforma, regras e cadastro", "sub": "participação no total", "a": "11,8%", "b": "5,8%", "d": 6.1, "un": "p.p.", "bom": false}, {"k": "Redes sociais", "sub": "participação no total", "a": "11,2%", "b": "10,8%", "d": 0.4, "un": "p.p.", "bom": false}, {"k": "Curadoria", "sub": "participação no total", "a": "5,3%", "b": "4,3%", "d": 0.9, "un": "p.p.", "bom": false}, {"k": "Concentração no pico", "sub": "dois maiores dias", "a": "51,3%", "b": "48,0%", "d": 3.3, "un": "p.p.", "bom": "n"}]}, "jd": {"creators_cadastrados": 62156, "creators_aprovados": 31474, "pendentes": 15927, "status": [{"k": "Aprovados", "v": 31474}, {"k": "Pendentes", "v": 15927}, {"k": "Incompletos", "v": 8578}, {"k": "Usuários participativos", "v": 6545}, {"k": "Sob revisão", "v": 5827}, {"k": "Aguardando aprovação", "v": 349}, {"k": "Rejeitados", "v": 1}], "colheradas_acumuladas": 6468465, "colheradas_curto": "6,47 mi", "colheradas_mes_texto": "470.210 só em outubro, com 21 dias de desafio", "colheradas_por_mes": [{"mes": "Mai", "v": 0}, {"mes": "Jun", "v": 203525}, {"mes": "Jul", "v": 3077375}, {"mes": "Ago", "v": 1367685}, {"mes": "Set", "v": 1349670}, {"mes": "Out", "v": 470210}], "alcance_real": "~77,7 mi", "alcance_sub": "seguidores das lovers ativas, Instagram 48,6 mi e TikTok 29,1 mi", "midia_equivalente": "R$ 6,12 mi", "midia_desafio": "R$ 477 mil", "marco": {"titulo": "6,2x", "texto": "A meta do ano era reunir 10 mil Lovers até dezembro. A comunidade passou de 62 mil em 130 dias, mais de seis vezes o combinado."}, "desafio_ativo": {"nome": "Bebidas com Moça", "nota": "desafio de outubro, dia 21 de 31", "periodo": "01/10 a 31/10", "total": 2034, "validas": 1802, "penalizadas": 232, "colheradas_mes": 470210, "colheradas_rotulo": "Colheradas em outubro", "curadoria_sub": "2.034 submissões no painel, 1.802 aprovadas e 232 reprovadas", "como_compara": "Na terceira semana, Bebidas com Moça soma 711 lovers e 2.034 conteúdos enviados, o equivalente a R$ 477 mil em mídia. Com a curadoria em dia, a aprovação ficou em 88,6%, acima do Brigadeiro (79,2%) e da Mesa Posta (78,2%); o Meu Jeito Único fechou em 95,8%.", "criadoras": 711, "conteudos_enviados": 2034}, "desafios": [{"nome": "Meu jeito único com Moça", "curto": "Meu jeito", "status": "Encerrado", "total": 13149, "validas": 12598, "penalizadas": 551}, {"nome": "Mesa Posta com Moça", "curto": "Mesa Posta", "status": "Encerrado", "total": 6033, "validas": 4716, "penalizadas": 1317}, {"nome": "Mês do Brigadeiro", "curto": "Brigadeiro", "status": "Encerrado", "total": 5812, "validas": 4603, "penalizadas": 1209}, {"nome": "Bebidas com Moça", "curto": "Bebidas", "status": "Ativo", "total": 2034, "validas": 1802, "penalizadas": 232}], "barras_sub": "Conteúdos enviados, aprovados e reprovados por desafio, segundo o painel da comunidade", "genero": [{"k": "Feminino", "v": 36346}, {"k": "Masculino", "v": 1241}, {"k": "Prefiro não informar", "v": 33}, {"k": "Não-binário", "v": 17}, {"k": "Outro", "v": 12}], "empreendedor": {"nao": 29804, "sim": 7845}, "estados": [{"k": "SP", "v": 12296}, {"k": "RJ", "v": 4350}, {"k": "MG", "v": 3253}, {"k": "BA", "v": 2661}], "faixas": [{"k": "25-34", "v": 17406}, {"k": "35-44", "v": 9150}, {"k": "18-24", "v": 6512}, {"k": "45-54", "v": 3489}, {"k": "55+", "v": 1092}], "idades_sub": "concentração forte entre 25 e 44 anos, 70,5% da base", "data_leitura": "22/10/2026", "data_leitura_dash_completo": "21/10/2026 10:24"}, "comparativo": {"titulo": "Terceira semana contra o Brigadeiro", "sub": "Conteúdos enviados por dia, dias 15 a 19 de cada desafio", "labels": ["Dia 15", "Dia 16", "Dia 17", "Dia 18", "Dia 19"], "a": {"k": "Bebidas com Moça", "v": [86, 169, 103, 102, 143]}, "b": {"k": "Mês do Brigadeiro", "v": [95, 129, 119, 119, 91]}, "saldo": [{"k": "conteúdos enviados", "d": 9.0}, {"k": "aprovados", "d": 32.7}, {"k": "lovers novas", "d": 9.4}], "nota": "Comparação dos dias já fechados no painel (dias 15 a 19). A leitura de 21/10 às 10h24 ainda traz os dias 20 e 21 de outubro parciais (11 e 0 envios), por isso eles ficaram de fora dos dois lados; os aprovados dos dias mais recentes ainda podem mudar com a curadoria.", "semana": {"titulo": "Totais dos dias 15 a 19", "sub": "Bebidas com Moça contra Mês do Brigadeiro, mesmos dias de desafio", "grupos": [{"label": "Conteúdos enviados", "a": 603, "b": 553}, {"label": "Aprovados", "a": 601, "b": 453}, {"label": "Lovers novas", "a": 209, "b": 191}]}}, "feed": {"hashtag": "#BebidasComMoça", "subtitulo": "Vídeos do desafio · plataforma Jornada Doce", "selo": "Desafio de outubro", "descricao": "Os números do desafio vêm da plataforma Jornada Doce e do painel da comunidade. Os vídeos ao lado são a seleção de monitoramento: os que mais puxaram conversa até agora. Clique em qualquer um para assistir aqui mesmo.", "titulo": "O que a comunidade<br><em>está publicando<\/em>", "figuras": [{"v": "2.034", "k": "conteúdos enviados"}, {"v": "1.802", "k": "aprovados"}, {"v": "711", "k": "lovers no desafio"}, {"v": "R$ 477 mil", "k": "mídia equivalente"}], "mural_titulo": "Os vídeos que mais puxaram conversa", "mural_sub": "24 vídeos · passe o mouse · clique para assistir", "nota": "Números do desafio: painel da comunidade, leitura de 21/10/2026 às 10h24. Monitoramento de #BebidasComMoça no Instagram (aba Dashboard da planilha, 21/10 às 18h36): 1.563 conteúdos de 786 perfis, 28.441 comentários, 81.039 curtidas, 1,83 mi visualizações de Reels e 109.480 interações. Na seleção, 135 reels passaram de 40 comentários e o mural traz os 24 primeiros, do mais comentado para o menos. O monitoramento serve para identificar o que mais engajou e não substitui os números oficiais da plataforma.", "reels": [{"id": "DePl0ROCoxU", "url": "https://www.instagram.com/p/DePl0ROCoxU/", "perfil": "@daniiefamilia", "com": 718, "eng": 3469, "vis": 100913}, {"id": "DerArZ8z9uA", "url": "https://www.instagram.com/p/DerArZ8z9uA/", "perfil": "@saholiveira.19", "com": 266, "eng": 528, "vis": 705}, {"id": "Deuv7l4hSUe", "url": "https://www.instagram.com/p/Deuv7l4hSUe/", "perfil": "@dra.camilalobato", "com": 230, "eng": 640, "vis": 17717}, {"id": "Dej4q0Dtq7v", "url": "https://www.instagram.com/p/Dej4q0Dtq7v/", "perfil": "@rayssa.asouza", "com": 221, "eng": 534, "vis": 2998}, {"id": "DeACx5NxtXQ", "url": "https://www.instagram.com/p/DeACx5NxtXQ/", "perfil": "@torressamaradasilva", "com": 212, "eng": 672, "vis": 10689}, {"id": "DeHPF1dx7Kz", "url": "https://www.instagram.com/p/DeHPF1dx7Kz/", "perfil": "@lily_scruz", "com": 191, "eng": 451, "vis": 3266}, {"id": "DePYTWfyMr7", "url": "https://www.instagram.com/p/DePYTWfyMr7/", "perfil": "@netypink", "com": 186, "eng": 365, "vis": 16123}, {"id": "DeAkh-HukLZ", "url": "https://www.instagram.com/p/DeAkh-HukLZ/", "perfil": "@dherlen_silvax", "com": 179, "eng": 307, "vis": 1454}, {"id": "Dejnf-PhGBF", "url": "https://www.instagram.com/p/Dejnf-PhGBF/", "perfil": "@casinhademadeiradafran", "com": 175, "eng": 305, "vis": 935}, {"id": "DesaU22tyIC", "url": "https://www.instagram.com/p/DesaU22tyIC/", "perfil": "@alinehermesbrito", "com": 172, "eng": 246, "vis": 1302}, {"id": "DeW7n10RmHF", "url": "https://www.instagram.com/p/DeW7n10RmHF/", "perfil": "@willyane.soares.71", "com": 162, "eng": 270, "vis": 1190}, {"id": "DeN421RsbOA", "url": "https://www.instagram.com/p/DeN421RsbOA/", "perfil": "@manuelaeleno", "com": 161, "eng": 164, "vis": 96488}, {"id": "DeSTPyYJ_jG", "url": "https://www.instagram.com/p/DeSTPyYJ_jG/", "perfil": "@beatriz_cavalcanti.a", "com": 157, "eng": 346, "vis": 3059}, {"id": "DeC-EY3o4ce", "url": "https://www.instagram.com/p/DeC-EY3o4ce/", "perfil": "@naraah_cruz98", "com": 156, "eng": 272, "vis": 2523}, {"id": "DebtkfURnJi", "url": "https://www.instagram.com/p/DebtkfURnJi/", "perfil": "@minhapequena_casinha_rosa", "com": 144, "eng": 240, "vis": 854}, {"id": "DeaIfqauFyd", "url": "https://www.instagram.com/p/DeaIfqauFyd/", "perfil": "@janaine_graca", "com": 143, "eng": 400, "vis": 5388}, {"id": "DeuaEUOzHrr", "url": "https://www.instagram.com/p/DeuaEUOzHrr/", "perfil": "@ferreira_stefani_", "com": 121, "eng": 273, "vis": 831}, {"id": "DeQEtVmxTiW", "url": "https://www.instagram.com/p/DeQEtVmxTiW/", "perfil": "@casa_da_dora", "com": 120, "eng": 254, "vis": 2497}, {"id": "DeOghMKN-0O", "url": "https://www.instagram.com/p/DeOghMKN-0O/", "perfil": "@leticia.dicas.e.memes", "com": 118, "eng": 405, "vis": 1896}, {"id": "DeXWZ_QhhjL", "url": "https://www.instagram.com/p/DeXWZ_QhhjL/", "perfil": "@tatatelles91", "com": 111, "eng": 336, "vis": 1110}, {"id": "DePuNSnp-gU", "url": "https://www.instagram.com/p/DePuNSnp-gU/", "perfil": "@amanditafalcaodicas", "com": 110, "eng": 329, "vis": 1843}, {"id": "DesPzRKt3o3", "url": "https://www.instagram.com/p/DesPzRKt3o3/", "perfil": "@_eucarolinelopes", "com": 110, "eng": 229, "vis": 1760}, {"id": "DeSWNHXPM3t", "url": "https://www.instagram.com/p/DeSWNHXPM3t/", "perfil": "@aromadeviver", "com": 109, "eng": 1961, "vis": 63473}, {"id": "DefMox5x34y", "url": "https://www.instagram.com/p/DefMox5x34y/", "perfil": "@byvanessalrodrigues1", "com": 108, "eng": 212, "vis": 627}]}}
-</script>
+<script type="application/json" id="dados">{"subtitulo": "Fórum semanal · 22 a 28/10/2026 · versão teste", "rodape_sac": "Atendimento: caixa sac.mocalovers@publination.com.br (70 e-mails espontâneos de participantes e 232 respostas a disparos do SAC, contadas à parte) e relatório de estatística do WhatsApp Oficial 5511971503088 (465 mensagens recebidas; o arquivo também traz 21/10, que ficou fora), janela de 22/10 00h00 a 28/10 23h59, horário de Brasília.", "rodape_jd": "Jornada Doce: plataforma jornadadoce.com.br lida em 29/10/2026; painel da comunidade em 29/10/2026 às 09h52; monitoramento de #BebidasComMoça no Instagram atualizado em 29/10/2026 às 11h13. Versão teste do novo formato.", "abertura": {"olho": "Fórum semanal · 22 a 28/10/2026", "manchete": "Kits expedidos, endereços em checagem e <em>uma decisão</em> sobre os vale-compras", "sub": "Em 15 minutos: como está a comunidade, o que entregamos, o que trava nos prêmios, como foi o atendimento e o que as Lovers estão criando.", "figuras": [{"v": "4.733", "k": "kits expedidos", "em": "100% da primeira fase"}, {"v": "378", "k": "endereços em checagem", "em": "80% dos casos de reentrega responderam"}, {"v": "2.731", "k": "conteúdos aprovados", "em": "Bebidas com Moça, 93,8%"}]}, "abertura_jd": {"olho": "Jornada Doce · leitura de 28/10/2026", "manchete": "A comunidade passou de <em>62 mil</em> Lovers", "manchete60": "62 mil Lovers e <em>seis vezes</em> a meta do ano", "sub": "Bebidas com Moça chega à terceira semana com 2.034 conteúdos enviados e R$ 477 mil em mídia, e o programa soma R$ 6,12 mi conquistados sem compra de mídia.", "figuras": [{"v": "62.156", "k": "lovers cadastradas", "em": "6,2x a meta de 10 mil"}, {"v": "R$ 6,12 mi", "k": "mídia conquistada", "em": "R$ 477 mil só em outubro"}, {"v": "~77,7 mi", "k": "alcance potencial", "em": "Instagram e TikTok"}]}, "sac": {"total": 70, "remetentes": 39, "janela_texto": "e-mails de participantes, 22/10 00h00 a 28/10 23h59", "por_pessoa_texto": "1,7 mensagem por pessoa; 45 escreveram uma única vez", "media_texto": "21,7", "pico_pct": 47.1, "pico_texto": "espontâneos em 23/10 (19) e 28/10 (14)", "categorias": [{"nome": "Kits e prêmios", "det": "Código de rastreio, status de envio e mudança de endereço", "n": 24, "acao": "contato ativo e reenvio"}, {"nome": "Premiação, ranking e colheradas", "det": "Vale-compras e prêmios dos desafios", "n": 14, "acao": "resposta padrão e acompanhamento"}, {"nome": "Plataforma, regras e cadastro", "det": "Acesso, convites pendentes e dúvidas de execução", "n": 19, "acao": "orientação e ajuste com o fornecedor"}, {"nome": "Redes sociais", "det": "Vincular, alterar e incluir o @ do TikTok e do Instagram", "n": 10, "acao": "lista semanal ao fornecedor"}, {"nome": "Curadoria", "det": "Contestações de conteúdo reprovado", "n": 1, "acao": "revisão do conteúdo"}, {"nome": "Saída voluntária", "det": "Pedidos de saída da comunidade", "n": 2, "acao": "reset de conta"}], "janela_grafico": "espontâneos e respostas aos disparos por dia; o pico de 28/10 veio dos disparos de novo endereço, reentrega e do “Resolvido!” do vale-compras", "dias": [{"rotulo": "Qui 22", "n": 10}, {"rotulo": "Sex 23", "n": 19}, {"rotulo": "Sáb 24", "n": 3}, {"rotulo": "Dom 25", "n": 2}, {"rotulo": "Seg 26", "n": 11}, {"rotulo": "Ter 27", "n": 11}, {"rotulo": "Qua 28", "n": 14}], "leitura": "Com a primeira fase de envios dos kits concluída, o atendimento da semana mostra a operação na etapa de ajustes finos: os 89 contatos espontâneos sobre kits tratam de reentregas, atualização de endereço, status de entrega e reposição de itens avariados, casos já em tratativa com a logística. Plataforma e redes sociais somam 35 mensagens, quase todas pedidos pontuais de acesso, recadastro e troca de @, e premiação ficou em 20. No WhatsApp, o canal estreou no report com 887 mensagens recebidas e 224 chamados encerrados. Para o retrato ficar só com quem procurou o SAC, as 403 respostas aos disparos enviados pelo próprio time na semana ficaram fora da contagem.", "uma_vez": 20, "respostas": 232, "respostas_remetentes": 154, "total_part": 302, "total_part_rem": 189, "dias_resp": [{"rotulo": "Qui 22", "n": 36}, {"rotulo": "Sex 23", "n": 21}, {"rotulo": "Sáb 24", "n": 7}, {"rotulo": "Dom 25", "n": 9}, {"rotulo": "Seg 26", "n": 39}, {"rotulo": "Ter 27", "n": 27}, {"rotulo": "Qua 28", "n": 93}]}, "wa": {"janela_texto": "WhatsApp Oficial 5511971503088 · 22/10 a 28/10 (quinta a quarta)", "recebidas": 465, "recebidas_sub": "média de 66,4 por dia", "enviadas": 199, "chamados_fechados": 83, "chamados_abertos": 5, "chamados_sub": "encerrados dentro da semana; 5 abertos no fim de quarta", "contatos": 79, "contatos_sub": "soma dos contatos únicos de cada dia", "primeira_resposta": "9h03", "primeira_sub": "média ponderada pelos chamados encerrados; sem o fim de semana, 7h55", "primeira_curta": "média no WhatsApp; sem o fim de semana, 7h55", "dias_sub": "mensagens recebidas e enviadas por dia; terça 27 foi o dia mais cheio", "dias": [{"rotulo": "Qui 22", "rec": 104, "env": 36}, {"rotulo": "Sex 23", "rec": 64, "env": 29}, {"rotulo": "Sáb 24", "rec": 3, "env": 2}, {"rotulo": "Dom 25", "rec": 20, "env": 15}, {"rotulo": "Seg 26", "rec": 51, "env": 17}, {"rotulo": "Ter 27", "rec": 138, "env": 70}, {"rotulo": "Qua 28", "rec": 85, "env": 30}]}, "comparativo_sac": {"titulo": "Semana contra semana", "sub": "E-mail espontâneo: 15 a 21/10 contra 08 a 14/10", "col_atual": "15 a 21/10", "col_anterior": "08 a 14/10", "nota": "A partir desta edição o e-mail conta só os contatos espontâneos (pessoas que escreveram ao SAC); as respostas a disparos do próprio time ficam de fora. A semana anterior foi apurada pelo critério antigo, então a comparação é indicativa. O WhatsApp não entra porque a semana anterior ficou sem relatório do canal.", "linhas": [{"k": "E-mails recebidos", "sub": "de participantes", "a": "152", "b": "139", "d": 9.4, "un": "%", "bom": "n"}, {"k": "Remetentes únicos", "sub": "Lovers diferentes", "a": "88", "b": "90", "d": -2.2, "un": "%", "bom": "n"}, {"k": "Média diária", "sub": "e-mails por dia", "a": "21,7", "b": "19,9", "d": 9.0, "un": "%", "bom": "n"}, {"k": "Kits de boas-vindas", "sub": "participação no total", "a": "58,6%", "b": "62,6%", "d": -4.0, "un": "p.p.", "bom": false}, {"k": "Premiação, ranking e colheradas", "sub": "participação no total", "a": "13,2%", "b": "16,5%", "d": -3.4, "un": "p.p.", "bom": false}, {"k": "Plataforma, regras e cadastro", "sub": "participação no total", "a": "11,8%", "b": "5,8%", "d": 6.1, "un": "p.p.", "bom": false}, {"k": "Redes sociais", "sub": "participação no total", "a": "11,2%", "b": "10,8%", "d": 0.4, "un": "p.p.", "bom": false}, {"k": "Curadoria", "sub": "participação no total", "a": "5,3%", "b": "4,3%", "d": 0.9, "un": "p.p.", "bom": false}, {"k": "Concentração no pico", "sub": "dois maiores dias", "a": "51,3%", "b": "48,0%", "d": 3.3, "un": "p.p.", "bom": "n"}]}, "jd": {"creators_cadastrados": 62894, "creators_aprovados": 32029, "pendentes": 15927, "status": [{"k": "Aprovados", "v": 31918}, {"k": "Pendentes", "v": 15927}, {"k": "Incompletos", "v": 8578}, {"k": "Usuários participativos", "v": 6545}, {"k": "Sob revisão", "v": 5827}, {"k": "Aguardando aprovação", "v": 349}, {"k": "Rejeitados", "v": 1}], "colheradas_acumuladas": 6468465, "colheradas_curto": "6,47 mi", "colheradas_mes_texto": "470.210 só em outubro, com 21 dias de desafio", "colheradas_por_mes": [{"mes": "Mai", "v": 0}, {"mes": "Jun", "v": 203525}, {"mes": "Jul", "v": 3077375}, {"mes": "Ago", "v": 1367685}, {"mes": "Set", "v": 1349670}, {"mes": "Out", "v": 470210}], "alcance_real": "~77,7 mi", "alcance_sub": "seguidores das lovers ativas, Instagram 48,6 mi e TikTok 29,1 mi", "midia_equivalente": "R$ 6,12 mi", "midia_desafio": "R$ 477 mil", "marco": null, "desafio_ativo": {"nome": "Bebidas com Moça", "nota": "desafio de outubro, dia 28 de 31", "periodo": "01/10 a 31/10", "total": 2911, "validas": 2731, "penalizadas": 180, "colheradas_mes": 470210, "colheradas_rotulo": "Colheradas em outubro", "curadoria_sub": "2.034 submissões no painel, 1.802 aprovadas e 232 reprovadas", "como_compara": "Na terceira semana, Bebidas com Moça soma 711 lovers e 2.034 conteúdos enviados, o equivalente a R$ 477 mil em mídia. Com a curadoria em dia, a aprovação ficou em 88,6%, acima do Brigadeiro (79,2%) e da Mesa Posta (78,2%); o Meu Jeito Único fechou em 95,8%.", "criadoras": 1021, "conteudos_enviados": 2034}, "desafios": [{"nome": "Meu jeito único com Moça", "curto": "Meu jeito", "status": "Encerrado", "total": 13149, "validas": 12598, "penalizadas": 551}, {"nome": "Mesa Posta com Moça", "curto": "Mesa Posta", "status": "Encerrado", "total": 6033, "validas": 4716, "penalizadas": 1317}, {"nome": "Mês do Brigadeiro", "curto": "Brigadeiro", "status": "Encerrado", "total": 5812, "validas": 4603, "penalizadas": 1209}, {"nome": "Bebidas com Moça", "curto": "Bebidas", "status": "Ativo", "total": 2034, "validas": 1802, "penalizadas": 232}], "barras_sub": "Conteúdos enviados, aprovados e reprovados por desafio, segundo o painel da comunidade", "genero": [{"k": "Feminino", "v": 36346}, {"k": "Masculino", "v": 1241}, {"k": "Prefiro não informar", "v": 33}, {"k": "Não-binário", "v": 17}, {"k": "Outro", "v": 12}], "empreendedor": {"nao": 29804, "sim": 7845}, "estados": [{"k": "SP", "v": 12296}, {"k": "RJ", "v": 4350}, {"k": "MG", "v": 3253}, {"k": "BA", "v": 2661}], "faixas": [{"k": "25-34", "v": 17406}, {"k": "35-44", "v": 9150}, {"k": "18-24", "v": 6512}, {"k": "45-54", "v": 3489}, {"k": "55+", "v": 1092}], "idades_sub": "concentração forte entre 25 e 44 anos, 70,5% da base", "data_leitura": "22/10/2026", "data_leitura_dash_completo": "21/10/2026 10:24"}, "comparativo": {"titulo": "Terceira semana contra o Brigadeiro", "sub": "Conteúdos enviados por dia, dias 15 a 19 de cada desafio", "labels": ["Dia 15", "Dia 16", "Dia 17", "Dia 18", "Dia 19"], "a": {"k": "Bebidas com Moça", "v": [86, 169, 103, 102, 143]}, "b": {"k": "Mês do Brigadeiro", "v": [95, 129, 119, 119, 91]}, "saldo": [{"k": "conteúdos enviados", "d": 9.0}, {"k": "aprovados", "d": 32.7}, {"k": "lovers novas", "d": 9.4}], "nota": "Comparação dos dias já fechados no painel (dias 15 a 19). A leitura de 21/10 às 10h24 ainda traz os dias 20 e 21 de outubro parciais (11 e 0 envios), por isso eles ficaram de fora dos dois lados; os aprovados dos dias mais recentes ainda podem mudar com a curadoria.", "semana": {"titulo": "Totais dos dias 15 a 19", "sub": "Bebidas com Moça contra Mês do Brigadeiro, mesmos dias de desafio", "grupos": [{"label": "Conteúdos enviados", "a": 603, "b": 553}, {"label": "Aprovados", "a": 601, "b": 453}, {"label": "Lovers novas", "a": 209, "b": 191}]}}, "feed": {"hashtag": "#BebidasComMoça", "subtitulo": "Vídeos do desafio · olhar quali da curadoria", "selo": "Desafio de outubro", "descricao": "Os números do desafio vêm da plataforma Jornada Doce e do painel da comunidade. Os vídeos ao lado são a seleção de monitoramento: os que mais puxaram conversa até agora. Clique em qualquer um para assistir aqui mesmo.", "titulo": "O que a comunidade<br><em>está publicando</em>", "figuras": [{"v": "2.034", "k": "conteúdos enviados"}, {"v": "1.802", "k": "aprovados"}, {"v": "711", "k": "lovers no desafio"}, {"v": "R$ 477 mil", "k": "mídia equivalente"}], "mural_titulo": "Os vídeos que mais puxaram conversa", "mural_sub": "24 vídeos da semana · clique para assistir", "nota": "Monitoramento de #BebidasComMoça no Instagram, atualizado em 29/10/2026 às 11h13: de 22 a 28/10 foram 608 conteúdos de 357 perfis, 10.287 comentários e 31.017 curtidas. Os três destaques e os oito reels mais comentados estão nesta página. O monitoramento serve para identificar o que mais engajou e não substitui os números oficiais da plataforma. As marcações ★ ficam salvas neste navegador e o botão Copiar ★ marcados leva a lista para o e-mail ou a ata.", "reels": [{"id": "De-OpcwJwgO", "url": "https://www.instagram.com/p/De-OpcwJwgO/", "perfil": "@doce_vidadocelar", "com": 501, "eng": 978, "vis": 15034}, {"id": "De8GpCiuuHV", "url": "https://www.instagram.com/p/De8GpCiuuHV/", "perfil": "@casinha.dasarah", "com": 362, "eng": 715, "vis": 2730}, {"id": "De2t7ejR8J5", "url": "https://www.instagram.com/p/De2t7ejR8J5/", "perfil": "@patyy.ssouza", "com": 229, "eng": 391, "vis": 2114}, {"id": "DfAYL6xBvSi", "url": "https://www.instagram.com/p/DfAYL6xBvSi/", "perfil": "@lar.da_yna", "com": 184, "eng": 310, "vis": 1323}, {"id": "DfA0GPUSbio", "url": "https://www.instagram.com/p/DfA0GPUSbio/", "perfil": "@vanessa.aguimaraes", "com": 178, "eng": 301, "vis": 8534}, {"id": "De4XgibRjxe", "url": "https://www.instagram.com/p/De4XgibRjxe/", "perfil": "@natyremacedo", "com": 122, "eng": 125, "vis": 540}, {"id": "DfCeORHxJNx", "url": "https://www.instagram.com/p/DfCeORHxJNx/", "perfil": "@robertarenebr", "com": 120, "eng": 374, "vis": 641}, {"id": "DfAx6PpxSlw", "url": "https://www.instagram.com/p/DfAx6PpxSlw/", "perfil": "@meyrereis._", "com": 111, "eng": 289, "vis": 2038}, {"id": "DfA76Y0KYBq", "url": "https://www.instagram.com/p/DfA76Y0KYBq/", "perfil": "@itsmaydiaryy", "com": 110, "eng": 113, "vis": 2172}, {"id": "Dez1rLUvV_E", "url": "https://www.instagram.com/p/Dez1rLUvV_E/", "perfil": "@ape.da.cel", "com": 107, "eng": 171, "vis": 835}, {"id": "De1h-rfPvWB", "url": "https://www.instagram.com/p/De1h-rfPvWB/", "perfil": "@gabilops", "com": 103, "eng": 470, "vis": 1618}, {"id": "De9swPOiHyZ", "url": "https://www.instagram.com/p/De9swPOiHyZ/", "perfil": "@isadora_deoli", "com": 102, "eng": 105, "vis": 2000}, {"id": "DezIxGioGP1", "url": "https://www.instagram.com/p/DezIxGioGP1/", "perfil": "@cantinho_da_gley", "com": 98, "eng": 285, "vis": 541}, {"id": "DfAwUbuyYC7", "url": "https://www.instagram.com/p/DfAwUbuyYC7/", "perfil": "@bychrisoficial_", "com": 96, "eng": 317, "vis": 1901}, {"id": "De0NxJTuS3o", "url": "https://www.instagram.com/p/De0NxJTuS3o/", "perfil": "@alinebonfantesm", "com": 96, "eng": 184, "vis": 891}, {"id": "De2nKVURb1h", "url": "https://www.instagram.com/p/De2nKVURb1h/", "perfil": "@sand.mgs", "com": 95, "eng": 169, "vis": 516}, {"id": "De1dl-thg1E", "url": "https://www.instagram.com/p/De1dl-thg1E/", "perfil": "@luala_", "com": 94, "eng": 158, "vis": 797}, {"id": "DfCsqXzxUUA", "url": "https://www.instagram.com/p/DfCsqXzxUUA/", "perfil": "@luisedanuse", "com": 88, "eng": 296, "vis": 1942}, {"id": "DfDL_LkyoVS", "url": "https://www.instagram.com/p/DfDL_LkyoVS/", "perfil": "@jamillesfsilva", "com": 86, "eng": 204, "vis": 1074}, {"id": "DeyTVYGt0wl", "url": "https://www.instagram.com/p/DeyTVYGt0wl/", "perfil": "@lardasuelen_", "com": 78, "eng": 850, "vis": 30920}, {"id": "DfA2nK_h-XR", "url": "https://www.instagram.com/p/DfA2nK_h-XR/", "perfil": "@jssic_jessica", "com": 78, "eng": 219, "vis": 1869}, {"id": "De2eks6vlW3", "url": "https://www.instagram.com/p/De2eks6vlW3/", "perfil": "@motta_luanamotta", "com": 73, "eng": 175, "vis": 908}, {"id": "DfAr9rTBtex", "url": "https://www.instagram.com/p/DfAr9rTBtex/", "perfil": "@majugoncalvs", "com": 70, "eng": 73, "vis": 4086}, {"id": "De74NZkMvNQ", "url": "https://www.instagram.com/p/De74NZkMvNQ/", "perfil": "@mimosebeleza.br", "com": 69, "eng": 159, "vis": 455}]}, "kits": {"leitura": "29/10/2026", "enviados": 4733, "total": 4733, "tratativa": 480, "acompanhamento": 55, "funil": [["Devolução e transferência", 425], ["Contatadas ativamente", 408], ["Endereço validado para reenvio", 342]], "casos": [{"k": "Devolução", "det": "reenvio com novo código de rastreio", "total": 203, "seg": [["Confirmou o endereço", 91, "#002D72"], ["Trocou o endereço", 65, "#5B7BC0"], ["Sem resposta", 47, "#C9861A"]]}, {"k": "Em transferência", "det": "pedido de endereço alternativo", "total": 222, "seg": [["Alterou o endereço", 172, "#002D72"], ["Confirmou o endereço", 14, "#5B7BC0"], ["Aguardando resposta", 19, "#C9861A"], ["Sem contato válido", 17, "#C9CED8"]]}, {"k": "Em acompanhamento", "det": "casos individuais com a transportadora", "total": 55, "seg": [["Em acompanhamento pelo SAC", 55, "#5B7BC0"]]}], "casos2": {"transferencia": {"k": "Transferência", "det": "181 de 215 já responderam (84%)", "total": 215, "resp": 181, "seg": [["Mandaram endereço novo", 165, "#002D72"], ["Confirmaram o mesmo endereço", 16, "#5B7BC0"], ["Ainda sem resposta", 34, "#C9861A"]]}, "devolucao": {"k": "Devolução", "det": "197 de 260 já responderam (76%)", "total": 260, "resp": 197, "seg": [["Confirmaram o endereço", 96, "#002D72"], ["Alteraram o endereço", 101, "#5B7BC0"], ["Ainda sem resposta", 63, "#C9861A"]]}, "nao_entregue": {"k": "Não entregue", "det": "73 de 128 já têm uma resposta", "total": 128, "aberto": 55, "seg": [["Solucionados", 5, "#2E8B57"], ["Encaminhados (41 transferência, 27 devolução)", 68, "#5B7BC0"], ["Ainda em aberto", 55, "#C9861A"]]}, "nota": "<b>35 Lovers</b> aparecem nas duas planilhas (devolução e transferência). Os 68 não entregues encaminhados seguiram para essas duas frentes."}, "proximo": "os endereços recebidos passam pela checagem antes do reenvio, então a data de envio só deve ser comunicada às Lovers depois dela. Quem ainda não respondeu segue no contato ativo."}, "contatos_ativos": {"periodo": "22 a 28/10/2026", "enviados": 240, "ativos": 115, "frentes": [["Novo endereço · transferência", 54], ["1º contato · devolução", 23], ["Atualização · não entregue", 21], ["Follow-up · devolução", 16]]}, "premiacoes": {"prazo": 30, "nota": "prazo de 30 dias após a apuração", "meses": [{"mes": "Agosto", "premio": "Kit Mesa Posta", "entregues": 10, "total": 10, "dias": 15, "status": "100% entregue", "res": "10/10 entregues", "det": "concluído no dia 15"}, {"mes": "Setembro", "premio": "Mini Cocotte e porta-utensílios", "entregues": 9, "total": 10, "dias": 14, "status": "dentro do prazo", "res": "9/10 recebidos", "det": "1 em trânsito · dia 14 de 30 · prazo 15/11", "parcial": true}]}, "vouchers": {"titulo": "Vale-compras Amazon de agosto", "nt": "vale-compras de R$ 100 · 11º ao 70º", "previsto": "2026-09-15", "leitura": "2026-10-29", "contatadas": 60, "seg": [["Utilizaram", 4, "#002D72"], ["Não conseguiram utilizar", 40, "#C9861A"], ["Sem retorno", 16, "#C9CED8"]], "pedido": "Depois do e-mail “Resolvido!” de 28/10, 9 Lovers conseguiram usar o vale-compras, mas 11 seguem sem conseguir. Precisamos do direcionamento da BU para esses códigos e do que pode ser comunicado às Lovers.", "acao": "o time acompanha as 19 Lovers que ainda não responderam ao e-mail e segue respondendo cada caso.", "resolvido": {"titulo": "Depois do e-mail “Resolvido!” de 28/10 (39 Lovers)", "enviados": 39, "seg": [["Conseguiram usar", 9, "#2E8B57"], ["Não conseguiram", 11, "#C9861A"], ["Ainda não responderam", 19, "#C9CED8"]]}}, "vozes": [{"texto": "Estou muito feliz em fazer parte da comunidade, todos os meses fico ansiosa para preparar as receitas, independente do resultado é algo diferente na minha rotina.", "perfil": "@marysil.carvalho", "fonte": "Instagram"}, {"texto": "Estou me divertindo muito participar de cada desafio.", "perfil": "@com.amor.rebran", "fonte": "Instagram"}, {"texto": "Bom dia pra melhor equipe de atendimento que já conheci! Recebi a caixa mais que perfeita!", "perfil": "Lover", "fonte": "e-mail ao SAC"}, {"texto": "Fico muito feliz e realizada de estar sendo convidada para um encontro Moça Lovers.", "perfil": "Lover", "fonte": "e-mail ao SAC"}], "recebidos": [{"url": "https://www.instagram.com/reel/De-PGesRsmL/", "perfil": "Lover da comunidade"}], "rodape_kits": "Kits: planilhas de transferência, devolução e não entregues lidas em 29/10/2026; vale-compras: apuração do time e retorno do e-mail “Resolvido!” de 28/10, lidos em 29/10/2026; contatos ativos contados na caixa do SAC de 22 a 28/10/2026 (conversas iniciadas pelo time).", "tempo_alvo_min": 15, "roteiro": {"pauta": [{"k": "A comunidade e os prêmios", "t": "1 min"}, {"k": "Kits: endereços em checagem", "t": "2 min"}, {"k": "Vale-compras e a decisão", "t": "3 min"}, {"k": "Atendimento e canais", "t": "3 min"}, {"k": "Conteúdos das Lovers", "t": "3 min"}], "tempos": {"com": "1 min · painel da plataforma", "kit": "2 min", "ativos": "1 min", "top": "1 min · conteúdos publicados de 22 a 28/10", "prem": "30 s", "vou": "3 min · o tema que pede decisão", "at": "1 min 30 s · 22 a 28/10", "wa": "1 min", "mail": "1 min", "cont": "2 min", "canais": "1 min"}, "ativos": "O SAC não só respondeu: quase metade dos e-mails enviados na semana foram conversas puxadas pelo próprio time, e as Lovers responderam 232 vezes aos disparos. A frente com mais contatos foi o novo endereço dos kits em transferência.", "decisao": "Um direcionamento da BU para os vale-compras que seguem sem funcionar e o que podemos dizer às Lovers.", "top": "Ranking por perfil no monitoramento de #BebidasComMoça (atualizado em 29/10 às 11h13): soma de curtidas e comentários de todos os conteúdos que cada Lover publicou na semana.", "comunidade": "R$ 6,36 mi conquistados desde o início do programa, R$ 719 mil só no desafio de outubro, sem compra de mídia.", "com_meta": "6,3x a meta de 10 mil no ano", "com_envios": "-49,8% contra o Brigadeiro na 4ª semana (dias 22 a 26)", "atendimento_dias": "WhatsApp recebidas e e-mails espontâneos por dia; a sexta 16 foi o pico nos dois canais", "temas": "Assuntos dos 70 e-mails espontâneos (as respostas aos disparos do próprio SAC ficaram fora). Cada tema já tem uma ação definida, indicada ao lado do nome."}, "top3": [{"perfil": "@biancacamilee", "posts": 2, "com": 16, "cur": 2114, "eng": 2130, "vis": 38251, "url": "https://www.instagram.com/p/De-MDRiJWlk/", "fmt": "Reels"}, {"perfil": "@renatasonho1", "posts": 3, "com": 42, "cur": 1949, "eng": 1991, "vis": 9760, "url": "https://www.instagram.com/p/DfAyOHAPous/", "fmt": "Reels"}, {"perfil": "@doce_vidadocelar", "posts": 1, "com": 501, "cur": 477, "eng": 978, "vis": 15034, "url": "https://www.instagram.com/p/De-OpcwJwgO/", "fmt": "Reels"}]}</script>
 
 <script>
 (function(){
@@ -829,224 +1151,198 @@ function n2(v){return Number(v).toLocaleString('pt-BR')}
 
 /* ---------- Cabeçalho e rodapé ---------- */
 $('subtitulo').textContent=D.subtitulo;
-$('rodape').innerHTML=esc(D.rodape_sac)+'<br>'+esc(D.rodape_jd);
+$('rodape').innerHTML=esc(D.rodape_jd)+'<br>'+esc(D.rodape_kits)+'<br>'+esc(D.rodape_sac);
 
-/* ---------- Aba 1 · Overview Semanal (SAC) ---------- */
-var S=D.sac;
-selos($('kpis-sac'),[
- {v:n(S.total),k:'Mensagens recebidas',sub:S.janela_texto},
- {v:n(S.remetentes),k:'Remetentes únicos',sub:S.por_pessoa_texto},
- {v:S.media_texto,k:'Média diária',sub:'sobre os 7 dias do ciclo'},
- {v:S.pico_pct+'%',k:'Concentração no pico',sub:S.pico_texto,pct:S.pico_pct,cor:'#D4AF37'}]);
-var W=D.wa;
+/* ---------- v8 · roteiro único do fórum ---------- */
+function pilha(box,leg,seg,tot,pctBase){
+ box.innerHTML=seg.map(function(x){return '<i style="width:'+(x[1]/tot*100)+'%;background:'+x[2]+'" title="'+esc(x[0])+': '+n(x[1])+'"></i>'}).join('');
+ if(leg)leg.innerHTML=seg.map(function(x){return '<span><i style="background:'+x[2]+'"></i>'+esc(x[0])+'<b>'+n(x[1])+'</b><em>'+p1(x[1]/(pctBase||tot)*100)+'</em></span>'}).join('');
+}
+function figs(box,l){box.innerHTML=l.map(function(f){return '<div><b>'+esc(f.v)+'</b><span>'+esc(f.k)+'</span>'+(f.em?'<em>'+esc(f.em)+'</em>':'')+'</div>'}).join('')}
+var S=D.sac,W=D.wa,J=D.jd,A=J.desafio_ativo,K=D.kits,P=D.premiacoes,V=D.vouchers,R8=D.roteiro;
+
+/* abertura */
 $('abre-olho').textContent=D.abertura.olho;
 $('manchete').innerHTML=D.abertura.manchete;
-$('manchete-sub').textContent=D.abertura.sub;
-$('abre-figs').innerHTML=D.abertura.figuras.map(function(f){
- return '<div><b>'+esc(f.v)+'</b><span>'+esc(f.k)+'</span>'+(f.em?'<em>'+esc(f.em)+'</em>':'')+'</div>'}).join('');
-$('cap1').textContent=D.abertura.cap1;$('cap2').textContent=D.abertura.cap2;$('cap3').textContent=D.abertura.cap3;
-$('mail-note').textContent=S.janela_texto;
-if(W){
- $('wa-note').textContent=W.janela_texto;
- selos($('wa-minis'),[
-  {v:n(W.recebidas),k:'Mensagens recebidas',sub:W.recebidas_sub},
-  {v:n(W.enviadas),k:'Mensagens enviadas',sub:'respostas do time no período'},
-  {v:n(W.chamados_fechados),k:'Chamados encerrados',sub:W.chamados_sub,pct:95.4,cor:'#2E8B57'},
-  {v:n(W.contatos),k:'Contatos atendidos',sub:W.contatos_sub},
-  {v:W.primeira_resposta,k:'1ª resposta, em média',sub:W.primeira_sub}]);
- $('wa-dias-sub').textContent=W.dias_sub;
- bars($('wa-dias'),{base:196,top:34,x0:70,x1:1130,labelY:226,bw:50,gap:9,groups:W.dias.map(function(d){return {label:d.rotulo,vals:[
-  {v:d.rec,color:'#25936B',title:d.rotulo+' · recebidas: '+n(d.rec)},
-  {v:d.env,color:'#9ED8BC',title:d.rotulo+' · enviadas: '+n(d.env)}]}})});
-}
-var TC=[['#002D72','link'],['#2E8B57','box'],['#5B7BC0','grid'],['#D4AF37','trophy'],['#C2185B','shield'],['#C0392B','userminus']];
-var ICON_BY_CAT={'Redes sociais':'link','Kits de boas-vindas':'box','Plataforma, regras e cadastro':'grid','Premiação, ranking e colheradas':'trophy','Curadoria':'shield','Saída voluntária':'userminus'};
-var cats=S.categorias.slice().sort(function(a,b){return b.n-a.n});var cmax=cats[0].n;
-$('topics-note').textContent=cats.length+' assuntos cobrem toda a caixa';
-$('topics').innerHTML=cats.map(function(c,i){var col=TC[i][0],ic=ICON_BY_CAT[c.nome]||TC[i][1];return '<div class="topic"><span class="rank">'+(i+1)+'</span><span class="ico" style="background:'+col+'14;color:'+col+'">'+svgI(ic,16,2.2)+'</span><div class="body"><div class="names"><span class="nome">'+esc(c.nome)+'</span><span class="det">'+esc(c.det)+'</span></div><div class="bar"><i style="width:'+(c.n/cmax*100)+'%;background:'+col+'"></i></div></div><div class="qtd"><b>'+c.n+'</b><span>'+p1(c.n/S.total*100)+'</span></div></div>'}).join('');
-$('dias-sub').textContent=S.janela_grafico;
-bars($('dias'),{base:196,top:34,x0:54,x1:548,labelY:226,bw:40,groups:S.dias.map(function(d){return {label:d.rotulo,vals:[{v:d.n,color:'#002D72',title:d.rotulo+' · '+d.n+' mensagens'}]}})});
-var CS=D.comparativo_sac;
-if(CS){
- $('cmp-tit').textContent=CS.titulo;$('cmp-sub').textContent=CS.sub;
- $('cmp-c1').textContent=CS.col_atual;$('cmp-c2').textContent=CS.col_anterior;
- $('cmp-nota').textContent=CS.nota||'';
- $('tab-cmp').querySelector('tbody').innerHTML=CS.linhas.map(function(l){
-  var d=l.d,pos=d>=0,neutro=(d===0),bom=(l.bom===false)?!pos:pos;
-  var cor=(neutro||l.bom==='n')?'var(--dimmer)':(bom?'#2E8B57':'#C0392B');
-  var txt=neutro?'0,0':((pos?'+':'')+String(d).replace('.',','));
-  return '<tr><td class="nome">'+esc(l.k)+(l.sub?' <span style="color:var(--dimmer);font-size:12px;font-weight:400">'+esc(l.sub)+'</span>':'')+
-   '</td><td>'+esc(l.a)+'</td><td style="color:var(--dimmer)">'+esc(l.b)+
-   '</td><td style="color:'+cor+';font-weight:600">'+txt+' '+esc(l.un)+'</td></tr>'}).join('');
-}
-$('leitura').textContent=S.leitura;
+figs($('abre-figs'),D.abertura.figuras);
+$('pauta').innerHTML=R8.pauta.map(function(p,i){return '<li><b>'+String(i+1).padStart(2,'0')+'</b><span>'+esc(p.k)+'</span><em>'+esc(p.t)+'</em></li>'}).join('');
+$('abre-dec').textContent=R8.decisao;
 
-/* ---------- Aba 2 · Dashboard Jornada Doce ---------- */
-var J=D.jd;
-$('jd-olho').textContent=D.abertura_jd.olho;
-$('jd-manchete').innerHTML=(J.creators_cadastrados>=60000&&D.abertura_jd.manchete60)?D.abertura_jd.manchete60:D.abertura_jd.manchete;
-$('jd-manchete-sub').textContent=D.abertura_jd.sub;
-$('jd-abre-figs').innerHTML=D.abertura_jd.figuras.map(function(f){
- return '<div><b>'+esc(f.v)+'</b><span>'+esc(f.k)+'</span>'+(f.em?'<em>'+esc(f.em)+'</em>':'')+'</div>'}).join('');
-selos($('kpis-jd'),[
- {v:n(J.creators_cadastrados),k:'Lovers cadastradas',sub:'base total da plataforma',tag:'6x a meta',g:true},
- {v:n(J.creators_aprovados),k:'Aprovadas na curadoria',sub:p1(J.creators_aprovados/J.creators_cadastrados*100)+' da base',pct:J.creators_aprovados/J.creators_cadastrados*100,cor:'#2E8B57'},
- {v:J.colheradas_curto||'5,98 mi',k:'Colheradas acumuladas',sub:J.colheradas_mes_texto},
- {v:J.alcance_real,k:'Alcance potencial',sub:J.alcance_sub},
- {v:J.midia_equivalente,k:'Mídia conquistada',sub:'EMV estimado do conteúdo'}]);
-var SC={'Aprovados':'#2E8B57','Pendentes':'#8C6D1F','Incompletos':'#C9CED8','Usuários participativos':'#C2185B','Sob revisão':'#E0A526','Aguardando aprovação':'#D4AF37','Rejeitados':'#C0392B'};
-var st=J.status.map(function(s){return {k:s.k,v:s.v,color:SC[s.k]||'#71717A'}});
-$('creators-sub').textContent=n(J.creators_cadastrados)+' cadastros na base';
-donut($('d-creators'),st,J.creators_cadastrados);legend($('l-creators'),st,J.creators_cadastrados);
-$('creators-pct').textContent=p1(J.creators_aprovados/J.creators_cadastrados*100);
-$('colheradas-sub').textContent=n(J.colheradas_acumuladas)+' colheradas acumuladas';
-bars($('colheradas'),{base:196,top:36,x0:74,x1:548,labelY:226,bw:44,rot:false,groups:J.colheradas_por_mes.map(function(m){return {label:m.mes,vals:[{v:m.v,color:'#D4AF37',title:m.mes+' · '+n(m.v)+' colheradas'}]}})});
-var A=J.desafio_ativo;
-$('desafio-nome').textContent=A.nome;$('desafio-note').textContent=A.nota;$('desafio-periodo').textContent=A.periodo;
-selos($('desafio-minis'),[
- {v:n(A.criadoras),k:'Lovers no desafio',sub:'pessoas diferentes'},
- {v:n(A.conteudos_enviados),k:'Conteúdos enviados',sub:'submetidos na plataforma'},
- {v:n(A.validas),k:'Aprovados na curadoria',sub:'passaram na checagem',pct:A.total?A.validas/A.total*100:100,cor:'#2E8B57'},
- {v:n(A.penalizadas),k:'Reprovados',sub:'barrados na curadoria'},
- {v:D.jd.midia_desafio||'R$ 152 mil',k:'Mídia equivalente',sub:'gerada na primeira semana'},
- {v:n(A.colheradas_mes),k:A.colheradas_rotulo,sub:'acumuladas no mês'}]);
-var CP=D.comparativo;
-if(CP){
- $('comp-tit').textContent=CP.titulo;
- $('comp-sub').textContent=CP.sub;
- bolhas($('comp'),{labels:CP.labels,x0:150,x1:1060,rMax:34,y0:60,dy:104,
-  series:[{k:CP.a.k,c:'#002D72',v:CP.a.v},{k:CP.b.k,c:'#B8912A',v:CP.b.v}]});
- $('comp-saldo').innerHTML=CP.saldo.map(function(x){
-  var pos=x.d>=0;
-  return '<span style="display:inline-flex;align-items:baseline;gap:9px;margin-right:34px">'+
-   '<b style="font-weight:700;font-size:21px;color:'+(pos?'#2E8B57':'#C0392B')+'">'+(pos?'+':'')+String(x.d).replace('.',',')+'%</b>'+
-   '<span style="font-size:12px;color:var(--dimmer)">'+esc(x.k)+'</span></span>'}).join('')+
-  '<p style="font-size:12.5px;color:var(--dim);line-height:1.6;margin-top:12px;max-width:92ch">'+esc(CP.nota)+'</p>';
- if(CP.semana){
-  $('comp2-tit').textContent=CP.semana.titulo;
-  $('comp2-sub').textContent=CP.semana.sub;
-  bars($('comp2'),{base:236,top:40,x0:96,x1:1118,labelY:268,bw:84,gap:16,groups:CP.semana.grupos.map(function(g){return {label:g.label,vals:[
-   {v:g.a,color:'#002D72',title:CP.a.k+' \u00b7 '+g.label+': '+n(g.a)},
-   {v:g.b,color:'#B8912A',title:CP.b.k+' \u00b7 '+g.label+': '+n(g.b)}]}})});
-  $('comp2').insertAdjacentHTML('afterend','<div class="chart-legend" style="margin-top:10px"><span><i style="background:#002D72"></i>'+esc(CP.a.k)+'</span><span><i style="background:#B8912A"></i>'+esc(CP.b.k)+'</span></div>');
- }
-}
-$('curadoria-sub').textContent=A.curadoria_sub;
-var vp=A.total?A.validas/A.total:1,Cc=2*Math.PI*70;
-$('d-curadoria').innerHTML='<circle cx="100" cy="100" r="70" fill="none" stroke="#EFECE4" stroke-width="26"/><circle cx="100" cy="100" r="70" fill="none" stroke="var(--mint)" stroke-width="26" stroke-dasharray="'+(vp*Cc)+' '+((1-vp)*Cc)+'" transform="rotate(-90 100 100)"/>';
-$('curadoria-pct').textContent=(vp===1?'100%':p1(vp*100));
-$('como-compara').textContent=A.como_compara;
-var all=J.desafios;
-$('tab-desafios').querySelector('tbody').innerHTML=all.map(function(d){var ativo=d.status==='Ativo',pv=d.total?d.validas/d.total*100:0,pp=d.total?d.penalizadas/d.total*100:0;
- return '<tr><td class="nome">'+esc(d.nome)+'</td><td>'+(ativo?'<span class="pill" style="font-size:11px;padding:4px 10px"><span class="dot"></span>Ativo</span>':'<span class="pill off" style="font-size:11px;padding:4px 10px">Encerrado</span>')+'</td><td>'+n(d.total)+'</td><td style="color:#2E8B57">'+n(d.validas)+' <span style="color:var(--dimmer);font-size:12px">'+(pv===100?'100%':p1(pv))+'</span></td><td style="color:'+(d.penalizadas>0?'#C0392B':'var(--dimmer)')+'">'+n(d.penalizadas)+(d.penalizadas>0?' <span style="color:var(--dimmer);font-size:12px">'+p1(pp)+'</span>':'')+'</td></tr>'}).join('');
-$('barras-sub').textContent=J.barras_sub;
-bars($('barras'),{base:226,top:36,x0:78,x1:1130,labelY:256,bw:56,gap:10,rot:false,groups:all.map(function(d){return {label:d.curto,vals:[
- {v:d.total,color:'#5B7BC0',title:d.curto+' · enviados: '+n(d.total)},
- {v:d.validas,color:'#2E8B57',title:d.curto+' · aprovados: '+n(d.validas)},
- {v:d.penalizadas,color:'#C0392B',title:d.curto+' · reprovados: '+n(d.penalizadas)}]}})});
-$('barras').insertAdjacentHTML('afterend','<div class="chart-legend" style="margin-top:12px"><span><i style="background:#5B7BC0"></i>Enviados</span><span><i style="background:#2E8B57"></i>Aprovados</span><span><i style="background:#C0392B"></i>Reprovados</span></div>');
-var GC={'Feminino':'#D4AF37','Masculino':'#C9CED8','Prefiro não informar':'#8C6D1F','Não-binário':'#2E8B57','Outro':'#E0A526'};
-var ge=J.genero.map(function(g){return {k:g.k,v:g.v,color:GC[g.k]||'#71717A'}}),gt=ge.reduce(function(a,g){return a+g.v},0);
-$('genero-sub').textContent=n(gt)+' respostas';donut($('d-genero'),ge,gt);legend($('l-genero'),ge,gt);$('genero-pct').textContent=p1(ge[0].v/gt*100);
-var em=[{k:'Não empreendedores',v:J.empreendedor.nao,color:'#002D72'},{k:'Empreendedores',v:J.empreendedor.sim,color:'#D4AF37'}],et=em[0].v+em[1].v;
-$('emp-sub').textContent=n(et)+' respostas';donut($('d-emp'),em,et);legend($('l-emp'),em,et);$('emp-pct').textContent=p1(em[1].v/et*100);
-rankRows($('ufs'),J.estados,'#002D72');
-$('idades-sub').textContent=J.idades_sub;rankRows($('idades'),J.faixas,'#5B7BC0');
+/* 01 comunidade */
+$('com-nt').textContent=R8.tempos.com;
+selos($('com-selos'),[
+ {v:n(J.creators_cadastrados),k:'Lovers cadastradas',sub:R8.com_meta,pct:100,cor:'#D4AF37',g:true},
+ {v:n(A.criadoras),k:'Lovers no '+A.nome,sub:A.nota},
+ {v:n(A.total),k:'Conteúdos enviados',sub:R8.com_envios},
+ {v:n(A.validas),k:'Aprovados na curadoria',sub:p1(A.validas/A.total*100)+' dos enviados',pct:A.validas/A.total*100,cor:'#2E8B57'}]);
+$('com-n').innerHTML='<b>Mídia conquistada.</b> '+esc(R8.comunidade);
+
+/* 02 kits */
+var KC=K.casos2;
+$('kit-nt').textContent=R8.tempos.kit+' · leitura de '+K.leitura;
+var cas=KC.transferencia.total+KC.devolucao.total,resp=KC.transferencia.resp+KC.devolucao.resp,semr=cas-resp;
+figs($('kit-figs'),[{v:n(K.enviados),k:'kits expedidos',em:'100% da primeira fase'},
+ {v:n(resp),k:'endereços em checagem',em:p1(resp/cas*100)+' dos '+n(cas)+' casos já responderam'},
+ {v:n(semr+KC.nao_entregue.aberto),k:'ainda sem resposta',em:n(semr)+' em devolução e transferência + '+n(KC.nao_entregue.aberto)+' não entregues'}]);
+var LST=[KC.transferencia,KC.devolucao,KC.nao_entregue];
+$('kit-casos').innerHTML=LST.map(function(c,i){return '<div class="caso"><div class="card-h">'+esc(c.k)+'</div><div class="card-s">'+esc(c.det)+'</div><span class="tot">'+n(c.total)+'<small>casos</small></span><div class="pilha" id="cp'+i+'"></div><div class="pleg" id="cl'+i+'"></div></div>'}).join('');
+LST.forEach(function(c,i){pilha($('cp'+i),$('cl'+i),c.seg,c.total)});
+$('kit-nota').innerHTML=KC.nota;
+$('kit-n').innerHTML='<b>Próximo passo.</b> '+esc(K.proximo);
+
+/* 03 busca ativa */
+var CA=D.contatos_ativos;$('ativos-nt').textContent=R8.tempos.ativos+' · '+CA.periodo;
+$('ativos-sub').textContent='cerca de '+n(CA.enviados)+' e-mails para Lovers no período';
+pilha($('ativos-pilha'),$('ativos-leg'),[['Iniciados pelo time',CA.ativos,'#002D72'],['Respostas a contatos recebidos',CA.enviados-CA.ativos,'#C9D3E6']],CA.enviados);
+rankRows($('ativos-frentes'),CA.frentes.map(function(x){return {k:x[0],v:x[1]}}),'#002D72');
+[].forEach.call($('ativos-frentes').querySelectorAll('.rank-row .k'),function(k){k.style.width='210px'});
+$('ativos-n').textContent=R8.ativos;
+
+/* 04 prêmios físicos */
+$('prem-nt').textContent=R8.tempos.prem+' · '+P.nota;
+$('prazos').innerHTML=P.meses.map(function(m){return '<div class="prazo"><div class="mes"><b>'+esc(m.mes)+'</b><span>'+esc(m.premio)+'</span><br><span class="selo-st">'+esc(m.status)+'</span></div>'+
+ '<div class="trilho" title="'+esc(m.mes)+': dia '+m.dias+' de '+P.prazo+'"><i class="'+(m.parcial?'parcial':'')+'" style="width:'+(m.dias/P.prazo*100)+'%"></i></div>'+
+ '<div class="res"><b>'+esc(m.res)+'</b><span>'+esc(m.det)+'</span></div></div>'}).join('');
+$('eixo-d').innerHTML='<div></div><div>'+[0,10,20,30].map(function(d){return '<span style="left:'+(d/P.prazo*100)+'%">'+(d===P.prazo?'prazo · '+d+' dias':d+(d===0?' dias':''))+'</span>'}).join('')+'</div><div></div>';
+
+/* 05 vale-compras */
+$('vou-tit').textContent=V.titulo;$('vou-nt').textContent=R8.tempos.vou+' · '+V.nt;
+selos($('vou-selo'),[{v:n(V.contatadas),small:'de '+n(V.contatadas),k:'Lovers contatadas',tag:'100% contatadas',pct:100,cor:'#002D72',g:true}]);
+function dt(t){var a=t.split('-');return new Date(+a[0],+a[1]-1,+a[2])}
+var d0=dt(V.previsto),d1=dt(V.leitura),tot=Math.round((d1-d0)/864e5),d30=new Date(d0.getTime()+30*864e5);
+function br(d){return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')}
+$('vou-tl').innerHTML='<div class="mk" style="left:0"><b>'+br(d0)+'</b><span>data prevista</span></div>'+
+ '<div class="mk" style="left:'+(30/tot*100)+'%"><b>'+br(d30)+'</b><span>+30 dias</span></div>'+
+ '<div class="mk fim" style="left:100%"><b>'+br(d1)+'</b><span>hoje</span></div>'+
+ '<div class="tr"><i style="width:100%"></i></div><div class="dias"><b>'+tot+' dias</b><span>desde a data prevista</span></div>';
+pilha($('vou-pilha'),$('vou-leg'),V.seg,V.contatadas);
+$('vou2-t').textContent=V.resolvido.titulo;pilha($('vou2-pilha'),$('vou2-leg'),V.resolvido.seg,V.resolvido.enviados);
+$('vou-ask').textContent=V.pedido;$('vou-act').innerHTML='<b>Próximo passo.</b> '+esc(V.acao);
+
+/* 07 atendimento: waffle */
+$('at-nt').textContent=R8.tempos.at+' · 22 a 28/10';
+(function(){var apr=J.creators_aprovados,quem=(S.remetentes||0)+((W&&W.contatos)||0),pc=quem/apr*100,ps=100-pc;
+ var sv='<svg viewBox="0 0 230 230" role="img" aria-label="'+p1(ps)+' sem contato com o atendimento">',cel=21,gap=2;
+ for(var i=0;i<100;i++){var r=Math.floor(i/10),c=i%10;sv+='<rect x="'+c*(cel+gap)+'" y="'+r*(cel+gap)+'" width="'+cel+'" height="'+cel+'" rx="4" fill="#EBD58E"/>'}
+ var resto=pc,idx=99;
+ while(resto>0&&idx>=0){var f2=Math.min(1,resto),r2=Math.floor(idx/10),c2=idx%10;sv+='<rect x="'+c2*(cel+gap)+'" y="'+r2*(cel+gap)+'" width="'+(cel*f2)+'" height="'+cel+'" rx="'+(f2<1?2:4)+'" fill="#002D72"/>';resto-=1;idx--}
+ sv+='</svg>';
+ $('waffle').innerHTML=sv+'<div class="leg"><div><b>'+p1(ps)+'</b><span><i style="background:#EBD58E"></i>seguiram sem acionar o atendimento</span><em>de '+n(apr)+' Lovers aprovadas, na semana</em></div>'+
+  '<div class="m"><b>'+p1(pc)+'</b><span><i style="background:#002D72"></i>acionaram e-mail ou WhatsApp</span><em>'+n(quem)+' pessoas · '+n(S.remetentes)+' no e-mail e '+n(W.contatos)+' no WhatsApp</em></div></div>';
+})();
+figs($('at-figs'),[{v:n(W.recebidas+S.total),k:'contatos de Lovers',em:n(W.recebidas)+' mensagens no WhatsApp e '+n(S.total)+' e-mails espontâneos'},{v:n(W.chamados_fechados),k:'chamados encerrados',em:'no WhatsApp, dentro da semana'},{v:W.primeira_resposta,k:'primeira resposta',em:W.primeira_curta}]);
+
+/* 08 WhatsApp */
+$('wa-note').textContent=R8.tempos.wa+' · '+W.janela_texto;
+selos($('wa-minis'),[
+ {v:n(W.recebidas),k:'Mensagens recebidas',sub:W.recebidas_sub},
+ {v:n(W.enviadas),k:'Mensagens enviadas',sub:'respostas do time no período'},
+ {v:n(W.chamados_fechados),k:'Chamados encerrados',sub:W.chamados_sub,pct:W.chamados_fechados/(W.chamados_fechados+W.chamados_abertos)*100,cor:'#2E8B57'},
+ {v:n(W.contatos),k:'Contatos atendidos',sub:W.contatos_sub},
+ {v:W.primeira_resposta,k:'1ª resposta, em média',sub:W.primeira_sub}]);
+$('wa-dias-sub').textContent=W.dias_sub;
+bars($('wa-dias'),{base:196,top:34,x0:70,x1:1130,labelY:226,bw:50,gap:9,groups:W.dias.map(function(d){return {label:d.rotulo,vals:[
+ {v:d.rec,color:'#25936B',title:d.rotulo+' · recebidas: '+n(d.rec)},
+ {v:d.env,color:'#9ED8BC',title:d.rotulo+' · enviadas: '+n(d.env)}]}})});
+
+/* 08 e-mail */
+$('mail-note').textContent=R8.tempos.mail+' · '+S.janela_texto;
+selos($('kpis-mail'),[
+ {v:n(S.total),k:'E-mails espontâneos',sub:n(S.remetentes)+' Lovers; '+n(S.uma_vez)+' escreveram uma única vez'},
+ {v:n(S.respostas),k:'Respostas aos disparos',sub:n(S.respostas_remetentes)+' Lovers responderam aos e-mails do SAC'},
+ {v:n(S.total_part),k:'Total de participantes',sub:n(S.total_part_rem)+' Lovers escreveram na semana'},
+ {v:String(S.pico_pct).replace('.',',')+'%',k:'Concentração no pico',sub:S.pico_texto,pct:S.pico_pct,cor:'#D4AF37'}]);
+$('dias-sub').textContent=S.janela_grafico;
+bars($('dias'),{base:196,top:34,x0:70,x1:1130,labelY:226,bw:50,gap:9,groups:S.dias.map(function(d,i){var r=S.dias_resp[i];return {label:d.rotulo,vals:[
+ {v:d.n,color:'#002D72',title:d.rotulo+' · espontâneos: '+n(d.n)},
+ {v:r.n,color:'#D4AF37',title:d.rotulo+' · respostas a disparos: '+n(r.n)}]}})});
+
+/* 10 temas */
+var TC=[['#002D72','box'],['#2E8B57','trophy'],['#5B7BC0','grid'],['#D4AF37','link'],['#C2185B','shield'],['#C0392B','userminus']];
+var ICON_BY_CAT={'Redes sociais':'link','Kits e prêmios':'box','Kits de boas-vindas':'box','Plataforma, regras e cadastro':'grid','Premiação, ranking e colheradas':'trophy','Curadoria':'shield','Saída voluntária':'userminus'};
+var cats=S.categorias.slice().sort(function(a,b){return b.n-a.n}),cmax=cats[0].n||1;
+$('topics').innerHTML=cats.map(function(c,i){var col=TC[i][0],ic=ICON_BY_CAT[c.nome]||TC[i][1];return '<div class="topic"><span class="rank">'+(i+1)+'</span><span class="ico" style="background:'+col+'14;color:'+col+'">'+svgI(ic,16,2.2)+'</span><div class="body"><div class="names"><span class="nome">'+esc(c.nome)+'</span><span class="det">'+esc(c.det)+'</span>'+(c.acao?'<span class="acao">'+esc(c.acao)+'</span>':'')+'</div><div class="bar"><i style="width:'+(c.n/cmax*100)+'%;background:'+col+'"></i></div></div><div class="qtd"><b>'+c.n+'</b><span>'+p1(c.n/S.total*100)+'</span></div></div>'}).join('');
+$('temas-n').textContent=R8.temas;
+
+$('fim-logo').src=document.querySelector('.capa-logo').src;$('fim-dec').textContent=R8.decisao;
+$('wa-note').textContent=R8.tempos.canais+' · quinta 22 a quarta 28/10';
+$('cn-sub').textContent='mensagens recebidas no WhatsApp e e-mails espontâneos de Lovers por dia; terça 27 foi o dia mais cheio no WhatsApp';
+bars($('cn-dias'),{base:196,top:34,x0:70,x1:1130,labelY:226,bw:50,gap:9,groups:W.dias.map(function(d,i){return {label:d.rotulo,vals:[
+ {v:d.rec,color:'#25936B',title:d.rotulo+' · WhatsApp recebidas: '+n(d.rec)},
+ {v:S.dias[i].n,color:'#002D72',title:d.rotulo+' · e-mails espontâneos: '+n(S.dias[i].n)}]}})});
+/* 10 top 3 */
+var top=D.top3,mx=top[0].eng||1;
+$('top-nt').textContent=R8.tempos.top;
+$('podio').innerHTML=top.map(function(r,i){return '<li class="r3 r'+(i+1)+'"><span class="num">'+(i+1)+'</span><div class="id"><b>'+esc(r.perfil)+'</b><span class="mt">'+n(r.posts)+(r.posts>1?' conteúdos':' conteúdo')+' · '+n(r.cur)+' curtidas · '+n(r.com)+' comentários · '+n(r.vis)+' visualizações</span><span class="fio"><u style="--w:'+Math.max(6,Math.round(r.eng/mx*100))+'%"></u></span></div><div class="eng"><b>'+n(r.eng)+'</b><small>de engajamento</small><a href="'+esc(r.url)+'" target="_blank" rel="noopener">ver o melhor conteúdo ↗</a></div></li>'}).join('');
+$('top-n').textContent=R8.top;
+
+/* 12 comentários: vozes e quem recebeu */
+var VZ=(D.vozes||[]).slice(0,3);
+function iniV(v){return v.perfil&&v.perfil.charAt(0)==='@'?v.perfil.replace(/^@/,'').replace(/[^a-z]/gi,'').charAt(0).toUpperCase():'♥'}
+function bal(v,cl,i){return '<figure class="balao '+cl+'" style="--i:'+i+'"><p>'+esc(v.texto)+'</p><figcaption class="quem"><span class="av3">'+iniV(v)+'</span>'+esc(v.perfil)+'<span class="chip">'+esc(v.fonte||'')+'</span></figcaption></figure>'}
+$('vozes').innerHTML=VZ.length?bal(VZ[0],'g',0)+'<div class="pilha-b">'+VZ.slice(1).map(function(v,j){return bal(v,'s',j+1)}).join('')+'</div>':'';
+var RC=D.recebidos||[];
+$('recebidos').innerHTML=RC.length?'<span>Quem recebeu e postou:</span>'+RC.map(function(r){return '<a href="'+esc(r.url)+'" target="_blank" rel="noopener">'+esc(r.perfil)+' ↗</a>'}).join(''):'';
 
 /* ---------- Abas ---------- */
 
-/* ---------- Feed da Comunidade (v3) ---------- */
+/* ---------- Feed da Comunidade com curadoria ---------- */
+var guarda={get:function(k,d){try{var v=localStorage.getItem('mlcur:'+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set:function(k,v){try{localStorage.setItem('mlcur:'+k,JSON.stringify(v))}catch(e){}}};
+function aviso(m){var t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(aviso.t);aviso.t=setTimeout(function(){t.classList.remove('on')},1700)}
 var FEED=(function(){
 var F=D.feed;if(!F||!F.reels||!F.reels.length)return null;
-var R=F.reels,N=R.length,cur=0,foco=false;
-$('feed-tag').innerHTML=F.titulo||esc(F.hashtag);
-$('feed-sub').textContent=F.subtitulo;
-$('feed-desc').textContent=F.descricao;
+var R=F.reels.map(function(r,i){r.taxa=r.vis?r.eng/r.vis*100:0;r.k=i;return r});
+var sel=guarda.get('sel',{}),usados={};
 $('cine-nota').textContent=F.nota||'';
-$('feed-figs').innerHTML=(F.figuras||[]).map(function(f){
- return '<div><b>'+esc(f.v)+'</b><span>'+esc(f.k)+'</span></div>'}).join('');
-
-/* mural de vídeos */
-$('mural-tit').textContent=F.mural_titulo||'Todos os vídeos da seleção';
-$('mural-sub').textContent=F.mural_sub||'';
-$('mural').innerHTML=R.map(function(r,i){
- return '<button class="mv" type="button" aria-label="'+esc(r.perfil)+', '+n(r.com)+' comentários">'+
-  '<span class="ord">'+String(i+1).padStart(2,'0')+'</span>'+
-  '<span class="cap"><b>'+n(r.com)+'<i>comentários</i></b><span>'+esc(r.perfil)+'</span></span></button>'}).join('');
-var itens=[].slice.call($('mural').children);
-itens.forEach(function(bt,i){
- bt.addEventListener('click',function(){troca(i)});
- bt.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();e.stopPropagation();troca(i);if(!foco)alternaFoco()}});
-});
-/* carrega as miniaturas em lotes, sem travar a página */
-function miniatura(i){
- var bt=itens[i],r=R[i];if(!bt||bt.dataset.on)return;bt.dataset.on='1';
- var f=document.createElement('iframe');
- f.src=emb(r);f.setAttribute('scrolling','no');f.loading='lazy';f.tabIndex=-1;f.setAttribute('aria-hidden','true');
- f.addEventListener('load',function(){f.classList.add('ready')});
- bt.insertBefore(f,bt.firstChild);encaixa(bt,f);
-}
-function encaixa(bt,f){
- var w=bt.clientWidth,h=bt.clientHeight,base=320,k=Math.max(w/base,h/(base*1.25));
- f.style.width=base+'px';f.style.height=Math.round(54+base*1.25+300)+'px';
- f.style.transformOrigin='top center';f.style.transform='translateX(-50%) scale('+k.toFixed(3)+')';
- f.style.top=Math.round(-54*k)+'px';
-}
-var carregou=false;
-function carregaMural(){
- if(carregou)return;carregou=true;
- itens.forEach(function(bt,i){setTimeout(function(){miniatura(i)},i*140)});
-}
-function remedeMural(){itens.forEach(function(bt){var f=bt.querySelector('iframe');if(f)encaixa(bt,f)})}
-
-/* tela */
 function emb(r){return (r.url||'').replace(/\/+$/,'')+'/embed/'}
-function ajusta(){
- var t=$('tela'),f=t.querySelector('iframe');if(!f)return;
- var w=t.clientWidth,h=t.clientHeight,base=420,k=Math.max(w/base,h/(base*1.25));
- f.style.width=base+'px';f.style.height=Math.round(54+base*1.25+300)+'px';
- f.style.transformOrigin='top center';f.style.transform='translateX(-50%) scale('+k.toFixed(3)+')';
- f.style.top=Math.round(-54*k)+'px';
-}
-function pinta(){
- var r=R[cur];
- itens.forEach(function(li,i){li.classList.toggle('on',i===cur)});
- var ae=document.activeElement;if(ae&&ae.parentNode===$('mural'))itens[cur].focus({preventScroll:true});
- $('tela-espera').textContent=String(cur+1).padStart(2,'0');
- $('tela-quem').textContent=r.perfil;
- $('tela-num').innerHTML=n(r.com)+'<i>comentários</i>';
- $('tela-dados').innerHTML=
-  '<div><b>'+n(r.eng)+'</b><span>interações</span></div>'+
-  (r.vis?'<div><b>'+n(r.vis)+'</b><span>visualizações</span></div>':'')+
-  '<div><b>'+String(cur+1).padStart(2,'0')+' / '+String(N).padStart(2,'0')+'</b><span>na seleção</span></div>'+
-  '';
- $('tela-link').href=r.url;
- var t=$('tela'),ant=t.querySelector('iframe');if(ant)ant.remove();
- var f=document.createElement('iframe');
- f.src=emb(r);f.setAttribute('scrolling','no');f.title=r.perfil;
- f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.setAttribute('allowfullscreen','');
- f.addEventListener('load',function(){f.classList.add('ready')});
- t.appendChild(f);ajusta();
-}
-function troca(i){var p=cur;cur=(i+N)%N;if(p!==cur)pinta()}
-function size(){
- if($('p-feed').hidden)return;
- var z=parseFloat(document.body.style.zoom)||1,top=0,el=$('cine');
- while(el){top+=el.offsetTop;el=el.offsetParent}
- var alt=innerHeight/z-top-(foco?104:136),largMax=(innerWidth/z)*(foco?.46:.40);
- var w=Math.max(300,Math.min(alt/1.25,largMax,560));
- $('cine').style.setProperty('--tw',Math.round(w)+'px');
- ajusta();carregaMural();remedeMural();
-}
-function alternaFoco(){foco=!foco;$('cine').classList.toggle('foco',foco);$('p-feed').classList.toggle('foco',foco);size()}
+var CR=[['Mais conversa',function(r){return r.com},function(r){return n(r.com)},'comentários'],
+ ['Mais alcance',function(r){return r.vis||0},function(r){return r.vis>=1000?(r.vis/1000).toLocaleString('pt-BR',{maximumFractionDigits:1})+' mil':n(r.vis)},'visualizações'],
+ ['Mais engajamento',function(r){return r.taxa},function(r){return Math.round(r.taxa)+'%'},'interações por visualização']];
+var picks=CR.map(function(c){var r=R.slice().sort(function(x,y){return c[1](y)-c[1](x)}).filter(function(x){return !usados[x.perfil]})[0]||R[0];usados[r.perfil]=1;return r});
+var rest=R.slice().sort(function(x,y){return y.com-x.com}).filter(function(r){return picks.indexOf(r)<0}).slice(0,8);
+var lista=picks.concat(rest),cur=0,aberto=false,carregou=false;
+$('trio').innerHTML=picks.map(function(r,i){var c=CR[i];return '<div class="fone"><span class="rot">'+c[0]+'</span><div class="aparelho"><div class="tela3"></div></div><div class="leg"><div><b>'+esc(r.perfil)+'</b><span class="ac"><button type="button" data-a="amp" data-i="'+i+'">ampliar</button><button type="button" data-a="star" data-i="'+i+'" aria-pressed="false" aria-label="Levar ao fórum">★</button></span></div><span class="v">'+c[2](r)+'<i>'+c[3]+'</i></span></div></div>'}).join('');
+$('tira').innerHTML=rest.map(function(r,j){return '<button type="button" class="mini3" data-i="'+(j+3)+'" aria-label="'+esc(r.perfil)+', '+n(r.com)+' comentários"><span class="cp"><b>'+n(r.com)+'</b><span>'+esc(r.perfil)+'</span></span></button>'}).join('');
+var caixas=[].slice.call($('trio').querySelectorAll('.tela3')),minis=[].slice.call($('tira').querySelectorAll('.mini3'));
+function encaixa(box,f){var w=box.clientWidth,h=box.clientHeight,base=+f.dataset.b||320;if(!w||!h)return;var k=Math.max(w/base,h/(base*1.25));
+ f.style.width=base+'px';f.style.height=Math.round(54+base*1.25+300)+'px';f.style.transformOrigin='top center';f.style.transform='translateX(-50%) scale('+k.toFixed(3)+')';f.style.top=Math.round(-54*k)+'px'}
+function poe(box,r,base,mudo){var f=document.createElement('iframe');f.src=emb(r);f.setAttribute('scrolling','no');f.title=r.perfil;f.dataset.b=base;
+ if(mudo){f.tabIndex=-1;f.setAttribute('aria-hidden','true')}else{f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.setAttribute('allowfullscreen','')}
+ f.addEventListener('load',function(){f.classList.add('ready')});box.insertBefore(f,box.firstChild);encaixa(box,f)}
+function carrega(){if(carregou||!caixas[0]||!caixas[0].clientWidth)return;carregou=true;
+ picks.forEach(function(r,i){setTimeout(function(){poe(caixas[i],r,320,false)},i*220)});}
+function remede(){[].forEach.call(document.querySelectorAll('#trio .tela3,#tira .mini3,#lupa-tela'),function(b){var f=b.querySelector('iframe');if(f)encaixa(b,f)})}
+function size(){if($('p-feed').hidden&&!document.documentElement.classList.contains('deck'))return;carrega();remede()}
+function stars(){
+ [].forEach.call($('trio').querySelectorAll('[data-a=star]'),function(b){b.setAttribute('aria-pressed',sel[picks[+b.dataset.i].id]?'true':'false')});
+ minis.forEach(function(b,j){b.classList.toggle('sel',!!sel[rest[j].id])});
+ var r=lista[cur];$('lupa-star').textContent=sel[r.id]?'★ Marcado para o fórum':'★ Levar ao fórum';$('lupa-star').setAttribute('aria-pressed',sel[r.id]?'true':'false')}
+function pintaLupa(){var r=lista[cur],t=$('lupa-tela'),a=t.querySelector('iframe');if(a)a.remove();poe(t,r,420,false);
+ $('lupa-quem').textContent=r.perfil;$('lupa-num').innerHTML=n(r.com)+'<i>comentários</i>';
+ $('lupa-dados').innerHTML='<div><b>'+(r.vis?n(r.vis):'s/d')+'</b><span>visualizações</span></div><div><b>'+p1(r.taxa)+'</b><span>engajamento</span></div><div><b>'+(cur+1)+' / '+lista.length+'</b><span>na seleção</span></div>';
+ $('lupa-link').href=r.url;stars()}
+function abre(i){cur=Math.max(0,Math.min(lista.length-1,i==null?cur:i));aberto=true;$('lupa').classList.add('on');pintaLupa();try{$('lupa-x').focus({preventScroll:true})}catch(e){}}
+function fecha(){if(!aberto)return;aberto=false;$('lupa').classList.remove('on');var a=$('lupa-tela').querySelector('iframe');if(a)a.remove()}
+function go(d){if(!aberto)return;cur=(cur+d+lista.length)%lista.length;pintaLupa()}
+function marca(i){var k=i==null?(aberto?cur:-1):i;if(k<0)return;var r=lista[k];if(sel[r.id])delete sel[r.id];else sel[r.id]=1;guarda.set('sel',sel);stars();aviso(sel[r.id]?'Marcado para o fórum':'Desmarcado')}
+$('trio').addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-a]');if(!b)return;if(b.dataset.a==='amp')abre(+b.dataset.i);else marca(+b.dataset.i)});
+$('tira').addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.mini3');if(b)abre(+b.dataset.i)});
+$('lupa-x').addEventListener('click',fecha);$('lupa-p').addEventListener('click',function(){go(-1)});$('lupa-n').addEventListener('click',function(){go(1)});
+$('lupa-star').addEventListener('click',function(){marca()});
+$('lupa').addEventListener('click',function(e){if(e.target===$('lupa'))fecha()});
+$('cur-copy').addEventListener('click',function(){
+ var l=lista.filter(function(r){return sel[r.id]}).map(function(r){return '★ '+r.perfil+' · '+n(r.com)+' comentários · '+r.url});
+ if(!l.length){aviso('Nenhum conteúdo marcado com ★ ainda');return}
+ var txt='Curadoria de conteúdos · '+D.subtitulo+'\n\n'+l.join('\n');
+ (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){aviso('Curadoria copiada')},function(){var t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy');aviso('Curadoria copiada')}catch(e){}t.remove()})});
 addEventListener('resize',size);
-pinta();setTimeout(size,60);
-return {size:size,go:function(d){troca(cur+d)},open:alternaFoco,
-        close:function(){if(foco)alternaFoco()},isOpen:function(){return foco}};
+stars();setTimeout(size,60);
+return {size:size,go:go,open:function(){abre(cur)},marca:marca,close:fecha,isOpen:function(){return aberto}};
 })();
 
+
 /* ---------- Abas ---------- */
-var tabs=[$('tab-sac'),$('tab-jd'),$('tab-feed')];
+var tabs=[$('tab-jd'),$('tab-kits'),$('tab-feed')];
 tabs.forEach(function(t){t.addEventListener('click',function(){
  try{t.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'})}catch(e){}
  tabs.forEach(function(o){var on=o===t;o.setAttribute('aria-selected',on?'true':'false');$(o.getAttribute('aria-controls')).hidden=!on});
@@ -1134,7 +1430,7 @@ function conta(el){
 }
 
 /* revelar em cascata */
-var SEL='.abertura,.bloco,#p-jd section';
+var SEL='.abertura,.bloco,#p-jd section';var _x=0;
 var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
  es.forEach(function(e){if(e.isIntersecting){entra(e.target);io.unobserve(e.target)}})
 },{threshold:.12,rootMargin:'0px 0px -8% 0px'}):null;
@@ -1143,6 +1439,7 @@ function filhos(bloco){
  var l=[].slice.call(bloco.children);
  var out=[];
  l.forEach(function(c){
+  if(c.classList&&c.classList.contains('lupa'))return;
   if(c.classList&&(c.classList.contains('grid')||c.id==='wa-minis'||c.id==='desafio-minis')){
    out.push(c);[].slice.call(c.children).forEach(function(g){out.push(g)});
   } else out.push(c);
@@ -1155,7 +1452,8 @@ function prepara(bloco){
 function entra(bloco){
  filhos(bloco).forEach(function(c){c.classList.add('in')});
  [].forEach.call(bloco.querySelectorAll('svg'),function(sv){setTimeout(function(){sv.classList.add('cresceu')},160)});
- [].forEach.call(bloco.querySelectorAll('.stat .val,.mini b,.abre-figs b,.cine-figs b,.donut-center b,.topic .qtd b,.funil .f b'),function(e){
+ [].forEach.call(bloco.querySelectorAll('.selo .num,.caso .tot,.waffle .leg b,.prazo .res b,.tl .dias b'),function(e){if(!e.dataset.contou){e.dataset.contou='1';setTimeout(function(){conta(e.firstChild&&e.firstChild.nodeType===3?{get textContent(){return e.firstChild.nodeValue},set textContent(v){e.firstChild.nodeValue=v}}:e)},200)}});
+ [].forEach.call(bloco.querySelectorAll('.stat .val,.mini b,.abre-figs b,.cine-figs b,.donut-center b,.topic .qtd b,.funil .f b,.r3 .eng b'),function(e){
   if(!e.dataset.contou){e.dataset.contou='1';setTimeout(function(){conta(e)},200)}});
 }
 function liberar(bloco){filhos(bloco).forEach(function(c){c.classList.remove('rev','in')});
@@ -1187,32 +1485,126 @@ aplica(document);
 return {aplica:aplica,reanima:reanima,liga:liga,escondeTT:escondeTT};
 })();
 
-/* ---------- Modo apresentação (tela cheia) ---------- */
-var root=document.documentElement,hintT;
-function presenting(){return !!(document.fullscreenElement||document.webkitFullscreenElement)}
-function applyPresent(){
- var p=presenting();root.classList.toggle('presenting',p);
- document.body.style.zoom=p?String(Math.min(1.8,Math.max(1,innerWidth/1440))):'';
- if(FEED)FEED.size();
- if(p){$('hint').classList.add('show');clearTimeout(hintT);hintT=setTimeout(function(){$('hint').classList.remove('show')},4500)}else $('hint').classList.remove('show');
-}
-function togglePresent(){
- if(presenting()){(document.exitFullscreen||document.webkitExitFullscreen).call(document)}
- else{var rq=root.requestFullscreen||root.webkitRequestFullscreen;if(rq)rq.call(root)}
-}
-$('btn-present').addEventListener('click',togglePresent);
-document.addEventListener('fullscreenchange',applyPresent);document.addEventListener('webkitfullscreenchange',applyPresent);
-addEventListener('resize',function(){if(presenting()){document.body.style.zoom=String(Math.min(1.8,Math.max(1,innerWidth/1440)));if(FEED)FEED.size()}});
+/* ---------- Apresentação em slides (compartilhar a tela) ---------- */
+var root=document.documentElement;
+var PAINEIS=['p-jd','p-kits','p-feed'],NOMES=['A semana','Atendimento','Conteúdos das Lovers'],slides=[];
+PAINEIS.forEach(function(id,pi){[].forEach.call($(id).children,function(el){if(!el.hidden&&(el.classList.contains('abertura')||el.classList.contains('bloco')||el.tagName==='SECTION')){el.classList.add('sl');el.dataset.pane=pi;slides.push(el)}})});
+var idx=0,deck=false,alvo=(D.tempo_alvo_min||5)*60,t0=0,tick,ocioso;
+function nome(el){if(el.dataset.titulo)return el.dataset.titulo;var h=el.querySelector('.manchete,h3,h2');return h?h.textContent.replace(/\s+/g,' ').trim():''}
+function cabe(){if(!deck)return;var el=slides[idx];el.style.transform='translate(-50%,-50%)';
+ var h=el.scrollHeight,s=Math.min((innerWidth-90)/1240,(innerHeight-56)/h);el.style.transform='translate(-50%,-50%) scale('+Math.max(.2,s)+')'}
+var fx=document.createElement('div');fx.id='fx';document.body.appendChild(fx);
+var anims=[],tid=0,EASE='cubic-bezier(.2,.8,.2,1)',SPRING='cubic-bezier(.34,1.56,.64,1)',FORT='cubic-bezier(.7,0,.2,1)';
+function limpaTrans(){anims.forEach(function(a){try{a.cancel()}catch(e){}});anims=[];fx.innerHTML='';
+ slides.forEach(function(s,k){if(s.classList.contains('out')){s.classList.remove('out');if(k!==idx)s.style.transform=''}})}
+function an(el,kf,o){var a=el.animate(kf,o);anims.push(a);return a}
+function sair(p,ms,ex){if(!p)return;var B=p.style.transform;an(p,[{opacity:1,transform:B},{opacity:0,transform:B+(ex?' '+ex:'')}],{duration:ms,easing:'ease-in',fill:'forwards'})}
+function fxEl(css,txt){var d=document.createElement('div');d.style.cssText=css;if(txt)d.textContent=txt;fx.appendChild(d);return d}
+/* uma transição própria para cada slide, pensada no assunto dele */
+var TR={
+/* capa: a tela abre do azul, como uma luz que acende */
+0:function(e,p,d,B){an(e,[{opacity:0,transform:B+' scale(1.14)',filter:'blur(10px)'},{opacity:1,transform:B,filter:'blur(0px)'}],{duration:1200,easing:EASE,fill:'backwards'});sair(p,500)},
+/* a comunidade: os números sobem, como crescimento */
+1:function(e,p,d,B){an(e,[{opacity:0,transform:B+' translateY('+(110*d)+'px)',filter:'blur(12px)'},{opacity:1,transform:B,filter:'blur(0px)'}],{duration:900,easing:EASE,fill:'backwards'});sair(p,380,'translateY('+(-40*d)+'px)')},
+/* kits: a caixa cai e quica na mesa */
+2:function(e,p,d,B){an(e,[{opacity:0,transform:B+' translateY(-260px) rotate(-6deg)'},{opacity:1,offset:.3},{opacity:1,transform:B+' translateY(0px) rotate(0deg)'}],{duration:1000,easing:SPRING,fill:'backwards'});sair(p,300,'translateY(40px)')},
+/* busca ativa: uma lupa abre um círculo de luz */
+3:function(e,p,d,B){var ez='cubic-bezier(.5,0,.2,1)';an(e,[{clipPath:'circle(0% at 50% 50%)'},{clipPath:'circle(75% at 50% 50%)'}],{duration:950,easing:ez,fill:'backwards'});
+ var r=fxEl('position:absolute;left:50%;top:50%;width:2800px;height:2800px;margin:-1400px 0 0 -1400px;border-radius:50%;border:5px solid #D4AF37;box-shadow:0 0 40px rgba(212,175,55,.5)');
+ anims.push(r.animate([{transform:'scale(0)',opacity:1},{transform:'scale(1)',opacity:0}],{duration:950,easing:ez,fill:'forwards'}));sair(p,600)},
+/* prêmios: cortina dourada varre a tela revelando o troféu */
+4:function(e,p,d,B){var T=900,ez=FORT,rv=d<0;an(e,[{clipPath:rv?'inset(0 0 0 100%)':'inset(0 100% 0 0)'},{clipPath:'inset(0 0 0 0)'}],{duration:T,easing:ez,fill:'backwards'});
+ var b=fxEl('position:absolute;top:0;bottom:0;left:0;width:16vw;background:linear-gradient(90deg,rgba(212,175,55,0),#F0D77A 70%,#D4AF37)'+(rv?';transform:scaleX(-1)':''));
+ anims.push(b.animate(rv?[{left:'100vw'},{left:'-16vw'}]:[{left:'-16vw'},{left:'100vw'}],{duration:T,easing:ez,fill:'forwards'}));sair(p,T*.8)},
+/* vale-compras: o carrinho entra rolando, inclinado */
+5:function(e,p,d,B){an(e,[{opacity:0,transform:B+' translateX('+(d*140)+'%) skewX('+(-14*d)+'deg)'},{opacity:1,offset:.2},{opacity:1,transform:B+' translateX(0%) skewX(0deg)'}],{duration:900,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'});sair(p,600,'translateX('+(-d*30)+'%)')},
+/* atendimento: abre como um balão de conversa, vindo do canto */
+6:function(e,p,d,B){an(e,[{opacity:0,transform:B+' translate(-300px,260px) scale(.35)'},{opacity:1,offset:.25},{opacity:1,transform:B+' translate(0px,0px) scale(1)'}],{duration:950,easing:SPRING,fill:'backwards'});sair(p,300,'scale(.96)')},
+/* WhatsApp: a tela sobe como mensagem nova e ganha o check duplo */
+7:function(e,p,d,B){an(e,[{opacity:0,transform:B+' translateY('+(100*d)+'%)'},{opacity:1,offset:.25},{opacity:1,transform:B+' translateY(0%)'}],{duration:850,easing:EASE,fill:'backwards'});sair(p,650,'translateY('+(-24*d)+'%)');
+ var t=fxEl('position:absolute;right:6vw;bottom:9vh;font-size:64px;font-weight:700;color:#25D366;letter-spacing:-.15em;text-shadow:0 6px 24px rgba(37,211,102,.35);opacity:0','✓✓');
+ anims.push(t.animate([{opacity:0,transform:'scale(.4) translateY(30px)'},{opacity:1,transform:'scale(1) translateY(0px)',offset:.35},{opacity:1,offset:.7},{opacity:0,transform:'scale(1.1) translateY(-10px)'}],{duration:1200,delay:250,fill:'both',easing:'ease-out'}))},
+/* e-mail: a aba abre como a aba de um envelope */
+8:function(e,p,d,B){var P=' translateY(-50%) perspective(1800px) rotateX(';an(e,[{opacity:0,transform:B+P+(-88*d)+'deg) translateY(50%)'},{opacity:1,offset:.2},{opacity:1,transform:B+P+'0deg) translateY(50%)'}],{duration:1000,easing:'cubic-bezier(.25,1,.5,1)',fill:'backwards'});sair(p,420,'translateY(30px)')},
+/* temas: cartas distribuídas na mesa */
+9:function(e,p,d,B){an(e,[{opacity:0,transform:B+' translate('+(160*d)+'px,120px) rotate('+(-10*d)+'deg) scale(.88)'},{opacity:1,offset:.3},{opacity:1,transform:B+' translate(0px,0px) rotate(0deg) scale(1)'}],{duration:950,easing:SPRING,fill:'backwards'});sair(p,500,'translate('+(-120*d)+'px,-40px) rotate('+(8*d)+'deg) scale(.94)')},
+/* top 3: cortinas de palco se abrem do centro, com um feixe de luz */
+10:function(e,p,d,B){var T=950;an(e,[{clipPath:'inset(0 50% 0 50%)',transform:B+' scale(1.06)'},{clipPath:'inset(0 0% 0 0%)',transform:B}],{duration:T,easing:FORT,fill:'backwards'});
+ var l=fxEl('position:absolute;top:0;bottom:0;left:50%;width:4px;margin-left:-2px;background:linear-gradient(180deg,transparent,#F0D77A,transparent);box-shadow:0 0 28px 6px rgba(212,175,55,.55)');
+ anims.push(l.animate([{opacity:1,transform:'scaleY(.2)'},{opacity:1,transform:'scaleY(1)',offset:.3},{opacity:0,transform:'scaleY(1)'}],{duration:T,fill:'forwards',easing:'ease-out'}));sair(p,400)},
+/* conteúdos: corta para o preto e o cinema abre as cortinas de luz */
+11:function(e,p,d,B){var T=1100;an(e,[{opacity:0},{opacity:1}],{duration:1,delay:T*.4,fill:'backwards'});an(e,[{filter:'brightness(2.2)',transform:B+' scale(1.05)'},{filter:'brightness(1)',transform:B}],{duration:T*.6,delay:T*.4,easing:'ease-out',fill:'backwards'});
+ ['top','bottom'].forEach(function(lado){var b=fxEl('position:absolute;left:0;right:0;height:50.5vh;background:#06142E;'+lado+':0;transform-origin:'+lado+' center');
+  anims.push(b.animate([{transform:'scaleY(0)'},{transform:'scaleY(1)',offset:.25},{transform:'scaleY(1)',offset:.4},{transform:'scaleY(0)'}],{duration:T,easing:'ease-in-out',fill:'forwards'}))});
+ sair(p,250)},
+/* comentários: sobe como balão e solta corações */
+12:function(e,p,d,B){an(e,[{opacity:0,transform:B+' translateY(150px) scale(.9) rotate(2deg)'},{opacity:1,offset:.3},{opacity:1,transform:B+' translateY(0px) scale(1) rotate(0deg)'}],{duration:1000,easing:SPRING,fill:'backwards'});sair(p,350,'translateY(-40px)');
+ for(var i=0;i<10;i++){var h=fxEl('position:absolute;bottom:-40px;left:'+(8+Math.random()*84)+'vw;font-size:'+(18+Math.random()*26)+'px;color:'+(i%3?'#D4AF37':'#C2185B')+';opacity:0','♥');
+  anims.push(h.animate([{opacity:0,transform:'translateY(0px)'},{opacity:.9,offset:.15},{opacity:0,transform:'translateY(-'+(55+Math.random()*35)+'vh) translateX('+Math.round((Math.random()-.5)*80)+'px)'}],{duration:1500+Math.random()*700,delay:150+i*90,fill:'forwards',easing:'ease-out'}))}}
+};
+var TRo=TR;
+TR={0:TRo[0],1:TRo[4],2:TRo[2],3:TRo[5],4:TRo[6],5:TRo[7],6:TRo[9],7:TRo[11],
+ /* obrigada: a luz acende e sobem faíscas douradas */
+ 8:function(e,p,d,B){TRo[0](e,p,d,B);for(var i=0;i<16;i++){var h=fxEl('position:absolute;bottom:-20px;left:'+(6+Math.random()*88)+'vw;width:'+(5+Math.random()*7)+'px;height:'+(5+Math.random()*7)+'px;border-radius:50%;background:#F0D77A;box-shadow:0 0 14px 3px rgba(240,215,122,.7);opacity:0');
+  anims.push(h.animate([{opacity:0,transform:'translateY(0px)'},{opacity:1,offset:.2},{opacity:0,transform:'translateY(-'+(45+Math.random()*50)+'vh)'}],{duration:1600+Math.random()*900,delay:200+i*80,fill:'forwards',easing:'ease-out'}))}}};
+/* transições v13: uma única linguagem, discreta e elegante */
+function linhaOuro(d,T){var l=fxEl('position:absolute;top:0;bottom:0;left:0;width:2px;background:linear-gradient(180deg,transparent,#D4AF37 25%,#F0D77A 50%,#D4AF37 75%,transparent);box-shadow:0 0 22px 3px rgba(212,175,55,.45);opacity:0');
+ anims.push(l.animate(d>0?[{left:'-2px',opacity:0},{opacity:.9,offset:.2},{opacity:.9,offset:.8},{left:'100vw',opacity:0}]:[{left:'100vw',opacity:0},{opacity:.9,offset:.2},{opacity:.9,offset:.8},{left:'-2px',opacity:0}],{duration:T,easing:'cubic-bezier(.45,0,.2,1)',fill:'forwards'}))}
+function suave(e,p,d,B){var ez='cubic-bezier(.22,.61,.36,1)';
+ if(e.classList.contains('ab8')||(p&&p.classList.contains('ab8'))){an(e,[{opacity:0,transform:B+' scale(1.025)'},{opacity:1,transform:B}],{duration:900,easing:ez,fill:'backwards'});sair(p,500);return}
+ if(p&&e.dataset.pane!==p.dataset.pane){an(e,[{opacity:0,transform:B+' translateX('+(70*d)+'px)',filter:'blur(6px)'},{opacity:1,transform:B,filter:'blur(0px)'}],{duration:780,easing:ez,fill:'backwards'});sair(p,380,'translateX('+(-50*d)+'px)');linhaOuro(d,820);return}
+ an(e,[{opacity:0,transform:B+' translateY('+(26*d)+'px)',filter:'blur(5px)'},{opacity:1,transform:B,filter:'blur(0px)'}],{duration:640,easing:ez,fill:'backwards'});sair(p,300,'translateY('+(-14*d)+'px)')}
+function transita(el,prev,dir){var f=suave,B=el.style.transform,red=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(red||!f||!el.animate){an(el,[{opacity:0},{opacity:1}],{duration:200,fill:'backwards'});sair(prev,200)}else f(el,prev,dir,B);
+ var mine=++tid;setTimeout(function(){if(mine===tid)limpaTrans()},2400)}
+function mostra(i,mudo){i=Math.max(0,Math.min(slides.length-1,i));var prev=slides[idx],dir=i>=idx?1:-1;limpaTrans();var troca=!mudo&&deck&&prev&&i!==idx;
+ if(prev){prev.classList.remove('cur');if(troca)prev.classList.add('out');else prev.style.transform=''}
+ idx=i;var el=slides[idx],p=+el.dataset.pane;el.classList.add('cur');root.classList.toggle('capa',el.classList.contains('ab8'));
+ tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===p?'true':'false')});
+ if(MOV){MOV.escondeTT();MOV.reanima($(PAINEIS[p]))}
+ if(p===2&&FEED)FEED.size();
+ $('d-e').textContent=NOMES[p];$('d-t').textContent=nome(el);$('d-c').textContent=(idx+1)+' / '+slides.length;$('d-b').style.width=((idx+1)/slides.length*100)+'%';
+ cabe();setTimeout(cabe,250);setTimeout(cabe,900);if(troca)transita(el,prev,dir)}
+function relogio(){var s=Math.floor((Date.now()-t0)/1000);$('d-tm').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0')+' de '+Math.round(alvo/60)+' min';$('d-tm').classList.toggle('over',s>=alvo)}
+function inicio(){var p=tabs.findIndex(function(t){return t.getAttribute('aria-selected')==='true'}),r=slides.findIndex(function(s){return +s.dataset.pane===p}),y=innerHeight*.45;
+ slides.forEach(function(s,i){if(+s.dataset.pane===p&&s.getBoundingClientRect().top<y&&s.getBoundingClientRect().bottom>0)r=i});return Math.max(0,r)}
+function entra(i){var ini=i!=null?i:inicio();deck=true;root.classList.add('deck','presenting');t0=Date.now();relogio();clearInterval(tick);tick=setInterval(relogio,1000);
+ mostra(ini,true);$('hint').classList.add('show');clearTimeout(entra.h);entra.h=setTimeout(function(){$('hint').classList.remove('show')},4200);acorda()}
+function sai(){var el=slides[idx],p=+el.dataset.pane;deck=false;clearInterval(tick);$('blk').classList.remove('on');document.body.classList.remove('semcursor');
+ slides.forEach(function(s){s.classList.remove('cur');s.style.transform=''});root.classList.remove('deck','presenting','capa','fs');$('deck').classList.remove('on');limpaTrans();$('hint').classList.remove('show');
+ if(document.fullscreenElement)(document.exitFullscreen||function(){}).call(document);
+ tabs[p].click();requestAnimationFrame(function(){el.scrollIntoView({block:'start'});window.scrollBy(0,-120)})}
+function telaCheia(){if(document.fullscreenElement)(document.exitFullscreen||document.webkitExitFullscreen).call(document);else{var q=root.requestFullscreen||root.webkitRequestFullscreen;if(q)q.call(root)}}
+function acorda(){document.body.classList.remove('semcursor');clearTimeout(ocioso);if(deck)ocioso=setTimeout(function(){document.body.classList.add('semcursor')},2500)}
+addEventListener('mousemove',acorda);addEventListener('resize',cabe);
+document.addEventListener('fullscreenchange',function(){var fs=!!document.fullscreenElement;root.classList.toggle('fs',fs);$('deck').classList.remove('on');setTimeout(cabe,150);$('d-f').textContent=fs?'Sair da tela cheia':'Tela cheia';if(fs&&deck)aviso('← → passam · B tela preta · T tempo · Esc sai')});
+addEventListener('mousemove',function(e){if(!deck||root.classList.contains('fs'))return;$('deck').classList.toggle('on',e.clientY>innerHeight-70)});
+$('btn-present').addEventListener('click',function(){deck?sai():entra()});
+$('d-p').onclick=function(){mostra(idx-1)};$('d-n').onclick=function(){mostra(idx+1)};$('d-x').onclick=sai;$('d-f').onclick=telaCheia;
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(cabe);
 document.addEventListener('keydown',function(e){
- if(e.target&&/input|textarea|select/i.test(e.target.tagName)||e.metaKey||e.ctrlKey||e.altKey)return;
- var k=e.key;
+ if(e.target&&(e.target.isContentEditable||/input|textarea|select/i.test(e.target.tagName))){if(e.key==='Escape')e.target.blur();return}
+ if(e.metaKey||e.ctrlKey||e.altKey)return;var k=e.key;
+ if(deck){acorda();
+  if(FEED&&FEED.isOpen()){if(k==='ArrowRight'||k==='ArrowLeft'){e.preventDefault();FEED.go(k==='ArrowRight'?1:-1);return}if(k==='Escape'){FEED.close();return}if(k==='s'||k==='S'){FEED.marca();return}}
+  if(k==='Enter'&&FEED&&slides[idx].querySelector('#trio')){FEED.open();return}
+  if(k==='t'||k==='T'){aviso($('d-tm').textContent+' · slide '+(idx+1)+' de '+slides.length);return}
+  if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k===' '){e.preventDefault();mostra(idx+1)}
+  else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();mostra(idx-1)}
+  else if(k==='Home')mostra(0);else if(k==='End')mostra(slides.length-1);
+  else if(k==='1'||k==='2'||k==='3'){var p=+k-1;mostra(slides.findIndex(function(s){return +s.dataset.pane===p}))}
+  else if(k==='f'||k==='F')telaCheia();
+  else if(k==='b'||k==='B'||k==='.')$('blk').classList.toggle('on');
+  else if(k==='Escape'){if($('blk').classList.contains('on'))$('blk').classList.remove('on');else if(!document.fullscreenElement)sai()}
+  return}
+ if(k==='a'||k==='A'||k==='f'||k==='F'){entra();return}
  if(k==='1'||k==='2'||k==='3'){tabs[+k-1].click();return}
- if(k==='f'||k==='F'){togglePresent();return}
  if(k==='Escape'&&FEED&&FEED.isOpen()){FEED.close();return}
  if(!$('p-feed').hidden&&FEED){
   if(k==='ArrowLeft'){e.preventDefault();FEED.go(-1)}
   else if(k==='ArrowRight'){e.preventDefault();FEED.go(1)}
-  else if(k==='Enter'&&!(document.activeElement&&document.activeElement.parentNode===$('mural'))){FEED.open()}
+  else if(k==='s'||k==='S'){FEED.marca()}
+  else if(k==='Enter'&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#trio,#tira,#lupa'))){FEED.open()}
  }
 });
 
