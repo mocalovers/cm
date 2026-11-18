@@ -18,18 +18,17 @@
 }
 :root[data-theme="dark"]{ --page:#0B1224; --page-ink:#EDE8D8; --muted:#A5AEC4; }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--page);color:var(--page-ink);font-family:'Montserrat',system-ui,sans-serif;
-  padding:24px max(16px,env(safe-area-inset-right)) 40px max(16px,env(safe-area-inset-left));}
-.wrap{max-width:1240px;margin:0 auto}
-.stage{overflow-x:auto;border-radius:22px}
-.slide{container-type:inline-size;min-width:980px;aspect-ratio:16/9;color:var(--ink);position:relative;outline:none;
-  border-radius:22px;overflow:hidden;font-size:1cqw;
+html,body{height:100%}
+body{background:var(--page);color:var(--page-ink);font-family:'Montserrat',system-ui,sans-serif;overflow:hidden}
+.wrap{width:100vw;height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center;background:var(--page)}
+.stage{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.slide{container-type:inline-size;width:min(100vw,177.78vh,177.78dvh);aspect-ratio:16/9;flex:none;color:var(--ink);position:relative;outline:none;
+  border-radius:0;overflow:hidden;font-size:1cqw;
   background:
     radial-gradient(circle at 96% 80%, rgba(212,175,55,.22) 0, rgba(212,175,55,0) 24cqw),
     radial-gradient(circle at 2% 20%, rgba(0,45,114,.08) 0, rgba(0,45,114,0) 22cqw),
     var(--cream);
-  box-shadow:0 18px 50px rgba(0,26,70,.18)}
-.slide:fullscreen{border-radius:0}
+}
 
 /* ===== mundo (mapa) ===== */
 .world{position:absolute;left:0;top:0;width:300cqw;height:110cqw;transform-origin:0 0;will-change:transform}
@@ -317,13 +316,6 @@ kbd{font:inherit;font-weight:700;background:var(--soft);border-radius:6px;paddin
     <div class="brand" id="brand" style="opacity:0;transition:opacity .5s">Moça Lovers<small>Fórum 18/11</small></div>
     <div style="display:flex;align-items:center;gap:.8cqw"><div class="dots" id="dots"></div><button class="fs" id="fs" title="Tela cheia (F)" aria-label="Tela cheia">⤢ Tela cheia</button></div>
   </div>
-  <div class="hud bot">
-    <div class="nav">
-      <button class="pv" id="pv" aria-label="Voltar">←</button>
-      <div class="info" id="info" hidden></div>
-      <button class="nxt" id="nx">Avançar →</button>
-    </div>
-  </div>
 </div>
 </div>
 
@@ -360,7 +352,7 @@ kbd{font:inherit;font-weight:700;background:var(--soft);border-radius:6px;paddin
   ['Mapa'].concat(short).forEach(function(t,k){
     var bt=document.createElement('button'); bt.textContent=t; bt.onclick=function(){go(k-1)}; dots.appendChild(bt); btns.push(bt);
   });
-  var info=document.getElementById('info'), pv=document.getElementById('pv'), nx=document.getElementById('nx'), intro=document.getElementById('intro'), brand=document.getElementById('brand');
+  var info=document.createElement('div'), pv=document.createElement('button'), nx=document.createElement('button'), intro=document.getElementById('intro'), brand=document.getElementById('brand');
   var panels=[0,1,2].map(function(i){return document.getElementById('p'+i)});
 
   var idx=-1, anim=null, raf=0, actT=0, t0=Date.now(), tTot=0, totStarted=false;
@@ -393,6 +385,7 @@ kbd{font:inherit;font-weight:700;background:var(--soft);border-radius:6px;paddin
     if(anim){ anim.cancel(); anim=null; }
     cancelAnimationFrame(raf); clearTimeout(actT);
     var v0=view(from), v1=view(n);
+    if(from<0&&n>=0) enterFS();
     idx=n; t0=Date.now(); if(n>=0&&!totStarted){ totStarted=true; tTot=Date.now(); }
     // UI
     btns.forEach(function(b,k){ b.classList.toggle('on',k-1===n); b.classList.toggle('past',k-1<n&&k>0); });
@@ -423,9 +416,10 @@ kbd{font:inherit;font-weight:700;background:var(--soft);border-radius:6px;paddin
   pv.onclick=function(){ go(idx-1) };
   document.getElementById('start').onclick=function(){ go(0) };
   document.querySelectorAll('.pin').forEach(function(el){ el.onclick=function(){ go(parseInt(el.dataset.go,10)); }; });
-  document.getElementById('fs').onclick=function(){
-    try{ if(document.fullscreenElement) document.exitFullscreen(); else slide.requestFullscreen(); }catch(e){}
-  };
+  var fsBtn=document.getElementById('fs'), wrapEl=document.querySelector('.wrap');
+  function enterFS(){ try{ if(!document.fullscreenElement&&wrapEl.requestFullscreen){ var p=wrapEl.requestFullscreen(); if(p&&p.catch) p.catch(function(){}); } }catch(e){} }
+  fsBtn.onclick=function(){ try{ if(document.fullscreenElement) document.exitFullscreen(); else enterFS(); }catch(e){} };
+  document.addEventListener('fullscreenchange',function(){ fsBtn.textContent=document.fullscreenElement?'⤡ Sair da tela cheia':'⤢ Tela cheia'; });
   document.addEventListener('keydown',function(e){
     var k=e.key;
     if(k==='ArrowRight'||k===' '||k==='PageDown'||k==='Enter'){ e.preventDefault(); go(idx+1); }
@@ -438,6 +432,7 @@ kbd{font:inherit;font-weight:700;background:var(--soft);border-radius:6px;paddin
   slide.addEventListener('pointerdown',function(e){ sx=e.clientX; });
   slide.addEventListener('pointerup',function(e){ if(sx===null) return; var dx=e.clientX-sx; sx=null; if(Math.abs(dx)>60) go(idx+(dx<0?1:-1)); });
   btns[0].classList.add('on'); pv.disabled=true;
+  slide.addEventListener('scroll',function(){ slide.scrollLeft=0; slide.scrollTop=0; });
   window.__go=go;
 })();
 </script>
